@@ -69,21 +69,21 @@ export default function DashboardPage() {
             <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <CheckSquare size={18} style={{ color: 'var(--primary)' }} />
               <span style={{ fontSize: '14px', color: 'rgba(25, 25, 24, 0.7)' }}>
-                Phase 1: タスク機能を追加
+                PART 301: タスク・設定を追加
               </span>
               <ArrowRight size={14} style={{ color: 'rgba(25, 25, 24, 0.3)', marginLeft: 'auto' }} />
             </li>
             <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <Settings size={18} style={{ color: 'var(--primary)' }} />
               <span style={{ fontSize: '14px', color: 'rgba(25, 25, 24, 0.7)' }}>
-                Phase 2: 設定ページを追加
+                PART 302: DB・認証を追加
               </span>
               <ArrowRight size={14} style={{ color: 'rgba(25, 25, 24, 0.3)', marginLeft: 'auto' }} />
             </li>
             <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <Database size={18} style={{ color: 'var(--primary)' }} />
               <span style={{ fontSize: '14px', color: 'rgba(25, 25, 24, 0.7)' }}>
-                Phase 3: Action Map を追加
+                PART 303: 顧客管理を追加
               </span>
               <ArrowRight size={14} style={{ color: 'rgba(25, 25, 24, 0.3)', marginLeft: 'auto' }} />
             </li>
