@@ -1,6 +1,6 @@
 {
   "name": "aifcc-modular-starter",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "private": true,
   "description": "AIFCC Workshop - CC基礎コース用スターター (Next.js 16 + React 19)",
   "scripts": {
@@ -22,10 +22,10 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "eslint": "^10.0.2",
-    "eslint-config-next": "16.1.6",
+    "eslint-config-next": "^16.2.3",
     "typescript": "^5.9.3"
   },
   "engines": {
-    "node": ">=18.18.0"
+    "node": ">=24.0.0"
   }
 }
