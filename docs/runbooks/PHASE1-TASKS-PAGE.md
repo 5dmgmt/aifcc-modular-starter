@@ -118,7 +118,7 @@ import { DEFAULT_APP_DATA } from '@/lib/types';
 // LocalStorage キー
 // ========================================
 
-const STORAGE_KEY = 'fdc_app_data';
+const STORAGE_KEY = 'aifcc_app_data';
 
 // ========================================
 // Reducer

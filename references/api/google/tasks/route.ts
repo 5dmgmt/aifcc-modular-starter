@@ -187,7 +187,7 @@ export async function GET(request: NextRequest) {
 
   try {
     const cookieStore = await cookies();
-    const sessionToken = cookieStore.get('fdc_session')?.value;
+    const sessionToken = cookieStore.get('aifcc_session')?.value;
 
     if (!sessionToken) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -282,7 +282,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const cookieStore = await cookies();
-    const sessionToken = cookieStore.get('fdc_session')?.value;
+    const sessionToken = cookieStore.get('aifcc_session')?.value;
 
     if (!sessionToken) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -336,10 +336,10 @@ export async function POST(request: NextRequest) {
     };
 
     if (notes) {
-      // FDCタスクIDをnotesに含める（同期用）
-      taskData.notes = fdcTaskId ? `[FDC:${fdcTaskId}]\n${notes}` : notes;
+      // AIFCCタスクIDをnotesに含める（同期用）
+      taskData.notes = fdcTaskId ? `[AIFCC:${fdcTaskId}]\n${notes}` : notes;
     } else if (fdcTaskId) {
-      taskData.notes = `[FDC:${fdcTaskId}]`;
+      taskData.notes = `[AIFCC:${fdcTaskId}]`;
     }
 
     if (due) {
@@ -385,7 +385,7 @@ export async function PATCH(request: NextRequest) {
 
   try {
     const cookieStore = await cookies();
-    const sessionToken = cookieStore.get('fdc_session')?.value;
+    const sessionToken = cookieStore.get('aifcc_session')?.value;
 
     if (!sessionToken) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -474,7 +474,7 @@ export async function DELETE(request: NextRequest) {
 
   try {
     const cookieStore = await cookies();
-    const sessionToken = cookieStore.get('fdc_session')?.value;
+    const sessionToken = cookieStore.get('aifcc_session')?.value;
 
     if (!sessionToken) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

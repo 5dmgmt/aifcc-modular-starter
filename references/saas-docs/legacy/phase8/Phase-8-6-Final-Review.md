@@ -665,7 +665,7 @@ Phase 8 完了後、Phase 9（AI自走ワークフロー統合）に向けて以
 
 ## 付録：参考ドキュメント
 
-- [DOCS/FDC-GRAND-GUIDE.md](./FDC-GRAND-GUIDE.md) - プロジェクト全体の規範書
+- [DOCS/AIFCC-GRAND-GUIDE.md](./AIFCC-GRAND-GUIDE.md) - プロジェクト全体の規範書
 - [DOCS/Phase-8-1-Encryption-Design.md](./Phase-8-1-Encryption-Design.md) - 暗号化方針設計
 - [DOCS/Phase-8-5-Implementation-Report.md](./Phase-8-5-Implementation-Report.md) - Workspace 切替・同期安定化レポート
 - [DOCS/RLS-VERIFICATION-GUIDE.md](./RLS-VERIFICATION-GUIDE.md) - RLS 適用・検証ガイド

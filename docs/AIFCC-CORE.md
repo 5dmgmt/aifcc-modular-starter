@@ -1,8 +1,8 @@
-# FDC-CORE.md（v1.1 - 2025-12-08）
+# AIFCC-CORE.md（v1.1 - 2025-12-08）
 
 ## 0. 位置づけ
 
-本ドキュメントは FDC Modular Starter の
+本ドキュメントは AIFCC Modular Starter の
 **開発・拡張に関わるすべての人間開発者とAIエージェントの起点**となる規範書である。
 
 - すべての開発セッションは本ガイドを前提として開始する。
@@ -37,7 +37,7 @@ founders-direct-modular/
 │   └── page.tsx            # エントリー（LP表示）
 ├── components/             # UIコンポーネント
 │   └── landing/            # ランディングページ ⭐NEW
-│       ├── default/        # デフォルトLP（FDCデザイン）
+│       ├── default/        # デフォルトLP（AIFCCデザイン）
 │       │   ├── LandingPage.tsx
 │       │   ├── LandingPage.module.css
 │       │   ├── HeroSection.tsx
@@ -58,8 +58,8 @@ founders-direct-modular/
 ├── public/                 # 静的ファイル
 │   └── images/             # LP用画像
 ├── docs/                   # ドキュメント
-│   ├── FDC-MODULAR-GUIDE.md # インデックス
-│   ├── FDC-CORE.md         # 本ファイル
+│   ├── AIFCC-MODULAR-GUIDE.md # インデックス
+│   ├── AIFCC-CORE.md         # 本ファイル
 │   ├── CHANGELOG.md        # 変更履歴
 │   ├── guides/             # ガイド
 │   └── runbooks/           # ランブック
@@ -80,7 +80,7 @@ founders-direct-modular/
 │  └─ DataContext（アプリデータ）          │
 ├─────────────────────────────────────────┤
 │ Storage Layer: localStorage             │
-│  └─ fdc_app_data（JSON形式で永続化）     │
+│  └─ aifcc_app_data（JSON形式で永続化）     │
 └─────────────────────────────────────────┘
 ```
 
@@ -93,7 +93,7 @@ founders-direct-modular/
 
 ### 2.1 運用原則
 
-- すべての開発セッションは `docs/FDC-CORE.md` の読み込みから開始
+- すべての開発セッションは `docs/AIFCC-CORE.md` の読み込みから開始
 - 機能追加はランブック（`docs/runbooks/`）に従って実行
 - 作業完了後は必ずドキュメントを更新
 
@@ -101,9 +101,9 @@ founders-direct-modular/
 
 | タイミング | 更新対象 |
 |-----------|---------|
-| 機能追加時 | CHANGELOG.md, FDC-CORE.md |
+| 機能追加時 | CHANGELOG.md, AIFCC-CORE.md |
 | バグ修正時 | CHANGELOG.md |
-| アーキテクチャ変更時 | DEVELOPMENT.md, FDC-CORE.md |
+| アーキテクチャ変更時 | DEVELOPMENT.md, AIFCC-CORE.md |
 
 ---
 
@@ -147,7 +147,7 @@ founders-direct-modular/
 3. ビルド確認: npm run build が成功することを確認
 4. ドキュメント更新:
    - CHANGELOG.md に変更内容を追記
-   - FDC-CORE.md のフェーズ状況を更新
+   - AIFCC-CORE.md のフェーズ状況を更新
 5. コミット: git add . && git commit
 ```
 
@@ -157,7 +157,7 @@ founders-direct-modular/
 
 | 用語 | 説明 |
 |-----|------|
-| FDC | Founders Direct Cockpit |
+| AIFCC | AIFCC Cockpit |
 | Phase | 開発フェーズ（機能追加の単位） |
 | Runbook | 実装手順書（コード付き） |
 | Context | React Context（状態管理） |
@@ -167,4 +167,4 @@ founders-direct-modular/
 **Last Updated**: 2026-02-22
 **Version**: v2.0
 **Status**: Phase 0 完了 + LP追加
-**Maintained by**: FDC Development Team
+**Maintained by**: AIFCC Development Team

@@ -1,4 +1,4 @@
-# Founders Direct Cockpit 開発ガイド
+# AIFCC Cockpit 開発ガイド
 
 **バージョン:** v6.2.0
 **最終更新:** 2025-12-05（Phase 14 完了、Phase 19 AI実装予定）
@@ -7,7 +7,7 @@
 
 ### 0.1 目的
 
-このドキュメントは、Founders Direct Cockpit（FDC）の開発・拡張を安全かつ一貫性をもって進めるための**AI・人間共通の開発規範**です。Claude Code、ChatGPT、Copilot等のAIを使用する場合は、必ず本ドキュメントを読み込み遵守してください。
+このドキュメントは、AIFCC Cockpit（AIFCC）の開発・拡張を安全かつ一貫性をもって進めるための**AI・人間共通の開発規範**です。Claude Code、ChatGPT、Copilot等のAIを使用する場合は、必ず本ドキュメントを読み込み遵守してください。
 
 ### 0.2 現在の開発状況
 
@@ -366,7 +366,7 @@ app/api/
 // version 不一致 → 409 応答
 ```
 
-詳細は `docs/FDC-GRAND-GUIDE.md` を参照。
+詳細は `docs/AIFCC-GRAND-GUIDE.md` を参照。
 
 ---
 
@@ -682,7 +682,7 @@ export function useDashboardViewModel() {
 
 **APIClient**:
 - `lib/core/apiClient.ts` の既存関数を ViewModel Hook 内で呼び出す
-- Cookie（`fdc_session`）は自動的に送信される（`credentials: 'include'`）
+- Cookie（`aifcc_session`）は自動的に送信される（`credentials: 'include'`）
 
 #### 3.2.9 React Component の完了定義（DOD）
 
@@ -951,7 +951,7 @@ npm run build
 
 ユーザー向け：HOW-TO-USE.md
 
-開発向け：HOW-TO-DEVELOP.md（このファイル）、FDC-GRAND-GUIDE.md（必要に応じて）、SERVER-API-SPEC.md
+開発向け：HOW-TO-DEVELOP.md（このファイル）、AIFCC-GRAND-GUIDE.md（必要に応じて）、SERVER-API-SPEC.md
 
 変更履歴：CHANGELOG.md
 
@@ -1412,7 +1412,7 @@ Phase 12: OKR（戦略レイヤー）
 
 ### 8.6 Phase 9.7: 最終ハードニング（🚧 準備中）
 
-**目的**: Founders Direct Cockpit を「技術負債ゼロの状態」へ完全に整え、Phase 10〜12 の大規模拡張に備える最終ハードニングフェーズ。
+**目的**: AIFCC Cockpit を「技術負債ゼロの状態」へ完全に整え、Phase 10〜12 の大規模拡張に備える最終ハードニングフェーズ。
 
 **スコープ**:
 - Next.js App Router への完全整合
@@ -1572,7 +1572,7 @@ Phase 9.7 完了後、以下のフェーズへ順次移行:
 ```
 Phase X 開発時は、必ず以下を読み込んでから開始すること：
 - DOCS/HOW-TO-DEVELOP.md（本ファイル）
-- DOCS/FDC-GRAND-GUIDE.md
+- DOCS/AIFCC-GRAND-GUIDE.md
 - DOCS/PHASEXX-RUNBOOK.md（該当Phase）
 - DOCS/Performance-Specification-v1.0.md
 

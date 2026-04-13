@@ -1,7 +1,7 @@
-# 🔍 Founders Direct Cockpit - 最終検査レポート (v2.3.1 本番版)
+# 🔍 AIFCC Cockpit - 最終検査レポート (v2.3.1 本番版)
 
 **検査日時:** 2025年11月12日
-**検査対象:** Founders Direct Cockpit (本番デプロイ完了版)
+**検査対象:** AIFCC Cockpit (本番デプロイ完了版)
 **バージョン:** v2.3.1（本番運用中）
 **検査者:** Claude Code (Sonnet 4.5)
 **検査基準:** HOW-TO-DEVELOP.md v2.3.1
@@ -14,7 +14,7 @@
 
 ### 総合評価: **S++ (105/100点)** 🎉🚀
 
-Founders Direct Cockpit TypeScript版 v2.3.1は、HOW-TO-DEVELOP.mdで定義された開発ルールに対して**100%の準拠率**を達成し、さらに**本番環境への正式デプロイを完了**しました。
+AIFCC Cockpit TypeScript版 v2.3.1は、HOW-TO-DEVELOP.mdで定義された開発ルールに対して**100%の準拠率**を達成し、さらに**本番環境への正式デプロイを完了**しました。
 
 **🚀 本番デプロイ完了（2025-11-12）**
 - ✅ Google API連携の実装と本番キー設定
@@ -1264,7 +1264,7 @@ HOW-TO-DEVELOP.md のPhase 2タスク「window公開関数の整理」を完全�
 
 ## 🎉 結論（TypeScript版）
 
-**Founders Direct Cockpit TypeScript版は、モジュール設計・型安全性・テスト自動化の模範例として最高評価S+ランクに値します。** 🏆
+**AIFCC Cockpit TypeScript版は、モジュール設計・型安全性・テスト自動化の模範例として最高評価S+ランクに値します。** 🏆
 
 ### JavaScript版の品質を完全継承
 - ✅ 開発ルール準拠率: **100%** 🎉

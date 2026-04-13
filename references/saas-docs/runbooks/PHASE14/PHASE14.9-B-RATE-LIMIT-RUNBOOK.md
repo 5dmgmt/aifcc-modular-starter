@@ -138,7 +138,7 @@ X-RateLimit-Reset: 1701734400000
 # 連続リクエストでレート制限を発火
 for i in {1..15}; do
   curl -X POST http://localhost:3000/api/google/sync \
-    -H "Cookie: fdc_session=xxx" \
+    -H "Cookie: aifcc_session=xxx" \
     -H "Content-Type: application/json" \
     -d '{"tasks":[]}'
   echo ""
@@ -150,7 +150,7 @@ done
 ```bash
 # 大きなコンテキストで400エラーを確認
 curl -X POST http://localhost:3000/api/ai/chat \
-  -H "Cookie: fdc_session=xxx" \
+  -H "Cookie: aifcc_session=xxx" \
   -H "Content-Type: application/json" \
   -d '{"message":"test","workspaceId":"1","context":"'$(python3 -c "print('a'*6000)"))'"}'
 ```

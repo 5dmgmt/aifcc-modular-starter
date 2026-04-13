@@ -86,7 +86,7 @@ tests/e2e/phase-8-8/
 **主要な確認項目:**
 - ✅ ユーザーAは自分所属のワークスペースデータのみ取得できる
 - ✅ ユーザーAは他ユーザー（ユーザーB）のワークスペースデータを取得できない
-- ✅ FDC管理者はすべてのワークスペースデータにアクセスできる
+- ✅ AIFCC管理者はすべてのワークスペースデータにアクセスできる
 - ✅ Workspace Aのメンバーは Workspace Bのデータを取得できない
 - ✅ 無効なトークンでアクセス → 401エラー
 
@@ -479,9 +479,9 @@ Running 312 tests using 5 workers
 1. ユーザーAは自分所属のワークスペースデータのみ取得できる
 2. ユーザーAは他ユーザー（ユーザーB）のワークスペースデータを取得できない
 3. ユーザーAは自分のワークスペースメンバー情報のみ取得できる
-4. FDC管理者はすべてのワークスペースデータにアクセスできる
-5. FDC管理者はすべてのユーザー情報にアクセスできる
-6. FDC管理者は監査ログにアクセスできる
+4. AIFCC管理者はすべてのワークスペースデータにアクセスできる
+5. AIFCC管理者はすべてのユーザー情報にアクセスできる
+6. AIFCC管理者は監査ログにアクセスできる
 7. Workspace Aのメンバーは Workspace Aのデータのみ取得できる
 8. Workspace Aのメンバーは Workspace Bのデータを取得できない
 9. Workspace Aのメンバーは Workspace Bのメンバー情報を取得できない
@@ -524,6 +524,6 @@ Running 312 tests using 5 workers
 
 - [DOCS/Phase-8-8-E2E-Test-Plan.md](../Phase-8-8-E2E-Test-Plan.md) - Phase 8-8 テスト計画書
 - [DOCS/PAST/Phase-8-7-Deployment-Report.md](./Phase-8-7-Deployment-Report.md) - Phase 8-7 デプロイメントレポート
-- [DOCS/FDC-GRAND-GUIDE.md](../FDC-GRAND-GUIDE.md) - プロジェクト全体規範書
+- [DOCS/AIFCC-GRAND-GUIDE.md](../AIFCC-GRAND-GUIDE.md) - プロジェクト全体規範書
 - [DOCS/HOW-TO-DEVELOP.md](../HOW-TO-DEVELOP.md) - 開発者ガイド
 - [DOCS/E2E-TEST-GUIDE.md](../E2E-TEST-GUIDE.md) - E2Eテスト実行ガイド

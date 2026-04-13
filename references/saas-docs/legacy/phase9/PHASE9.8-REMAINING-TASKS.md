@@ -636,7 +636,7 @@ export async function saveData(data: AppData): Promise<void> {
    export default async function AdminSystemPage() {
      // 管理者権限チェック
      const user = await getCurrentUser();
-     if (user.globalRole !== 'fdc_admin') {
+     if (user.globalRole !== 'aifcc_admin') {
        return <div>Access Denied</div>;
      }
 
@@ -701,7 +701,7 @@ export async function saveData(data: AppData): Promise<void> {
      if (path.startsWith('/admin/system')) {
        const user = await getCurrentUser(req);
 
-       if (!user || user.globalRole !== 'fdc_admin') {
+       if (!user || user.globalRole !== 'aifcc_admin') {
          return NextResponse.redirect(new URL('/dashboard', req.url));
        }
      }

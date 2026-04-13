@@ -16,7 +16,7 @@ import { invalidateSessionCache } from '@/lib/server/session-cache';
 import { authLogger } from '@/lib/server/logger';
 import { withSecurityMonitor } from '@/lib/server/security-middleware';
 
-const SESSION_COOKIE_NAME = 'fdc_session';
+const SESSION_COOKIE_NAME = 'aifcc_session';
 
 export async function POST(request: NextRequest) {
   try {

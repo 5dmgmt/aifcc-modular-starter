@@ -1,7 +1,7 @@
-# PHASE-HISTORY.md - FDC全Phaseの詳細履歴
+# PHASE-HISTORY.md - AIFCC全Phaseの詳細履歴
 
-> **注**: 本ドキュメントは `FDC-GRAND-GUIDE.md` から分離されたPhase履歴の詳細記録です。
-> コア開発ガイドは `docs/FDC-CORE.md` を参照してください。
+> **注**: 本ドキュメントは `AIFCC-GRAND-GUIDE.md` から分離されたPhase履歴の詳細記録です。
+> コア開発ガイドは `docs/AIFCC-CORE.md` を参照してください。
 
 ---
 
@@ -653,4 +653,4 @@ MVV, OKR目標, OKR成果指標, ActionMapマップ, ActionMapアイテム, タ�
 ---
 
 **Last Updated**: 2025-12-05
-**Source**: FDC-GRAND-GUIDE.md（分割）
+**Source**: AIFCC-GRAND-GUIDE.md（分割）

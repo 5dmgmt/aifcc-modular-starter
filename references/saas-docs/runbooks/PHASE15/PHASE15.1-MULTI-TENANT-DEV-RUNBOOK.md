@@ -67,9 +67,9 @@ SUPABASE_DEV_ANON_KEY=eyJxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```env
 NEXT_PUBLIC_SUPABASE_URL=（上記で取得したdev URL）
 NEXT_PUBLIC_SUPABASE_ANON_KEY=（上記で取得したdev Anon Key）
-FDC_SESSION_COOKIE_NAME=fdc_session_dev
-FDC_SUPER_TENANT_MODE=true
-FDC_ENVIRONMENT=development
+AIFCC_SESSION_COOKIE_NAME=aifcc_session_dev
+AIFCC_SUPER_TENANT_MODE=true
+AIFCC_ENVIRONMENT=development
 ```
 
 ### 【必須】DNS設定
@@ -219,7 +219,7 @@ export function getEnvironmentTheme(subdomain: string): EnvironmentTheme {
  * スーパーテナント（dev）かどうか判定
  */
 export function isSuperTenant(subdomain: string): boolean {
-  return subdomain === 'dev' || process.env.FDC_SUPER_TENANT_MODE === 'true';
+  return subdomain === 'dev' || process.env.AIFCC_SUPER_TENANT_MODE === 'true';
 }
 ```
 
@@ -451,23 +451,23 @@ foundersdirect-dev (開発)
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=xxx
-FDC_SESSION_COOKIE_NAME=fdc_session
-FDC_ENVIRONMENT=production
+AIFCC_SESSION_COOKIE_NAME=aifcc_session
+AIFCC_ENVIRONMENT=production
 ```
 
 #### Vercel開発環境（foundersdirect-dev）
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://yyy-dev.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=yyy
-FDC_SESSION_COOKIE_NAME=fdc_session_dev
-FDC_SUPER_TENANT_MODE=true
-FDC_ENVIRONMENT=development
+AIFCC_SESSION_COOKIE_NAME=aifcc_session_dev
+AIFCC_SUPER_TENANT_MODE=true
+AIFCC_ENVIRONMENT=development
 ```
 
 ### dev環境の制約
 - **実データ禁止**: dev DBには本番データをコピーしない
 - **テストデータのみ**: シードスクリプトで生成したデータのみ使用
-- **Cookie分離**: `fdc_session_dev` で本番と干渉しない
+- **Cookie分離**: `aifcc_session_dev` で本番と干渉しない
 
 ---
 

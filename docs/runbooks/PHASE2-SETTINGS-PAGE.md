@@ -181,7 +181,7 @@ import { DEFAULT_APP_DATA, DEFAULT_SETTINGS } from '@/lib/types';
 // LocalStorage キー
 // ========================================
 
-const STORAGE_KEY = 'fdc_app_data';
+const STORAGE_KEY = 'aifcc_app_data';
 
 // ========================================
 // Reducer（Phase 2 で拡張）
@@ -617,13 +617,13 @@ export default function SettingsPage() {
         <h3 className="card-title">バージョン情報</h3>
         <div style={{ fontSize: '14px' }}>
           <p style={{ marginBottom: '8px' }}>
-            <strong>FDC Modular Starter</strong>
+            <strong>AIFCC Modular Starter</strong>
           </p>
           <p style={{ color: 'var(--text-muted)', marginBottom: '8px' }}>
             学習用ミニマルスターターキット
           </p>
           <p style={{ color: 'var(--text-muted)' }}>
-            © 2025 FDC Development Team
+            © 2025 AIFCC Development Team
           </p>
         </div>
       </div>
@@ -782,7 +782,7 @@ Route (app)                                 Size  First Load JS
 - 既存データのマイグレーション対応
 ```
 
-### 7.2 FDC-CORE.md 更新
+### 7.2 AIFCC-CORE.md 更新
 
 フェーズ完了状況を更新:
 
@@ -844,7 +844,7 @@ Phase 一覧の状態を更新:
 - [ ] `npm run build` が成功
 - [ ] ドキュメントが更新されている
   - [ ] CHANGELOG.md
-  - [ ] FDC-CORE.md
+  - [ ] AIFCC-CORE.md
   - [ ] runbooks/README.md
   - [ ] package.json
 
@@ -905,7 +905,7 @@ Phase 2 を実行してください。
 
 実行後、以下を更新してください:
 1. docs/CHANGELOG.md に変更内容を追記
-2. docs/FDC-CORE.md のフェーズ状況を更新
+2. docs/AIFCC-CORE.md のフェーズ状況を更新
 3. docs/runbooks/README.md のPhase状態を更新
 4. package.json のバージョンを 1.2.0 に更新
 

@@ -1,7 +1,7 @@
-# SECURITY-DB-DETAIL.md - FDCセキュリティ・DB設計詳細
+# SECURITY-DB-DETAIL.md - AIFCCセキュリティ・DB設計詳細
 
-> **注**: 本ドキュメントは `FDC-GRAND-GUIDE.md` から分離されたセキュリティ・DB設計の詳細記録です。
-> コア開発ガイドは `docs/FDC-CORE.md` を参照してください。
+> **注**: 本ドキュメントは `AIFCC-GRAND-GUIDE.md` から分離されたセキュリティ・DB設計の詳細記録です。
+> コア開発ガイドは `docs/AIFCC-CORE.md` を参照してください。
 
 ---
 
@@ -124,7 +124,7 @@ CREATE INDEX idx_sessions_revoked_at ON sessions(revoked_at);
    ```typescript
    // lib/server/auth.ts
    export async function getSession(request: NextRequest): Promise<User | null> {
-     const sessionToken = request.cookies.get('fdc_session')?.value;
+     const sessionToken = request.cookies.get('aifcc_session')?.value;
      if (!sessionToken) return null;
      // Supabase SDK でセッション検証...
    }
@@ -167,9 +167,9 @@ RLS が必要になるケース：
    ↓ app/api/auth/callback/route.ts
 5. [サーバー] ユーザー情報を DB に保存（SERVICE_ROLE_KEY）
    ↓ Supabase SDK (HTTPS) で users テーブルに upsert
-6. [サーバー] FDC セッション作成（SERVICE_ROLE_KEY）
+6. [サーバー] AIFCC セッション作成（SERVICE_ROLE_KEY）
    ↓ Supabase SDK (HTTPS) で sessions テーブルに insert
-7. [サーバー] fdc_session Cookie 設定
+7. [サーバー] aifcc_session Cookie 設定
    ↓ HttpOnly, Secure, SameSite=Lax
 8. [クライアント] /dashboard にリダイレクト
 ```
@@ -202,7 +202,7 @@ await supabaseAdmin.from('sessions').insert(...);
 
 ### 3.3 Cookie 仕様
 ```typescript
-response.cookies.set('fdc_session', sessionToken, {
+response.cookies.set('aifcc_session', sessionToken, {
   path: '/',
   httpOnly: true,
   sameSite: 'lax',
@@ -363,4 +363,4 @@ response.cookies.set('fdc_session', sessionToken, {
 ---
 
 **Last Updated**: 2025-11-30
-**Source**: FDC-GRAND-GUIDE.md（分割）
+**Source**: AIFCC-GRAND-GUIDE.md（分割）

@@ -1,6 +1,6 @@
 # Next.js 15 → 16 移行ガイド（既存プロジェクト向け）
 
-> **対象**: fdc-modular-starter を Next.js 15 時代に clone して開発を進めている方
+> **対象**: aifcc-modular-starter を Next.js 15 時代に clone して開発を進めている方
 > **所要時間**: Claude Code に依頼すれば 2〜3 分
 
 ---

@@ -515,7 +515,7 @@ components/
 ## 📚 関連ドキュメント
 
 - `docs/specs/DB-SECURITY.md` - RLS設定ガイド
-- `docs/runbooks/PHASE14.4-FDC-MULTITENANT-WORKSPACE-RUNBOOK.md` - マルチテナント詳細
+- `docs/runbooks/PHASE14.4-AIFCC-MULTITENANT-WORKSPACE-RUNBOOK.md` - マルチテナント詳細
 - `docs/specs/PERMISSION-SYSTEM.md` - 権限システム
 
 ---

@@ -3,7 +3,7 @@
 ## Phase 9-7: Supabase Auth 完全移行後の運用ガイド
 
 ### 概要
-Phase 9-7 により、FDC の認証基盤が **Supabase Auth + RLS** に完全移行しました。
+Phase 9-7 により、AIFCC の認証基盤が **Supabase Auth + RLS** に完全移行しました。
 旧 JWT/Session ベースの認証コードの一部を削除し、以下の環境変数のみが必要です。
 
 ### 必須環境変数

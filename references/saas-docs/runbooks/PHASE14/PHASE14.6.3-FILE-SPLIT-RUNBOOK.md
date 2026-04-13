@@ -454,6 +454,6 @@ git reset --hard <commit-hash>
 
 ## 関連ドキュメント
 
-- [FDC-GRAND-GUIDE.md](../FDC-GRAND-GUIDE.md)
+- [AIFCC-GRAND-GUIDE.md](../AIFCC-GRAND-GUIDE.md)
 - [PHASE14.6-I-SECURITY-HARDENING-RUNBOOK.md](./PHASE14.6-I-SECURITY-HARDENING-RUNBOOK.md)
 - [tests/skipped-tests.md](../../tests/skipped-tests.md)

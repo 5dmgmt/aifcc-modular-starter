@@ -116,7 +116,7 @@ Phase 10 の本格開発に入る前に、Next.js 移行過渡期に発生した
 **タスク**:
 1.  **Rename**: `git mv DOCS docs`
 2.  **Link Fix**:
-    - `docs/FDC-GRAND-GUIDE.md` 内の内部リンク (`DOCS/...`) を `docs/...` に置換。
+    - `docs/AIFCC-GRAND-GUIDE.md` 内の内部リンク (`DOCS/...`) を `docs/...` に置換。
     - `docs/PHASE10-TODO-ELASTIC-RUNBOOK.md` 内のリンクを修正。
 
 **DOD**:
@@ -174,7 +174,7 @@ Phase 9.91 の残務（未処理タスク）を処理する場合は、以下の
 ### 4.2 Phase 9.93 で使用する Claude Code への指示テンプレート
 
 ```markdown
-あなたは Founders Direct Cockpit (FDC) プロジェクトの Phase 9.93 担当エンジニアです。
+あなたは AIFCC Cockpit (AIFCC) プロジェクトの Phase 9.93 担当エンジニアです。
 
 【作業内容】
 Phase 9.91 の残務を処理します。
@@ -224,9 +224,9 @@ Phase 9.93 の開発プロンプトは、`docs/PHASE9.93-BUGFIX-RUNBOOK.md` の�
 
 ---
 
-## 7. FDC-GRAND-GUIDE 更新テンプレート
+## 7. AIFCC-GRAND-GUIDE 更新テンプレート
 
-Phase 9.91 完了時に `docs/FDC-GRAND-GUIDE.md` を以下のように更新してください：
+Phase 9.91 完了時に `docs/AIFCC-GRAND-GUIDE.md` を以下のように更新してください：
 
 ```markdown
 ### Phase 9.9: 緊急バグ修正 & ガバナンス強化
@@ -262,7 +262,7 @@ Phase 9.91 完了時に `docs/FDC-GRAND-GUIDE.md` を以下のように更新し
 現在は Phase 9.93 に統合されているため、参考情報として残しています。
 
 ```markdown
-あなたは FDC リードエンジニアです。
+あなたは AIFCC リードエンジニアです。
 
 **状況:**
 Phase 9.9（緊急バグ修正）が完了した後、Phase 10（TODO機能）へ進む前に、**プロジェクト構成の大規模なクリーンアップ**を実施します。
@@ -277,7 +277,7 @@ Phase 9.9（緊急バグ修正）が完了した後、Phase 10（TODO機能）�
 
 ## 手順 1: Grand Guide の更新
 
-`DOCS/FDC-GRAND-GUIDE.md` を更新してください。
+`DOCS/AIFCC-GRAND-GUIDE.md` を更新してください。
 
 1.  **「0. 位置づけ > 現在の開発状況」** を更新:
     *   **Phase 9.9**: ✅ 完了

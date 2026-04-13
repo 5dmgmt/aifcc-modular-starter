@@ -1,6 +1,6 @@
 # Phase 0: スターター構築
 
-**目標**: FDC Modular Starter プロジェクトを新規作成し、Next.js 16 + React 19 環境を構築する
+**目標**: AIFCC Modular Starter プロジェクトを新規作成し、Next.js 16 + React 19 環境を構築する
 
 **所要時間目安**: 30-45分
 **難易度**: ★☆☆（入門）
@@ -53,8 +53,8 @@ git --version
 
 ```bash
 # 任意の場所にプロジェクトフォルダを作成
-mkdir -p ~/プラグイン/fdc-modular-starter
-cd ~/プラグイン/fdc-modular-starter
+mkdir -p ~/プラグイン/aifcc-modular-starter
+cd ~/プラグイン/aifcc-modular-starter
 ```
 
 ### 1.2 ディレクトリ構造を作成
@@ -131,9 +131,9 @@ next-env.d.ts
 
 ```json
 {
-  "name": "fdc-modular-starter",
+  "name": "aifcc-modular-starter",
   "version": "1.0.0",
-  "description": "FDC Modular Starter - 学習用ミニマルスターターキット",
+  "description": "AIFCC Modular Starter - 学習用ミニマルスターターキット",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -218,11 +218,11 @@ export default nextConfig;
 
 ```bash
 # ========================================
-# FDC Modular Starter 環境変数
+# AIFCC Modular Starter 環境変数
 # ========================================
 
 # アプリ設定
-NEXT_PUBLIC_APP_NAME=FDC Modular
+NEXT_PUBLIC_APP_NAME=AIFCC Modular
 NEXT_PUBLIC_APP_VERSION=1.0.0
 
 # 認証設定（将来の拡張用）
@@ -243,7 +243,7 @@ NODE_ENV=development
 
 ```bash
 # アプリ設定
-NEXT_PUBLIC_APP_NAME=FDC Modular
+NEXT_PUBLIC_APP_NAME=AIFCC Modular
 NEXT_PUBLIC_APP_VERSION=1.0.0
 ```
 
@@ -636,8 +636,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'FDC Modular',
-  description: 'Founders Direct Cockpit - Modular Starter',
+  title: 'AIFCC Modular',
+  description: 'AIFCC Cockpit - Modular Starter',
 };
 
 export default function RootLayout({
@@ -701,7 +701,7 @@ export default function LoginPage() {
     // デモ用認証
     if (password === 'fdc') {
       // セッションをlocalStorageに保存
-      localStorage.setItem('fdc_session', JSON.stringify({
+      localStorage.setItem('aifcc_session', JSON.stringify({
         user: { id: '1', email: 'demo@example.com', name: 'Demo User' },
         loggedInAt: new Date().toISOString(),
       }));
@@ -727,8 +727,8 @@ export default function LoginPage() {
           />
         </div>
 
-        <h1>FDC Modular</h1>
-        <p>Founders Direct Cockpit - 学習用スターター</p>
+        <h1>AIFCC Modular</h1>
+        <p>AIFCC Cockpit - 学習用スターター</p>
 
         <div className="form-group" style={{ textAlign: 'left' }}>
           <label style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -830,7 +830,7 @@ export default function AppLayout({
   const [loading, setLoading] = useState(true);
 
   const checkAuth = useCallback(() => {
-    const session = localStorage.getItem('fdc_session');
+    const session = localStorage.getItem('aifcc_session');
     if (!session) {
       setLoading(false);
       return;
@@ -851,7 +851,7 @@ export default function AppLayout({
   }, [checkAuth]);
 
   const handleLogout = () => {
-    localStorage.removeItem('fdc_session');
+    localStorage.removeItem('aifcc_session');
     router.push('/login');
   };
 
@@ -872,7 +872,7 @@ export default function AppLayout({
       {/* Phase 1 で DataProvider でラップ */}
       {/* ヘッダー */}
       <header className="header">
-        <h1>FDC Modular</h1>
+        <h1>AIFCC Modular</h1>
         <div style={{ flex: 1 }} />
         <span style={{ fontSize: '14px', marginRight: '16px' }}>
           {user.name || user.email}
@@ -936,7 +936,7 @@ export default function DashboardPage() {
         <Rocket size={64} style={{ color: 'var(--primary)', marginBottom: '24px' }} />
 
         <h2 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '16px' }}>
-          FDC Modular Starter へようこそ！
+          AIFCC Modular Starter へようこそ！
         </h2>
 
         <p style={{ color: 'var(--text-muted)', fontSize: '16px', marginBottom: '32px' }}>
@@ -1007,9 +1007,9 @@ export default function DashboardPage() {
 ルートに `README.md` を作成:
 
 ```markdown
-# FDC Modular Starter
+# AIFCC Modular Starter
 
-Founders Direct Cockpit の学習用ミニマルスターターキットです。
+AIFCC Cockpit の学習用ミニマルスターターキットです。
 
 ## 技術スタック
 
@@ -1030,12 +1030,12 @@ npm install
 npm run dev
 
 # http://localhost:3000 でアクセス
-# パスワード: fdc
+# パスワード: aifcc
 \`\`\`
 
 ## ドキュメント
 
-- `docs/FDC-CORE.md` - 開発コアガイド
+- `docs/AIFCC-CORE.md` - 開発コアガイド
 - `docs/runbooks/` - 機能追加ランブック
 
 ## コマンド
@@ -1050,7 +1050,7 @@ npm run type-check # 型チェック
 ### 8.2 その他のドキュメント
 
 ドキュメントファイルは `docs/` ディレクトリに配置します。
-（FDC-CORE.md、DEVELOPMENT.md、CHANGELOG.md、runbooks/ は別途作成）
+（AIFCC-CORE.md、DEVELOPMENT.md、CHANGELOG.md、runbooks/ は別途作成）
 
 ---
 
@@ -1112,7 +1112,7 @@ Route (app)                                 Size  First Load JS
 git add .
 
 # 初回コミット
-git commit -m "Phase 0: FDC Modular Starter 初期構築
+git commit -m "Phase 0: AIFCC Modular Starter 初期構築
 
 - Next.js 16 + React 19 + TypeScript 5.x
 - ログインページ（デモ認証）

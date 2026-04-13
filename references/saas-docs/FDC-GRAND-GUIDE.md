@@ -1,21 +1,21 @@
-# FDC-GRAND-GUIDE.md（v7.16 - 2025-12-05 分割版）
+# AIFCC-GRAND-GUIDE.md（v7.16 - 2025-12-05 分割版）
 
 > **重要**: 本ドキュメントは v7.0 で分割・再構成されました。
-> 開発時は **`docs/FDC-CORE.md`** を参照してください。
+> 開発時は **`docs/AIFCC-CORE.md`** を参照してください。
 
 ---
 
 ## 分割ガイド
 
-FDC-GRAND-GUIDE.md（v6.1、約128KB、2,700行）は以下のドキュメントに分割されました：
+AIFCC-GRAND-GUIDE.md（v6.1、約128KB、2,700行）は以下のドキュメントに分割されました：
 
 ### コアドキュメント（開発時に参照）
 
 | ドキュメント | 内容 | サイズ |
 |------------|------|--------|
-| **`docs/FDC-CORE.md`** | **開発コアガイド（起点）** | ~15KB |
+| **`docs/AIFCC-CORE.md`** | **開発コアガイド（起点）** | ~15KB |
 | `docs/guides/DEVELOPMENT.md` | 開発者・AI向け技術詳細ガイド | 既存 |
-| `docs/guides/FDC-ARCHITECTURE-OVERVIEW.md` | アーキテクチャ概要 | 既存 |
+| `docs/guides/AIFCC-ARCHITECTURE-OVERVIEW.md` | アーキテクチャ概要 | 既存 |
 
 ### レガシー（参照用）
 
@@ -35,7 +35,7 @@ FDC-GRAND-GUIDE.md（v6.1、約128KB、2,700行）は以下のドキュメント
    - 分割後: コアは~15KB → 1回の読み込みで完結
 
 2. **開発時に必要な情報に素早くアクセス**
-   - `FDC-CORE.md`: 開発開始時に必要な情報のみ
+   - `AIFCC-CORE.md`: 開発開始時に必要な情報のみ
    - 詳細は必要に応じて個別ファイルを参照
 
 3. **履歴情報の分離**
@@ -48,13 +48,13 @@ FDC-GRAND-GUIDE.md（v6.1、約128KB、2,700行）は以下のドキュメント
 
 ```
 docs/
-├── FDC-GRAND-GUIDE.md ......... 本ファイル（インデックス）
-├── FDC-CORE.md ................ 開発コアガイド ⭐ 開発時はこちら
+├── AIFCC-GRAND-GUIDE.md ......... 本ファイル（インデックス）
+├── AIFCC-CORE.md ................ 開発コアガイド ⭐ 開発時はこちら
 ├── CHANGELOG.md ............... 変更履歴
 │
 ├── guides/ .................... ガイドドキュメント
 │   ├── DEVELOPMENT.md ......... 開発者・AI向け技術ガイド
-│   ├── FDC-ARCHITECTURE-OVERVIEW.md .. アーキテクチャ概要
+│   ├── AIFCC-ARCHITECTURE-OVERVIEW.md .. アーキテクチャ概要
 │   ├── HOW-TO-USE.md .......... ユーザー向け利用マニュアル
 │   ├── Performance-Specification-v1.0.md .. パフォーマンス仕様（負荷テスト・データ増加計画含む）
 │   ├── SECURITY.md ............ セキュリティガイド（脆弱性管理・開発者ガイドライン含む）
@@ -69,7 +69,7 @@ docs/
 │   ├── BACKUP-DR.md ........... バックアップ・災害対策方針書
 │   └── OPERATIONS-MAINTENANCE.md . 運用・保守手順書（日次/週次/月次タスク）
 │
-├── FDC-GAP-ANALYSIS-2025-12.md .. 業界トップランナー級ギャップ分析・ロードマップ ⭐ NEW
+├── AIFCC-GAP-ANALYSIS-2025-12.md .. 業界トップランナー級ギャップ分析・ロードマップ ⭐ NEW
 │
 ├── specs/ ..................... 技術仕様
 │   ├── API-SPEC.md ............ API仕様書
@@ -83,7 +83,7 @@ docs/
 │   ├── PHASE14-AI-RUNBOOK.md ........ AI統合全体設計
 │   ├── PHASE14.2-SCALABILITY-RUNBOOK.md
 │   ├── PHASE14.4-OPS-MONITORING-RUNBOOK.md
-│   ├── PHASE14.4-FDC-MULTITENANT-WORKSPACE-RUNBOOK.md .. マルチテナント対応
+│   ├── PHASE14.4-AIFCC-MULTITENANT-WORKSPACE-RUNBOOK.md .. マルチテナント対応
 │   ├── PHASE14.5-PERFORMANCE-RUNBOOK.md .. パフォーマンス最適化
 │   ├── PHASE14.6-AI-READINESS-RUNBOOK.md .. AI導入準備
 │   ├── PHASE14.6-I-SECURITY-HARDENING-RUNBOOK.md .. セキュリティ強化
@@ -128,8 +128,8 @@ docs/
 ### 1. 開発を始める前に
 
 ```bash
-# FDC-CORE.md を読む
-cat docs/FDC-CORE.md
+# AIFCC-CORE.md を読む
+cat docs/AIFCC-CORE.md
 ```
 
 ### 2. 技術詳細が必要な場合
@@ -139,7 +139,7 @@ cat docs/FDC-CORE.md
 cat docs/guides/DEVELOPMENT.md
 
 # アーキテクチャ概要
-cat docs/guides/FDC-ARCHITECTURE-OVERVIEW.md
+cat docs/guides/AIFCC-ARCHITECTURE-OVERVIEW.md
 ```
 
 ### 3. Phase履歴を確認したい場合
@@ -217,7 +217,7 @@ components/landing/
 - `lib/server/api-errors.ts` - APIエラーレスポンス安全生成
 
 **修正内容:**
-- E2Eテストモードは `NODE_ENV !== 'production'` AND `VERCEL_ENV !== 'production|preview'` AND `FDC_E2E_TEST_MODE_ENABLED === 'true'` の3条件すべて満たす場合のみ有効
+- E2Eテストモードは `NODE_ENV !== 'production'` AND `VERCEL_ENV !== 'production|preview'` AND `AIFCC_E2E_TEST_MODE_ENABLED === 'true'` の3条件すべて満たす場合のみ有効
 - 本番環境ではエラー詳細をマスク（開発環境では表示）
 - PII（email, name, phone等）をログから除外
 
@@ -445,7 +445,7 @@ AIがコンテキストを正確に解釈できるよう、型定義・マスタ
 - `tenants` テーブル追加（サブドメイン単位でテナント管理）
 - `TenantProvider` / `useTenant()` によるクライアント側テナント解決
 - `lib/server/tenants.ts` / `lib/server/tenant-workspaces.ts` によるサーバー側解決
-- 詳細は `docs/runbooks/PHASE14.4-FDC-MULTITENANT-WORKSPACE-RUNBOOK.md` を参照
+- 詳細は `docs/runbooks/PHASE14.4-AIFCC-MULTITENANT-WORKSPACE-RUNBOOK.md` を参照
 
 ### Phase 15: セキュリティ・監査強化 ✅ 完了（2025-12-05）
 
@@ -598,7 +598,7 @@ IPA（情報処理推進機構）の「非機能要求グレード2018」6大項
 
 - 詳細は `docs/guides/NFR-COMPLIANCE.md` を参照
 
-詳細は `docs/FDC-CORE.md` を参照してください。
+詳細は `docs/AIFCC-CORE.md` を参照してください。
 
 ---
 
@@ -622,7 +622,7 @@ IPA（情報処理推進機構）の「非機能要求グレード2018」6大項
 | 2025-12-02 | v7.3 | IPA非機能要求グレード対応（6大項目100%対応、5ドキュメント新規作成） |
 | 2025-12-02 | v7.2 | Phase 14.4 マルチテナント対応完了（tenants, TenantProvider 追加） |
 | 2025-12-02 | v7.1 | Phase 14.35 コンポーネント分割完了（28ファイル、500行以上0件） |
-| 2025-12-02 | v7.0 | FDC-GRAND-GUIDE.md を5ファイルに分割 |
+| 2025-12-02 | v7.0 | AIFCC-GRAND-GUIDE.md を5ファイルに分割 |
 | 2025-11-30 | v6.1 | Phase 14.4 完了、運用監視強化 |
 | 2025-11-29 | v6.0 | Phase 10-13.5 完了、3層アーキテクチャ完成 |
 
@@ -630,4 +630,4 @@ IPA（情報処理推進機構）の「非機能要求グレード2018」6大項
 
 **Last Updated**: 2025-12-05
 **Version**: v7.17（Phase 15 完了、Phase 16 設計完了、Phase 19 AI実装予定）
-**Maintained by**: FDC Development Team (Human + AI Agents)
+**Maintained by**: AIFCC Development Team (Human + AI Agents)

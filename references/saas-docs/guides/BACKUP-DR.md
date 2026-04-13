@@ -2,13 +2,13 @@
 
 **Version:** 2.0
 **最終更新:** 2025-12-05
-**適用範囲:** Founders Direct Cockpit 全データ
+**適用範囲:** AIFCC Cockpit 全データ
 
 ---
 
 ## 1. 概要
 
-本ドキュメントは FDC (Founders Direct Cockpit) のバックアップ方針、災害対策、および復旧手順を定義します。
+本ドキュメントは AIFCC (AIFCC Cockpit) のバックアップ方針、災害対策、および復旧手順を定義します。
 
 ### 1.1 復旧目標
 

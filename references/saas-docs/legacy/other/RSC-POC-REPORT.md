@@ -54,7 +54,7 @@ import { ReportsContent } from './ReportsContent';
 export default async function ReportsPage() {
   // Server-side: Cookie からセッション取得
   const cookieStore = await cookies();
-  const session = cookieStore.get('fdc_session');
+  const session = cookieStore.get('aifcc_session');
 
   // Server-side: API 呼び出し
   const data = await getReportData(session?.value);
@@ -88,7 +88,7 @@ export function ReportsContent({ initialData }) {
 
 ### 3.3 課題: 認証 Cookie の伝搬
 
-FDC は Supabase Auth + カスタムセッション（`fdc_session` Cookie）を使用している。
+AIFCC は Supabase Auth + カスタムセッション（`aifcc_session` Cookie）を使用している。
 
 **RSC での認証取得方法:**
 ```tsx
@@ -96,7 +96,7 @@ import { cookies } from 'next/headers';
 
 export default async function ReportsPage() {
   const cookieStore = await cookies();
-  const sessionCookie = cookieStore.get('fdc_session');
+  const sessionCookie = cookieStore.get('aifcc_session');
 
   // サーバーサイドでセッション検証
   const session = await validateSession(sessionCookie?.value);
@@ -171,7 +171,7 @@ Reports タブを完全な RSC に変換するのではなく、**現在の構�
 以下の条件が揃った場合、RSC フル導入を推奨:
 
 1. **認証フローの統一**
-   - Supabase Auth と FDC セッションの統合
+   - Supabase Auth と AIFCC セッションの統合
    - サーバーサイドでの認証検証が容易になる
 
 2. **リアルタイム更新の不要性**

@@ -52,7 +52,7 @@
 ```
 現状（複雑）: 3レイヤー × 12種類
 ┌─────────────────────────────────────────┐
-│ globalRole: fdc_admin / normal          │ ← システム権限
+│ globalRole: aifcc_admin / normal          │ ← システム権限
 ├─────────────────────────────────────────┤
 │ workspaceRole: owner/admin/member/viewer│ ← WS権限（DB）
 ├─────────────────────────────────────────┤
@@ -99,7 +99,7 @@
 
 | 旧 | 新 | 備考 |
 |----|-----|------|
-| `globalRole: 'fdc_admin'` | `accountType: 'SA'` | |
+| `globalRole: 'aifcc_admin'` | `accountType: 'SA'` | |
 | `globalRole: 'normal'` | `accountType: 'USER'` | |
 | `workspaceRole: 'owner'` | `role: 'OWNER'` | 大文字に統一 |
 | `workspaceRole: 'admin'` | `role: 'ADMIN'` | |
@@ -115,7 +115,7 @@
 -- Step 1: users テーブル
 -- global_role を account_type にリネーム & 値変更
 ALTER TABLE users RENAME COLUMN global_role TO account_type;
-UPDATE users SET account_type = 'SA' WHERE account_type = 'fdc_admin';
+UPDATE users SET account_type = 'SA' WHERE account_type = 'aifcc_admin';
 UPDATE users SET account_type = 'USER' WHERE account_type = 'normal';
 
 -- Step 2: workspace_members テーブル
@@ -573,7 +573,7 @@ Phase 9.97 Step 1: 権限体系のシンプル化
 【DB変更】※Supabaseで実行
 -- users テーブル
 ALTER TABLE users RENAME COLUMN global_role TO account_type;
-UPDATE users SET account_type = 'SA' WHERE account_type = 'fdc_admin';
+UPDATE users SET account_type = 'SA' WHERE account_type = 'aifcc_admin';
 UPDATE users SET account_type = 'USER' WHERE account_type = 'normal';
 
 -- workspace_members テーブル

@@ -56,11 +56,11 @@ Google リフレッシュトークン（refresh_token）をアプリ層で暗号
 
 | 環境変数名 | 用途 | 形式 |
 |-----------|------|------|
-| `FDC_GOOGLE_TOKEN_KEY_V1` | v1 暗号鍵（推奨） | Base64 or Hex（32バイト） |
+| `AIFCC_GOOGLE_TOKEN_KEY_V1` | v1 暗号鍵（推奨） | Base64 or Hex（32バイト） |
 | `MASTER_ENCRYPTION_KEY` | v1 フォールバック鍵 | Base64 or Hex（32バイト） |
 
 **優先順位:**
-1. `FDC_GOOGLE_TOKEN_KEY_V1` が設定されていれば使用
+1. `AIFCC_GOOGLE_TOKEN_KEY_V1` が設定されていれば使用
 2. 未設定の場合は `MASTER_ENCRYPTION_KEY` にフォールバック（v1 のみ）
 
 ### 2-4. 鍵の生成方法
@@ -133,7 +133,7 @@ const plainToken = decryptRefreshToken(ciphertext, version);
 
 2. **Vercel 環境変数の設定**
    ```bash
-   vercel env add FDC_GOOGLE_TOKEN_KEY_V1 production
+   vercel env add AIFCC_GOOGLE_TOKEN_KEY_V1 production
    # プロンプトで鍵を入力
    ```
 
@@ -158,7 +158,7 @@ const plainToken = decryptRefreshToken(ciphertext, version);
 
 2. **新しい環境変数を追加**
    ```bash
-   vercel env add FDC_GOOGLE_TOKEN_KEY_V2 production
+   vercel env add AIFCC_GOOGLE_TOKEN_KEY_V2 production
    ```
 
 3. **コードを更新**
@@ -166,8 +166,8 @@ const plainToken = decryptRefreshToken(ciphertext, version);
    // lib/server/encryption/google-tokens.ts
 
    const KEY_ENV_MAPPING: Record<string, string> = {
-     v1: 'FDC_GOOGLE_TOKEN_KEY_V1',
-     v2: 'FDC_GOOGLE_TOKEN_KEY_V2', // 追加
+     v1: 'AIFCC_GOOGLE_TOKEN_KEY_V1',
+     v2: 'AIFCC_GOOGLE_TOKEN_KEY_V2', // 追加
    };
 
    export const CURRENT_KEY_VERSION = 'v2'; // 変更

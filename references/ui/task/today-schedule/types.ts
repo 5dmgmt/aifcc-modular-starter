@@ -14,7 +14,7 @@ export interface CalendarEvent {
   start: string;
   end: string;
   colorId?: string;
-  isFdcTask: boolean;
+  isAifccTask: boolean;
   htmlLink?: string;
 }
 

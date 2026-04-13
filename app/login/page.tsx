@@ -4,13 +4,12 @@
  * app/login/page.tsx
  *
  * ログインページ（ミニマルスターター版）
- * SaaS版と同じUI・デザインを使用
- * デモ用: パスワード = "fdc"
+ * デモ用: パスワード = "aifcc"
  */
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Lock, LogIn, Rocket } from 'lucide-react';
+import { Lock, LogIn } from 'lucide-react';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -21,12 +20,16 @@ export default function LoginPage() {
   const handleLogin = async () => {
     setIsLoading(true);
     // デモ用認証
-    if (password === 'fdc') {
-      // セッションをlocalStorageに保存
-      localStorage.setItem('fdc_session', JSON.stringify({
+    if (password === 'aifcc') {
+      // セッション情報
+      const session = JSON.stringify({
         user: { id: '1', email: 'demo@example.com', name: 'Demo User' },
         loggedInAt: new Date().toISOString(),
-      }));
+      });
+      // Cookie にセッションを保存（proxy.ts と整合）
+      document.cookie = `aifcc_session=${encodeURIComponent(session)}; path=/; max-age=${60 * 60 * 24 * 7}`;
+      // localStorage にも保存（クライアント側の認証チェック用）
+      localStorage.setItem('aifcc_session', session);
       // 少し遅延を入れてUIを見せる
       await new Promise(resolve => setTimeout(resolve, 300));
       router.push('/dashboard');
@@ -39,18 +42,8 @@ export default function LoginPage() {
   return (
     <div className="login-container">
       <div className="login-card">
-        <div style={{ marginBottom: '24px' }}>
-          <Rocket
-            size={48}
-            style={{
-              color: 'var(--primary)',
-              marginBottom: '16px',
-            }}
-          />
-        </div>
-
-        <h1>FDC Modular</h1>
-        <p>Founders Direct Cockpit - 学習用スターター</p>
+        <h1>AIFCC Cockpit</h1>
+        <p>AIFCC Modular Starter</p>
 
         <div className="form-group" style={{ textAlign: 'left' }}>
           <label style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
@@ -92,12 +85,15 @@ export default function LoginPage() {
         <p style={{
           marginTop: '24px',
           fontSize: '12px',
-          color: 'var(--text-muted)',
+          color: 'rgba(25, 25, 24, 0.5)',
           background: 'var(--bg-gray)',
           padding: '12px',
-          borderRadius: '8px',
+          borderRadius: '4px',
         }}>
-          デモ用パスワード: <code style={{ fontWeight: 600 }}>fdc</code>
+          デモ用パスワード: <code style={{
+            fontWeight: 700,
+            color: 'var(--accent)',
+          }}>aifcc</code>
         </p>
       </div>
     </div>

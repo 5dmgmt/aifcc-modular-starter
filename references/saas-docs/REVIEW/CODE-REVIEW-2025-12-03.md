@@ -1,4 +1,4 @@
-# Founders Direct Cockpit（FDC）コードレビュー最終報告書
+# AIFCC Cockpit（AIFCC）コードレビュー最終報告書
 
 **レビュー実施日**: 2025-12-03
 **レビュアー**: Claude Code (Senior Architect)
@@ -9,7 +9,7 @@
 
 ## 総評（Executive Summary）
 
-Founders Direct Cockpitのコードベースを全面的にレビューした結果、**全体的に高品質な実装**であることを確認しました。特に以下の点が優れています：
+AIFCC Cockpitのコードベースを全面的にレビューした結果、**全体的に高品質な実装**であることを確認しました。特に以下の点が優れています：
 
 - **技術負債ゼロ**: `as any` 0件、ESLint警告0件、TypeScript strict mode完全準拠
 - **3層アーキテクチャ**: OKR戦略層→ActionMap戦術層→Task実行層の明確な分離
@@ -318,12 +318,12 @@ app/api/invitations/route.ts:111 - Supabase JOIN応答
 
 ## 8. 結論
 
-Founders Direct Cockpitは、**高い開発品質とセキュリティ意識**を持って構築されています。
+AIFCC Cockpitは、**高い開発品質とセキュリティ意識**を持って構築されています。
 
 ### 評価できる点
 
 1. **技術負債ゼロ達成**: Phase 14.6-Hで`as any`、ESLint警告、ビルド警告すべて0件
-2. **ドキュメント整備**: FDC-GRAND-GUIDE、各Phase RUNBOOK、IPA非機能要求グレード対応
+2. **ドキュメント整備**: AIFCC-GRAND-GUIDE、各Phase RUNBOOK、IPA非機能要求グレード対応
 3. **パフォーマンス最適化**: セッションJOIN最適化（3クエリ→1クエリ）、キャッシュ戦略
 4. **テスト整備**: E2E 94件、ユニット 129件全パス
 
@@ -341,10 +341,10 @@ Founders Direct Cockpitは、**高い開発品質とセキュリティ意識**�
 ## 付録: 調査対象ファイル一覧
 
 ### 主要ドキュメント
-- `docs/FDC-GRAND-GUIDE.md`
-- `docs/FDC-CORE.md`
-- `docs/guides/FDC-ARCHITECTURE-OVERVIEW.md`
-- `docs/runbooks/PHASE14/PHASE14.4-FDC-MULTITENANT-WORKSPACE-RUNBOOK.md`
+- `docs/AIFCC-GRAND-GUIDE.md`
+- `docs/AIFCC-CORE.md`
+- `docs/guides/AIFCC-ARCHITECTURE-OVERVIEW.md`
+- `docs/runbooks/PHASE14/PHASE14.4-AIFCC-MULTITENANT-WORKSPACE-RUNBOOK.md`
 
 ### サーバーサービス層
 - `lib/server/auth.ts`
@@ -365,4 +365,4 @@ Founders Direct Cockpitは、**高い開発品質とセキュリティ意識**�
 
 **Last Updated**: 2025-12-03
 **Document Version**: 1.0
-**Maintained by**: FDC Development Team
+**Maintained by**: AIFCC Development Team

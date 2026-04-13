@@ -35,7 +35,7 @@ async function getAuthenticatedUser(request: NextRequest) {
     };
   }
 
-  const sessionToken = request.cookies.get('fdc_session')?.value;
+  const sessionToken = request.cookies.get('aifcc_session')?.value;
 
   if (!sessionToken) {
     return { user: null, error: 'No session', status: 401 };

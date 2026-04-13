@@ -1,4 +1,4 @@
-# 📊 Founders Direct Modular - レガシー/現役ファイル分類
+# 📊 AIFCC Modular - レガシー/現役ファイル分類
 
 **作成日**: 2025-11-16
 **最終更新**: 2025-01-24
@@ -69,7 +69,7 @@ foundersdirect/
 | `README.md` | ドキュメント構成ガイド | 新ドキュメント追加時 | 2025-11-16 |
 | `HOW-TO-USE.md` | ユーザー向け利用マニュアル | 新機能追加時 | 2025-11-16 |
 | `HOW-TO-DEVELOP.md` | 開発者・AI向けガイド | 開発ルール変更時 | 2025-11-16 |
-| `FDC-GRAND-GUIDE.md` | プロジェクトマスタープラン | Phase進捗更新時 | **2025-01-24** ✅ |
+| `AIFCC-GRAND-GUIDE.md` | プロジェクトマスタープラン | Phase進捗更新時 | **2025-01-24** ✅ |
 | `SECURITY.md` | セキュリティポリシー・実装ガイド | セキュリティ対策追加時 | 2025-11-18 |
 | `RLS-POLICY-GUIDE.md` | RLS設定ガイド | RLSポリシー変更時 | 2025-11-16 |
 | `SERVER-API-SPEC.md` | サーバーAPI仕様書 | API追加・変更時 | 2025-11-16 |
@@ -80,7 +80,7 @@ foundersdirect/
 | `LEGACY-ACTIVE-CLASSIFICATION.md` | レガシー/現役ファイル分類（本ファイル） | プロジェクト構成変更時 | **2025-01-24** ✅ |
 | `PHASE9.8-RUNBOOK.md` | Phase 9.8 ランブック | Phase 9.8 進捗更新時 | **2025-01-24** ✅ |
 | `TECH-DEBT-AUDIT.md` | 技術負債監査ログ | 技術負債解消時 | **2025-01-24** ✅ |
-| `FDC-ARCHITECTURE-OVERVIEW.md` | アーキテクチャ概要 | アーキテクチャ変更時 | **2025-01-24** ✅ |
+| `AIFCC-ARCHITECTURE-OVERVIEW.md` | アーキテクチャ概要 | アーキテクチャ変更時 | **2025-01-24** ✅ |
 
 **合計**: 20ファイル（Phase 9.7/9.8 完了により追加更新）
 
@@ -92,7 +92,7 @@ foundersdirect/
 
 **Phase 9.8 部分完了による変更（2025-01-24）:**
 - ✅ `TECH-DEBT-AUDIT.md` に Phase 9.8 セクション追加（v2.8.0）
-- ✅ `FDC-ARCHITECTURE-OVERVIEW.md` を Phase 9.8 状態に更新（v2.2）
+- ✅ `AIFCC-ARCHITECTURE-OVERVIEW.md` を Phase 9.8 状態に更新（v2.2）
   - AI連携フロー図追加
   - Phase 9.8 完了実績反映
   - AI Context Control・レート制限・監査ログ説明追加
@@ -256,7 +256,7 @@ foundersdirect/
 | `DEPLOYMENT-GUIDE.md` | デプロイガイド（旧版） | 情報が古い。最新のデプロイ手順は別途整備が必要 | 2025-11-16 |
 | `FINAL-INSPECTION-REPORT.md` | 最終検査レポート（v2.3.1） | Phase 7 完了時のスナップショット | 2025-11-16 |
 | `HOW-TO-DEVELOP-1115.md` | 開発ガイド（2025-11-15版） | HOW-TO-DEVELOP.md に統合済み | 2025-11-16 |
-| `FDC-SESSION-BOOTSTRAP.prompt.md` | セッション起動プロンプト | Phase 7 時点の開発用プロンプト | 2025-11-16 |
+| `AIFCC-SESSION-BOOTSTRAP.prompt.md` | セッション起動プロンプト | Phase 7 時点の開発用プロンプト | 2025-11-16 |
 | `MYSQL-SCHEMA.sql` | MySQLスキーマ定義 | Supabase PostgreSQL 移行により使用終了 | 2025-11-16 |
 | `CODEX.txt` | Phase 7 時点のコードベーススナップショット | 歴史的資料 | 2025-11-16 |
 | `Phase-8-1-Encryption-Design.md` | Phase 8-1 設計書 | Phase 8-1 完了 | 2025-11-16 |
@@ -377,7 +377,7 @@ foundersdirect/
 - ✅ AI監査ログ記録機能
 - ✅ DB接続二重化（`DIRECT_DATABASE_URL` 導入）
 - ✅ 楽観的ロック準備（`migrations/010-add-version-column.sql`）
-- ✅ ドキュメント大幅更新（TECH-DEBT-AUDIT.md、FDC-ARCHITECTURE-OVERVIEW.md等）
+- ✅ ドキュメント大幅更新（TECH-DEBT-AUDIT.md、AIFCC-ARCHITECTURE-OVERVIEW.md等）
 
 ---
 
@@ -414,7 +414,7 @@ foundersdirect/
 - DB接続改善（`DIRECT_DATABASE_URL` 導入、`scripts/run-migration.ts`）
 - 楽観的ロック準備（`migrations/010-add-version-column.sql`）
 - スクリプト追加（`scripts/measure-p95.ts`, `scripts/seed-admin.ts`）
-- ドキュメント大幅更新（TECH-DEBT-AUDIT.md、FDC-ARCHITECTURE-OVERVIEW.md）
+- ドキュメント大幅更新（TECH-DEBT-AUDIT.md、AIFCC-ARCHITECTURE-OVERVIEW.md）
 - 現役ファイル数: 108-111 → 126-129ファイル（+15-18ファイル）
 
 ### v1.1 (2025-11-18) - Phase 9.7 完了対応
@@ -423,7 +423,7 @@ foundersdirect/
 - Supabase Auth 統合対応（middleware.ts, session.ts, logout.ts 追加）
 - セッション管理テーブル追加（migrations/003-sessions-table.sql）
 - 技術負債完全解消（TD-01〜TD-12）
-- ドキュメント更新状況反映（SECURITY.md v1.2、FDC-GRAND-GUIDE.md v2.9）
+- ドキュメント更新状況反映（SECURITY.md v1.2、AIFCC-GRAND-GUIDE.md v2.9）
 - 現役ファイル数: 100 → 108-111ファイル（+8-11ファイル）
 
 ### v1.0 (2025-11-16) - 初版

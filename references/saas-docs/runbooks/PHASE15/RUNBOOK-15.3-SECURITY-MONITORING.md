@@ -165,9 +165,9 @@ CRITICAL_ALERT_EMAIL=urgent@example.com
 ### 4.3 メールテンプレート
 
 **件名フォーマット:**
-- Critical: `🚨 [FDC CRITICAL] ブルートフォース攻撃を検知`
-- Warning: `⚠️ [FDC WARNING] レート制限超過 (3件)`
-- Info: `ℹ️ [FDC] セキュリティ日次レポート`
+- Critical: `🚨 [AIFCC CRITICAL] ブルートフォース攻撃を検知`
+- Warning: `⚠️ [AIFCC WARNING] レート制限超過 (3件)`
+- Info: `ℹ️ [AIFCC] セキュリティ日次レポート`
 
 ---
 

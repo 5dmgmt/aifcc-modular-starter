@@ -1,8 +1,8 @@
 # 🧠 HOW-TO-DEVELOP.md
-### Founders Direct Cockpit 開発ルール ＆ Claude Code 運用ガイド（最新版 v2.3.1+）
+### AIFCC Cockpit 開発ルール ＆ Claude Code 運用ガイド（最新版 v2.3.1+）
 
 > **目的:**
-> このドキュメントは、Founders Direct Cockpit（FDC）の開発・拡張を安全かつ一貫性をもって進めるための**AI・人間共通の開発規範**です。
+> このドキュメントは、AIFCC Cockpit（AIFCC）の開発・拡張を安全かつ一貫性をもって進めるための**AI・人間共通の開発規範**です。
 > Claude Code や ChatGPT、Copilotなど、どのAIを使用する場合も**必ず本ドキュメントを読み込み遵守**してください。
 
 本プロジェクトでは、Claude Code / ChatGPT 等の複数AIエージェントを「役割分担された開発チーム」として扱い、フェーズ単位のDOD（完了定義）＋自動レビュー＋本番ビルドを必須プロセスとすることで、開発速度と再現性を最大化する。
@@ -19,7 +19,7 @@ foundersdirect/
 ├── 📋 DOCS/                        # ドキュメント類
 │   ├── HOW-TO-USE.md               # ユーザー向け利用マニュアル
 │   ├── HOW-TO-DEVELOP.md           # 開発者・AI向けガイド（このファイル）
-│   ├── FDC-GRAND-GUIDE.md          # 開発全体の指針・AIチーム運用ガイド
+│   ├── AIFCC-GRAND-GUIDE.md          # 開発全体の指針・AIチーム運用ガイド
 │   ├── FINAL-INSPECTION-REPORT.md  # 最終検査レポート（v2.3.1）
 │   ├── CHANGELOG.md                # 変更履歴
 │   ├── E2E-TEST-GUIDE.md           # E2Eテスト実行ガイド

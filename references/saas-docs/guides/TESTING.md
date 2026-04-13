@@ -1,11 +1,11 @@
-# テストマニュアル（FDC E2Eテスト）
+# テストマニュアル（AIFCC E2Eテスト）
 
 > 最終更新: 2025-12-02
 > バージョン: v2.8.7（Phase 14.6 完了）
 
 ## 概要
 
-FDC（Founders Direct Cockpit）のE2Eテストは **Playwright** を使用し、3つの権限ロール（OWNER, ADMIN, MEMBER）で全機能をテストします。Phase 14.6 完了により、CSVインポート/エクスポート、レポートライン、可視性/権限機能、CSP検証のテストも追加されています。
+AIFCC（AIFCC Cockpit）のE2Eテストは **Playwright** を使用し、3つの権限ロール（OWNER, ADMIN, MEMBER）で全機能をテストします。Phase 14.6 完了により、CSVインポート/エクスポート、レポートライン、可視性/権限機能、CSP検証のテストも追加されています。
 
 ## クイックスタート
 
@@ -355,5 +355,5 @@ await fillForm(page, {
 ## 関連ドキュメント
 
 - [開発ガイド](./DEVELOPMENT.md)
-- [アーキテクチャ概要](./FDC-ARCHITECTURE-OVERVIEW.md)
+- [アーキテクチャ概要](./AIFCC-ARCHITECTURE-OVERVIEW.md)
 - [セキュリティガイド](./SECURITY.md)

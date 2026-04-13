@@ -14,7 +14,7 @@
 作業開始前に、必ず以下を読み込んでから処理を始めること：
 
 **必読ドキュメント:**
-- **docs/FDC-GRAND-GUIDE.md**
+- **docs/AIFCC-GRAND-GUIDE.md**
 - **docs/guides/DEVELOPMENT.md**
 - **docs/specs/API-SPEC.md**
 - **lib/core/ai-context.ts** - 既存AIコンテキスト基盤
@@ -588,7 +588,7 @@ AI_MONTHLY_QUOTA_TOKENS=1000000    # 月間トークン上限
 
 ## 13. 関連ドキュメント
 
-- `docs/FDC-GRAND-GUIDE.md` - 全体ガイド
+- `docs/AIFCC-GRAND-GUIDE.md` - 全体ガイド
 - `docs/specs/API-SPEC.md` - API仕様
 - `docs/runbooks/PHASE13-TECH-DEBT-RUNBOOK.md` - 前Phase
 - `docs/runbooks/PHASE14.7-TENANT-AI-RUNBOOK.md` - **テナント別AI設定（詳細）**

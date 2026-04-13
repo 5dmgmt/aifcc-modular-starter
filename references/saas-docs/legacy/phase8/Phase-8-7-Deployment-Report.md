@@ -609,7 +609,7 @@ psql $DATABASE_URL -f scripts/phase-8-7/rollback-rls.sql
 
 - [DOCS/Phase-8-6-Final-Review.md](./Phase-8-6-Final-Review.md) - Phase 8-6 最終レビュー
 - [DOCS/RLS-VERIFICATION-GUIDE.md](./RLS-VERIFICATION-GUIDE.md) - RLS 適用・検証ガイド
-- [DOCS/FDC-GRAND-GUIDE.md](./FDC-GRAND-GUIDE.md) - プロジェクト全体規範書
+- [DOCS/AIFCC-GRAND-GUIDE.md](./AIFCC-GRAND-GUIDE.md) - プロジェクト全体規範書
 - [scripts/phase-8-7/README.md](../scripts/phase-8-7/README.md) - Phase 8-7 実行手順書
 - [migrations/001-rls-policies.sql](../migrations/001-rls-policies.sql) - RLS ポリシー定義
 - [migrations/002-workspace-keys.sql](../migrations/002-workspace-keys.sql) - Workspace 鍵テーブル定義

@@ -51,7 +51,7 @@ TODO（実行）
 作業開始前に、必ず以下を読み込んでから処理を始めること：
 
 **必読ドキュメント:**
-- **DOCS/FDC-GRAND-GUIDE.md**
+- **DOCS/AIFCC-GRAND-GUIDE.md**
 - **DOCS/HOW-TO-DEVELOP.md**
 - **DOCS/PHASE9-ENCRYPTION-AND-API-RUNBOOK.md**（Phase 9完了が前提）
 - **DOCS/PHASE10-TODO-ELASTIC-RUNBOOK.md**（Phase 10完了が前提）
@@ -111,7 +111,7 @@ Phase 12 を開始する前に、以下が完了していることを確認す�
 
 ### 1-1. 機能ゴール（全体概要）
 
-本フェーズでは、FDC に **OKR 戦略レイヤー** を追加し、以下の三層構造を完成させる：
+本フェーズでは、AIFCC に **OKR 戦略レイヤー** を追加し、以下の三層構造を完成させる：
 
 ```
 OKR（戦略）

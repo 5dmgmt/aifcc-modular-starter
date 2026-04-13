@@ -459,6 +459,6 @@ return jsonError(message, 500, 'INTERNAL_ERROR');
 
 ## 関連ドキュメント
 
-- [FDC-GRAND-GUIDE.md](../FDC-GRAND-GUIDE.md)
-- [FDC-CORE.md](../FDC-CORE.md)
+- [AIFCC-GRAND-GUIDE.md](../AIFCC-GRAND-GUIDE.md)
+- [AIFCC-CORE.md](../AIFCC-CORE.md)
 - [PHASE14.6-AI-READINESS-RUNBOOK.md](./PHASE14.6-AI-READINESS-RUNBOOK.md)

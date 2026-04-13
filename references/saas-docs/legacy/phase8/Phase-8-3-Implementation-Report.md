@@ -231,7 +231,7 @@ MASTER_ENCRYPTION_KEY=$(openssl rand -base64 32) npm test -- phase-8-3.test.ts
 
 ## 🎯 完了条件（DOD）チェック
 
-Phase 8-3 の完了条件（FDC-GRAND-GUIDE.md より）:
+Phase 8-3 の完了条件（AIFCC-GRAND-GUIDE.md より）:
 
 - ✅ 保存前に必ず暗号化される
 - ✅ 取得時に必ず復号される

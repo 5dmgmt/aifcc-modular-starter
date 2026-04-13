@@ -74,7 +74,7 @@ Phase 9.96 WS-C を実行して。docs/PHASE9.96-BUGFIX-RUNBOOK.md を参照。
 1. レポートタブ SA権限修正
    - SAでログインしても「権限がありません」と表示される
    - lib/hooks/useReportsViewModel.ts を確認
-   - globalRole === 'fdc_admin' の判定を追加
+   - globalRole === 'aifcc_admin' の判定を追加
 
 2. 管理者タブ修正
    - 「アクセス権限がありません」表示を修正

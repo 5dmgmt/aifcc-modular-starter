@@ -1,4 +1,4 @@
-# Founders Direct Cockpit (FDC) Phase 9 認証問題まとめ
+# AIFCC Cockpit (AIFCC) Phase 9 認証問題まとめ
 
 ## 📋 現在の症状
 
@@ -319,7 +319,7 @@ export async function fetchCurrentUserWithRole() {
    ```
    [POST /api/auth/google] Access Token received, verifying...
    [POST /api/auth/google] Access Token verified: xxx@gmail.com
-   [POST /api/auth/google] User authenticated: xxx@gmail.com (role: fdc_admin)
+   [POST /api/auth/google] User authenticated: xxx@gmail.com (role: aifcc_admin)
    [POST /api/auth/google] Workspace assigned: xxx, role: owner
    ```
 

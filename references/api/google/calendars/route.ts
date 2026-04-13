@@ -48,7 +48,7 @@ export async function GET(_request: NextRequest) {
   try {
     // 1. セッション確認
     const cookieStore = await cookies();
-    const sessionToken = cookieStore.get('fdc_session')?.value;
+    const sessionToken = cookieStore.get('aifcc_session')?.value;
 
     if (!sessionToken) {
       return NextResponse.json(

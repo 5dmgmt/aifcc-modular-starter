@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to FDC Modular Starter will be documented in this file.
+All notable changes to AIFCC Modular Starter will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -72,8 +72,8 @@ Next.js 16 + React 19 + TypeScript 構成で、SaaS版と同じアーキテク�
 
 | ファイル | 内容 |
 |---------|------|
-| `docs/FDC-MODULAR-GUIDE.md` | メインガイド（インデックス） |
-| `docs/FDC-CORE.md` | 開発コアガイド |
+| `docs/AIFCC-MODULAR-GUIDE.md` | メインガイド（インデックス） |
+| `docs/AIFCC-CORE.md` | 開発コアガイド |
 | `docs/CHANGELOG.md` | 本ファイル |
 | `docs/guides/DEVELOPMENT.md` | 開発者・AI向け技術ガイド |
 | `docs/runbooks/README.md` | ランブック一覧 |
@@ -124,4 +124,4 @@ Next.js 16 + React 19 + TypeScript 構成で、SaaS版と同じアーキテク�
 ---
 
 **Last Updated**: 2026-02-22
-**Maintained by**: FDC Development Team
+**Maintained by**: AIFCC Development Team

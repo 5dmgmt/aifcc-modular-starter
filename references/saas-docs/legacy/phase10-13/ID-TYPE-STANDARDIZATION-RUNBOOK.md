@@ -297,7 +297,7 @@ ALTER TABLE users ADD COLUMN uuid UUID DEFAULT gen_random_uuid();
 ## 8. 関連ドキュメント
 
 - [Phase 13.5 Org Chart Runbook](./PHASE13.5-ORG-CHART-RUNBOOK.md)
-- [FDC Grand Guide](../FDC-GRAND-GUIDE.md)
+- [AIFCC Grand Guide](../AIFCC-GRAND-GUIDE.md)
 
 ---
 

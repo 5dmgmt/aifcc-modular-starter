@@ -1,7 +1,7 @@
-# OPS-LESSONS.md - FDC運用教訓・Lessons Learned
+# OPS-LESSONS.md - AIFCC運用教訓・Lessons Learned
 
-> **注**: 本ドキュメントは `FDC-GRAND-GUIDE.md` から分離された運用教訓・Lessons Learnedの記録です。
-> コア開発ガイドは `docs/FDC-CORE.md` を参照してください。
+> **注**: 本ドキュメントは `AIFCC-GRAND-GUIDE.md` から分離された運用教訓・Lessons Learnedの記録です。
+> コア開発ガイドは `docs/AIFCC-CORE.md` を参照してください。
 
 ---
 
@@ -226,4 +226,4 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 ---
 
 **Last Updated**: 2025-11-30
-**Source**: FDC-GRAND-GUIDE.md（分割）
+**Source**: AIFCC-GRAND-GUIDE.md（分割）

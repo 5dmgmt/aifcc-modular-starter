@@ -59,7 +59,7 @@ Phase 9.99 は **Phase 10 開始前の最終整備フェーズ**です。
 
 ### 2.1 現状サマリー
 
-**GRAND-GUIDE の宣言（docs/FDC-GRAND-GUIDE.md:31）:**
+**GRAND-GUIDE の宣言（docs/AIFCC-GRAND-GUIDE.md:31）:**
 > Phase 9.7: ✅ 完了 - 技術負債ゼロ化・旧API完全撤去
 
 **TECH-DEBT-AUDIT の実態（docs/legacy/phase9/TECH-DEBT-AUDIT.md:44-63）:**
@@ -267,7 +267,7 @@ ESLint 総警告数: 447件（22 errors, 425 warnings）
 **目的:** GRAND-GUIDE と各インベントリの記載を一致させる
 
 **対象ドキュメント:**
-1. `docs/FDC-GRAND-GUIDE.md`
+1. `docs/AIFCC-GRAND-GUIDE.md`
 2. `docs/legacy/phase9/TECH-DEBT-AUDIT.md`
 3. `docs/legacy/other/TECH-DEBT-INVENTORY.md`
 
@@ -372,7 +372,7 @@ Phase 9.99 完了時の成果物：
 | 1 | 本 RUNBOOK（更新済み） | 全タスク完了マーク |
 | 2 | TECH-DEBT-AUDIT.md（更新済み） | WorkspaceData計測結果追記 |
 | 3 | TECH-DEBT-INVENTORY.md（更新済み） | 最新残存項目 |
-| 4 | FDC-GRAND-GUIDE.md（更新済み） | Phase 9.99完了、整合性確保 |
+| 4 | AIFCC-GRAND-GUIDE.md（更新済み） | Phase 9.99完了、整合性確保 |
 | 5 | npm-audit-report.txt | 脆弱性スキャン結果 |
 | 6 | any-type-list.txt | any型残存リスト |
 

@@ -237,9 +237,9 @@ export async function GET(request: NextRequest) {
 
     authLogger.info({ token: sessionToken.substring(0, 15) + '...' }, '[Auth Callback] Step 4 SUCCESS - Token');
 
-    // 7. FDC Cookie セット
-    authLogger.debug('[Auth Callback] Step 5: Setting fdc_session cookie...');
-    response.cookies.set('fdc_session', sessionToken, {
+    // 7. AIFCC Cookie セット
+    authLogger.debug('[Auth Callback] Step 5: Setting aifcc_session cookie...');
+    response.cookies.set('aifcc_session', sessionToken, {
       path: '/',
       httpOnly: true,
       sameSite: 'lax',

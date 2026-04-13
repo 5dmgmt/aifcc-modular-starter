@@ -1,14 +1,14 @@
-# FDC-MODULAR-GUIDE.md（v1.0 - 2025-12-06）
+# AIFCC-MODULAR-GUIDE.md（v1.0 - 2025-12-06）
 
-> **Founders Direct Cockpit - Modular Starter ガイド**
+> **AIFCC Cockpit - Modular Starter ガイド**
 >
-> このドキュメントは、FDC Modular Starter の開発ガイドのインデックスです。
+> このドキュメントは、AIFCC Modular Starter の開発ガイドのインデックスです。
 
 ---
 
 ## 概要
 
-FDC Modular Starter は、SaaS版 Founders Direct Cockpit（foundersdirect）の
+AIFCC Modular Starter は、SaaS版 AIFCC Cockpit（foundersdirect）の
 学習用ミニマル版です。同じアーキテクチャ・パターンを使用しているため、
 学習後にスムーズにSaaS版の開発に移行できます。
 
@@ -25,7 +25,7 @@ FDC Modular Starter は、SaaS版 Founders Direct Cockpit（foundersdirect）の
 
 ```
 ┌─────────────────────────────────────────┐
-│  FDC Modular Starter (本プロジェクト)    │
+│  AIFCC Modular Starter (本プロジェクト)    │
 │  - ミニマル構成                          │
 │  - localStorage ベース                   │
 │  - 学習・プロトタイプ用                  │
@@ -33,7 +33,7 @@ FDC Modular Starter は、SaaS版 Founders Direct Cockpit（foundersdirect）の
                   │ 学習後に拡張
                   ▼
 ┌─────────────────────────────────────────┐
-│  FDC SaaS (/foundersdirect)             │
+│  AIFCC SaaS (/foundersdirect)             │
 │  - フル機能（OKR / ActionMap / Task）    │
 │  - Supabase PostgreSQL                  │
 │  - マルチテナント対応                    │
@@ -46,8 +46,8 @@ FDC Modular Starter は、SaaS版 Founders Direct Cockpit（foundersdirect）の
 
 ```
 docs/
-├── FDC-MODULAR-GUIDE.md ......... 本ファイル（インデックス）
-├── FDC-CORE.md .................. 開発コアガイド ⭐ 開発時はこちら
+├── AIFCC-MODULAR-GUIDE.md ......... 本ファイル（インデックス）
+├── AIFCC-CORE.md .................. 開発コアガイド ⭐ 開発時はこちら
 ├── CHANGELOG.md ................. 変更履歴
 │
 ├── guides/ ...................... ガイドドキュメント
@@ -72,14 +72,14 @@ docs/
 cd /Users/5dmgmt/プラグイン/founders-direct-modular
 npm install
 npm run dev
-# http://localhost:3000 → パスワード: fdc
+# http://localhost:3000 → パスワード: aifcc
 ```
 
 ### 2. 開発ガイドを読む
 
 ```bash
 # コアガイド（開発の起点）
-cat docs/FDC-CORE.md
+cat docs/AIFCC-CORE.md
 
 # 技術詳細ガイド
 cat docs/guides/DEVELOPMENT.md
@@ -98,7 +98,7 @@ cat docs/runbooks/PHASE1-TASKS-PAGE.md
 
 1. **Phase 0**（新規の場合）→ プロジェクト構築
 2. **スターター起動** → ログイン → ダッシュボード確認
-3. **FDC-CORE.md** を読んで全体像を理解
+3. **AIFCC-CORE.md** を読んで全体像を理解
 4. **Phase 1** → タスクページ追加
 5. **Phase 2** → 設定ページ追加
 6. **Phase 3** → リード管理追加
@@ -114,7 +114,7 @@ cat docs/runbooks/PHASE1-TASKS-PAGE.md
 このプロジェクトの開発を行います。
 
 以下のファイルを読み込んでください:
-- docs/FDC-CORE.md（開発コアガイド）
+- docs/AIFCC-CORE.md（開発コアガイド）
 - docs/guides/DEVELOPMENT.md（技術詳細）
 
 プロジェクトパス: /Users/5dmgmt/プラグイン/founders-direct-modular
@@ -128,7 +128,7 @@ Phase N を実行してください。
 
 完了後、以下を更新してください:
 1. docs/CHANGELOG.md に変更内容を追記
-2. docs/FDC-CORE.md のフェーズ状況を更新
+2. docs/AIFCC-CORE.md のフェーズ状況を更新
 3. package.json のバージョンを更新
 ```
 
@@ -141,7 +141,7 @@ Phase N を実行してください。
    - 今回の変更内容を [Unreleased] セクションに追記
    - Added/Changed/Fixed の形式で記載
 
-2. FDC-CORE.md
+2. AIFCC-CORE.md
    - フェーズ完了状況を更新
    - 技術スタック変更があれば更新
 
@@ -162,4 +162,4 @@ Phase N を実行してください。
 
 **Last Updated**: 2025-12-06
 **Version**: v1.0
-**Maintained by**: FDC Development Team (Human + Claude Code)
+**Maintained by**: AIFCC Development Team (Human + Claude Code)

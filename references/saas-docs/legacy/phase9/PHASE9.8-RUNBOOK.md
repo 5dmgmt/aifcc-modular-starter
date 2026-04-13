@@ -6,7 +6,7 @@
 
 Phase 9.8 は、Phase 10（TODO機能）以降の「書き込み頻度の増加」と「データ量の増大」、そして「AI機能の導入」に備えるための **先行投資フェーズ** です。
 
-Phase 9.7 で残された **必須残課題（計測・ドキュメント・バリデーション）** を回収し、FDC 特有のアーキテクチャが抱える課題を解決して、**「複数デバイスでの安全な利用」** と **「コスト対効果の高い AI 連携」** を実現します。
+Phase 9.7 で残された **必須残課題（計測・ドキュメント・バリデーション）** を回収し、AIFCC 特有のアーキテクチャが抱える課題を解決して、**「複数デバイスでの安全な利用」** と **「コスト対効果の高い AI 連携」** を実現します。
 
 ### 1.2 達成目標（5つの柱）
 
@@ -39,7 +39,7 @@ Phase 9.8 で実装する全タスクの一覧です。
 | **BR-07** | **Client Versioning** | デプロイ時の不整合回避 | バージョン不一致時のリロード機構 | **不一致時に自動リロード** |
 | **BR-08** | **Perf Monitor** | 性能劣化の検知 | 圧縮・暗号化時間の計測とログ出力 | **処理時間がログに出力** |
 | **BR-09** | **AI Audit Log** | AI利用の透明性 | AI利用事実とトークン量の監査ログ記録 | **`audit_logs` に記録** |
-| **GOV-01** | **Super Admin Mode** | 運用監視 | `fdc_admin` 専用ダッシュボード | **管理者のみアクセス可能** |
+| **GOV-01** | **Super Admin Mode** | 運用監視 | `aifcc_admin` 専用ダッシュボード | **管理者のみアクセス可能** |
 | **GOV-02** | **Role/Invite UI** | 組織階層明確化 | 3ロール招待UI | **ロール説明表示** |
 | **GOV-03** | **Security Settings** | 自己主権性担保 | AI ON/OFF、鍵ローテーションUI | **OFFでAI利用不可** |
 
@@ -55,7 +55,7 @@ Phase 9.8 で実装する全タスクの一覧です。
     - `scripts/backup-db.sh` (または手動) で DB ダンプを取得。
     - `scripts/monitor-workspace-size.sql` を実行し、圧縮前の P95 サイズを記録する。
 2.  **Documentation (DOC-01)**:
-    - `DOCS/FDC-GRAND-GUIDE.md` の Lessons Learned セクションに、Phase 9.7 での教訓（ドキュメントと実態の乖離防止等）を追記する。
+    - `DOCS/AIFCC-GRAND-GUIDE.md` の Lessons Learned セクションに、Phase 9.7 での教訓（ドキュメントと実態の乖離防止等）を追記する。
 3.  **Migration (BR-01)**:
     - `workspace_data` テーブルに `version` (INTEGER, Default 1) カラムを追加するマイグレーションを実施。
 4.  **Schema Validation (BR-03)**:
@@ -134,9 +134,9 @@ Phase 9.8 で実装する全タスクの一覧です。
 **実装ステップ**:
 
 1.  **Super Admin (GOV-01)**:
-    - Seed: `admin@example.com` を `global_role='fdc_admin'` に設定。
+    - Seed: `admin@example.com` を `global_role='aifcc_admin'` に設定。
     - Page: `app/(app)/admin/system/page.tsx` (全WS一覧、ユーザー数表示)。
-    - Middleware: `fdc_admin` 以外のアクセスを拒否。
+    - Middleware: `aifcc_admin` 以外のアクセスを拒否。
 2.  **Role UI (GOV-02)**:
     - Page: `app/(app)/settings/members/page.tsx` 改修。
     - 招待時に権限（EXEC/MANAGER/MEMBER）の説明を表示し選択させる。
@@ -226,7 +226,7 @@ sequenceDiagram
 ### Phase 9.8-A プロンプト（Clean-up & データ基盤）
 
 ```markdown
-あなたは FDC Phase 9.8-A 担当エンジニアです。
+あなたは AIFCC Phase 9.8-A 担当エンジニアです。
 Phase 9.7 の残課題を解消し、マルチデバイス利用と高頻度更新に備え、データ保存フローを強化してください。
 
 実施事項:
@@ -234,7 +234,7 @@ Phase 9.7 の残課題を解消し、マルチデバイス利用と高頻度更�
    - バックアップ取得。
    - `scripts/monitor-workspace-size.sql` を実行し、現在の P95 サイズを報告。
 2. **Docs (DOC-01)**:
-   - `DOCS/FDC-GRAND-GUIDE.md` の Lessons Learned に 9.7 の教訓（完了定義と実態の乖離防止）を追記。
+   - `DOCS/AIFCC-GRAND-GUIDE.md` の Lessons Learned に 9.7 の教訓（完了定義と実態の乖離防止）を追記。
 3. **Validator (BR-03)**:
    - `lib/core/validator.ts` を作成し、`sanitizeAppData` を実装。
    - Zod を使い、どんな input が来てもデフォルト値で埋めて AppData 型を返す堅牢なロジックにする。
@@ -261,7 +261,7 @@ DOD:
 ### Phase 9.8-B プロンプト（AI基盤）
 
 ```markdown
-あなたは FDC Phase 9.8-B 担当エンジニアです。
+あなたは AIFCC Phase 9.8-B 担当エンジニアです。
 コストとプライバシーを制御できる AI 接続基盤を構築してください。
 
 実施事項:
@@ -281,7 +281,7 @@ DOD:
 ### Phase 9.8-C プロンプト（ガバナンス）
 
 ```markdown
-あなたは FDC Phase 9.8-C 担当エンジニアです。
+あなたは AIFCC Phase 9.8-C 担当エンジニアです。
 管理機能と設定画面を実装してください。
 
 実施事項:

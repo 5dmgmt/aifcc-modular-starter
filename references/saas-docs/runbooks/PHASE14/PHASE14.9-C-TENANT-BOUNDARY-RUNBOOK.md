@@ -307,4 +307,4 @@ export async function GET(request: NextRequest) {
 - `lib/server/workspace-auth.ts` - テナント境界チェック実装
 - `lib/server/tenants.ts` - テナント解決ロジック
 - `docs/CODE-REVIEW-2025-12-03.md` - 監査レポート
-- `docs/FDC-GRAND-GUIDE.md` - システム全体アーキテクチャ
+- `docs/AIFCC-GRAND-GUIDE.md` - システム全体アーキテクチャ

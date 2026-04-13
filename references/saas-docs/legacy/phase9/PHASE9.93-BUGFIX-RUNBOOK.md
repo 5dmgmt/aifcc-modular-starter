@@ -10,7 +10,7 @@
 
 | ドキュメント | パス | 確認項目 |
 |-------------|------|---------|
-| **グランドガイド** | `docs/FDC-GRAND-GUIDE.md` | プロジェクト全体方針、AIチーム運用ルール |
+| **グランドガイド** | `docs/AIFCC-GRAND-GUIDE.md` | プロジェクト全体方針、AIチーム運用ルール |
 | **開発ガイド** | `docs/guides/DEVELOPMENT.md` | 基本ルール、ファイル命名規則、コーディング規約 |
 
 ---
@@ -234,9 +234,9 @@ npx lighthouse http://localhost:3000/dashboard --output=json --output-path=./lig
 **元のタスク**: `Sidebar` 表示ロジック修正 + Admin Seed 再実行
 
 **Phase 9.93 での対応**:
-- [ ] `admin@example.com` が `fdc_admin` (Global Role) に設定されているか確認
+- [ ] `admin@example.com` が `aifcc_admin` (Global Role) に設定されているか確認
 - [ ] `Sidebar` で「設定」タブが全員に表示されるか確認
-- [ ] `Sidebar` で「管理者」「SA」タブが `fdc_admin` のみに表示されるか確認
+- [ ] `Sidebar` で「管理者」「SA」タブが `aifcc_admin` のみに表示されるか確認
 - [ ] 一般ユーザーでログアウトできるか確認
 
 **検証方法**:
@@ -314,12 +314,12 @@ npx lighthouse http://localhost:3000/dashboard --output=json --output-path=./lig
 
 **Phase 9.93 での対応**:
 - [ ] `/admin/sa` ページが存在するか確認
-- [ ] `fdc_admin` のみアクセスできるか確認
+- [ ] `aifcc_admin` のみアクセスできるか確認
 - [ ] 全ユーザーの現在のワークスペースが一覧表示されるか確認
 - [ ] 最終アクセス日時が表示されるか確認
 
 **検証方法**:
-1. `fdc_admin` でログイン → `/admin/sa` にアクセスできることを確認
+1. `aifcc_admin` でログイン → `/admin/sa` にアクセスできることを確認
 2. 一般ユーザーでログイン → `/admin/sa` にアクセスできないことを確認
 3. SA画面で全ユーザーの稼働状況が見えることを確認
 
@@ -397,7 +397,7 @@ npx lighthouse http://localhost:3000/dashboard --output=json --output-path=./lig
 
 **Phase 9.93 での対応**:
 - [ ] フォルダが `docs` になっているか確認
-- [ ] `docs/FDC-GRAND-GUIDE.md` 内の内部リンク（`DOCS/...`）が `docs/...` に置換されているか確認
+- [ ] `docs/AIFCC-GRAND-GUIDE.md` 内の内部リンク（`DOCS/...`）が `docs/...` に置換されているか確認
 - [ ] `docs/PHASE10-TODO-ELASTIC-RUNBOOK.md` 内のリンクが修正されているか確認
 
 **検証方法**:
@@ -1328,9 +1328,9 @@ Phase 9.93 が完了すると、以下の状態になります：
 
 ---
 
-## 7. FDC-GRAND-GUIDE 更新テンプレート
+## 7. AIFCC-GRAND-GUIDE 更新テンプレート
 
-Phase 9.93 完了時に `docs/FDC-GRAND-GUIDE.md` を以下のように更新してください：
+Phase 9.93 完了時に `docs/AIFCC-GRAND-GUIDE.md` を以下のように更新してください：
 
 ```markdown
 ### Phase 9.9: 緊急バグ修正 & ガバナンス強化
@@ -1405,7 +1405,7 @@ Phase 9.93 で修正したバグは、以下のフォーマットで記録しま
 ### Phase 9.93 キックオフ用
 
 ```markdown
-あなたは Founders Direct Cockpit (FDC) プロジェクトの Phase 9.93 担当エンジニアです。
+あなたは AIFCC Cockpit (AIFCC) プロジェクトの Phase 9.93 担当エンジニアです。
 
 【状況】
 Phase 9.92（全タブ再生）が完了しました。
@@ -1432,7 +1432,7 @@ Phase 9.93 では、Phase 9.92 で移行したすべてのタブについて、U
 ### バグ修正個別タスク用
 
 ```markdown
-あなたは FDC Phase 9.93 担当エンジニアです。
+あなたは AIFCC Phase 9.93 担当エンジニアです。
 
 【バグ情報】
 - タブ: ダッシュボード

@@ -1,7 +1,7 @@
-# ARCHITECTURE-DETAIL.md - FDCアーキテクチャ詳細
+# ARCHITECTURE-DETAIL.md - AIFCCアーキテクチャ詳細
 
-> **注**: 本ドキュメントは `FDC-GRAND-GUIDE.md` から分離されたアーキテクチャ詳細記録です。
-> コア開発ガイドは `docs/FDC-CORE.md` を参照してください。
+> **注**: 本ドキュメントは `AIFCC-GRAND-GUIDE.md` から分離されたアーキテクチャ詳細記録です。
+> コア開発ガイドは `docs/AIFCC-CORE.md` を参照してください。
 
 ---
 
@@ -241,7 +241,7 @@ foundersdirect/
 ├── .archive/                         # レガシーコード隔離（隠しフォルダ）
 │
 ├── docs/                             # ドキュメント
-│   ├── FDC-CORE.md                   # 開発コアガイド
+│   ├── AIFCC-CORE.md                   # 開発コアガイド
 │   ├── guides/                       # 利用ガイド
 │   ├── specs/                        # 技術仕様
 │   ├── runbooks/                     # フェーズ別ランブック
@@ -287,7 +287,7 @@ foundersdirect/
 └────────┬─────────┘                           ▼
          │                               ID Token検証
          │ API Call                            │
-         │ Cookie: fdc_session                 │
+         │ Cookie: aifcc_session                 │
          │ (HttpOnly, Secure, SameSite=Lax)    │
          ▼                                     │
 ┌───────────────────────┐                      │
@@ -297,7 +297,7 @@ foundersdirect/
 └──────────┬────────────┘
            │
            │ 1. セッション検証 (lib/server/middleware.ts)
-           │    - Cookie から fdc_session 読み取り
+           │    - Cookie から aifcc_session 読み取り
            │    - sessions テーブルで検証
            │
            │ 2. アプリケーション層認可
@@ -430,5 +430,5 @@ pg_dump $DATABASE_URL > backups/backup_$(date +%Y%m%d_%H%M%S).sql
 ---
 
 **Last Updated**: 2025-12-02
-**Source**: FDC-GRAND-GUIDE.md（分割）
+**Source**: AIFCC-GRAND-GUIDE.md（分割）
 **Phase 14.6.3**: 大規模ファイル分割完了（8ファイル → 38ファイル）

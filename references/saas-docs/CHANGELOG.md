@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Founders Direct Cockpit will be documented in this file.
+All notable changes to AIFCC Cockpit will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -198,7 +198,7 @@ Google リフレッシュトークンの暗号化（鍵バージョン管理付�
 | 項目 | 内容 |
 |------|------|
 | 暗号方式 | AES-256-GCM（IV 16バイト、authTag 16バイト） |
-| 鍵管理 | バージョン管理対応（v1, v2...）、環境変数 `FDC_GOOGLE_TOKEN_KEY_V1` |
+| 鍵管理 | バージョン管理対応（v1, v2...）、環境変数 `AIFCC_GOOGLE_TOKEN_KEY_V1` |
 | フォールバック | `MASTER_ENCRYPTION_KEY` にフォールバック（移行容易化） |
 | 後方互換性 | 旧形式（legacy）の復号に対応、既存ユーザーは再認可不要 |
 
@@ -288,7 +288,7 @@ E2Eテストモードの本番環境バイパス防止、エラーレスポン�
 export function isE2ETestModeEnabled(): boolean {
   if (process.env.NODE_ENV === 'production') return false;
   if (process.env.VERCEL_ENV === 'production' || process.env.VERCEL_ENV === 'preview') return false;
-  if (process.env.FDC_E2E_TEST_MODE_ENABLED !== 'true') return false;
+  if (process.env.AIFCC_E2E_TEST_MODE_ENABLED !== 'true') return false;
   return true;
 }
 ```
@@ -308,7 +308,7 @@ export function isE2ETestModeEnabled(): boolean {
 | ファイル | 変更内容 |
 |---------|----------|
 | `docs/runbooks/PHASE14.6.7-SECURITY-HOTFIX-RUNBOOK.md` | DODセクション完了、実装ファイル一覧追加 |
-| `docs/FDC-GRAND-GUIDE.md` | v7.12 - Phase 14.6.7 セクション追加 |
+| `docs/AIFCC-GRAND-GUIDE.md` | v7.12 - Phase 14.6.7 セクション追加 |
 
 ---
 
@@ -364,7 +364,7 @@ UI/UXの改善とマルチテナント向けランディングページ構造の
 |---------|----------|
 | `docs/guides/TENANT-MANAGEMENT-GUIDE.md` | テナント別LP構造、テーマカラー設定を追加 |
 | `docs/runbooks/PHASE14.6.6-THEME_COLOR_RUNBOOK.md` | Phase 14.6〜14.9 統合ランブック（50+コミット履歴） |
-| `docs/FDC-GRAND-GUIDE.md` | v7.11 - Phase 14.9 セクション追加 |
+| `docs/AIFCC-GRAND-GUIDE.md` | v7.11 - Phase 14.9 セクション追加 |
 
 ### Removed
 
@@ -431,7 +431,7 @@ components/landing/
 
 - `docs/runbooks/PHASE14/PHASE14.6.3-FILE-SPLIT-RUNBOOK.md` 更新
 - `docs/legacy/ARCHITECTURE-DETAIL.md` 更新（ディレクトリ構造）
-- `docs/FDC-GRAND-GUIDE.md` 更新
+- `docs/AIFCC-GRAND-GUIDE.md` 更新
 
 ---
 
@@ -531,7 +531,7 @@ AI機能導入に向けた基盤整備を完了しました。7つのサブフ�
 |---------|---------|
 | `components/landing/LandingPage.tsx` | AI利用規約リンクをフッターに追加 |
 | `components/landing/LandingPage.module.css` | インラインリンクスタイル追加 |
-| `docs/FDC-GRAND-GUIDE.md` | v7.5 - Phase 14.6 セクション追加、規約フォルダ記載 |
+| `docs/AIFCC-GRAND-GUIDE.md` | v7.5 - Phase 14.6 セクション追加、規約フォルダ記載 |
 
 ### Phase 14.6 サブフェーズ一覧
 
@@ -659,7 +659,7 @@ Service Worker機能：
 
 | ファイル | 変更内容 |
 |---------|---------|
-| `docs/FDC-GRAND-GUIDE.md` | v7.4 - Phase 14.5 セクション追加 |
+| `docs/AIFCC-GRAND-GUIDE.md` | v7.4 - Phase 14.5 セクション追加 |
 | `tests/e2e/comprehensive-features.spec.ts` | 94テストに拡充 |
 
 ---
@@ -763,7 +763,7 @@ IPA（情報処理推進機構）の「非機能要求グレード2018」に基�
 |-------------|---------|
 | `docs/guides/Performance-Specification-v1.0.md` | 負荷テスト計画、データ増加計画、アーカイブ戦略、性能監視ダッシュボード |
 | `docs/guides/SECURITY.md` | 脆弱性管理、開発者向けセキュリティガイドライン、GDPR/個人情報保護法対応 |
-| `docs/FDC-GRAND-GUIDE.md` | 非機能要求グレード対応セクション追加 |
+| `docs/AIFCC-GRAND-GUIDE.md` | 非機能要求グレード対応セクション追加 |
 
 ### 6大項目対応状況
 
@@ -1103,7 +1103,7 @@ TODO機能の大幅拡張が完了しました。アイゼンハワーマトリ�
 
 | 旧 | 新 |
 |----|-----|
-| `global_role: fdc_admin/normal` + `account_type: TEST/ACTIVE` | `system_role: SA/USER/TEST` |
+| `global_role: aifcc_admin/normal` + `account_type: TEST/ACTIVE` | `system_role: SA/USER/TEST` |
 | `workspaceRole: owner/admin/member/viewer` | `role: OWNER/ADMIN/MEMBER` |
 | `UserRole: EXEC/MANAGER/MEMBER` | 削除 |
 
@@ -1179,7 +1179,7 @@ Phase 10 に向けた品質強化と準備が完了しました。CI パイプ�
 - `app/layout.tsx` - next/font 最適化
 - `app/globals.css` - 600行以下に最適化
 - `lib/core/validator.ts` - Zod スキーマ拡張（Task バリデーション）
-- `docs/FDC-GRAND-GUIDE.md` - v5.0 に更新（Phase 9.94 完了反映）
+- `docs/AIFCC-GRAND-GUIDE.md` - v5.0 に更新（Phase 9.94 完了反映）
 - `docs/TECH-DEBT-INVENTORY.md` - Phase 9.94 結果反映
 - `boot.yaml` - v6.0.0 に更新
 
@@ -1240,7 +1240,7 @@ unit-tests（並列）
 
 - `app/(app)/admin/sa/page.tsx` - プレースホルダーから実装済みコンポーネントに更新
 - `docs/PHASE9.92-LEGACY-UI-REACT-RUNBOOK.md` - ステータスを「完了」に更新
-- `docs/FDC-GRAND-GUIDE.md` - Phase 9.92完了を反映
+- `docs/AIFCC-GRAND-GUIDE.md` - Phase 9.92完了を反映
 
 ### 完了した全13タブ
 
@@ -1307,10 +1307,10 @@ unit-tests（並列）
 ### Changed
 
 - `app/(app)/dashboard/page.tsx` - Dynamic import 適用
-- `docs/FDC-GRAND-GUIDE.md` - v4.0 に更新（Phase 9.93 完了反映）
+- `docs/AIFCC-GRAND-GUIDE.md` - v4.0 に更新（Phase 9.93 完了反映）
 - `boot.yaml` - v5.0.0 に更新
 - `docs/guides/DEVELOPMENT.md` - v3.0.0 に更新
-- `docs/guides/FDC-ARCHITECTURE-OVERVIEW.md` - v3.0 に更新
+- `docs/guides/AIFCC-ARCHITECTURE-OVERVIEW.md` - v3.0 に更新
 
 ### 次のステップ
 
@@ -1439,7 +1439,7 @@ Phase 9.8 のAI連携基盤が完全実装され、Phase 10（TODO機能拡張�
   - セクション 7「Phase 9.8 実施サマリー」を追加
   - DB接続二重化の技術的発見を詳細記録
 
-- **FDC-GRAND-GUIDE.md 更新**
+- **AIFCC-GRAND-GUIDE.md 更新**
   - Phase 9.8 ステータスを「部分完了 60%」に更新
   - Lessons Learned セクションに Phase 9.8 の教訓を追加
   - DB接続二重化の知見を記録
@@ -1658,7 +1658,7 @@ Phase 9 の主要タスク（DB移行・認証レイヤー移行・暗号化統�
   - `revokeSession()` - セッション失効
 
 - **Cookie ベース認証実装**
-  - Cookie 名: `fdc_session`
+  - Cookie 名: `aifcc_session`
   - HttpOnly（XSS 攻撃対策）
   - SameSite=Lax（CSRF 対策）
   - Secure（本番環境のみ、HTTPS 必須）
@@ -1771,7 +1771,7 @@ Phase 9 の主要タスク（DB移行・認証レイヤー移行・暗号化統�
 3. クライアント: `POST /api/auth/google` に Access Token 送信
 4. サーバー: Google tokeninfo API で検証
 5. サーバー: `sessions` テーブルに新規セッション作成
-6. サーバー: Cookie `fdc_session` を HttpOnly で発行（有効期限: 7日間）
+6. サーバー: Cookie `aifcc_session` を HttpOnly で発行（有効期限: 7日間）
 7. 以降: Cookie が自動的に送信される（`credentials: 'include'`）
 
 #### 📊 パフォーマンス計測結果（Phase 9 暫定）
@@ -1900,7 +1900,7 @@ Phase 8-8 までの成果を前提に、Phase 9 の開発運用体制・性能�
 ### Added
 - **Performance Specification v1.0:** `DOCS/Performance-Specification-v1.0.md` を新設。UI/ API / 暗号化 / JSON サイズの P95 目標、エラーレート、可用性、想定負荷、フロントエンド指針、改訂ポリシーを定義。
 - **HOW-TO-DEVELOP.md Chapter 3:** 基本ルールと性能要件を統合し、全タスクが P95 計測レポートを添付する「パフォーマンス承認」プロセスを明文化。
-- **FDC-GRAND-GUIDE.md Section 10.12:** Phase 9 全体像の中に Performance Spec 概要と遵守項目を追加。
+- **AIFCC-GRAND-GUIDE.md Section 10.12:** Phase 9 全体像の中に Performance Spec 概要と遵守項目を追加。
 
 ### Changed
 - **E2E-TEST-GUIDE.md:** 対象バージョンを v2.3.1 に更新。Phase 8-8 suite と 42 件の skip テスト、Playwright プロジェクト構成、`webServer` 自動起動を含む最新実行手順を反映。
@@ -1959,7 +1959,7 @@ Phase 8-8 までの成果を前提に、Phase 9 の開発運用体制・性能�
   - MEMBER: 個人パフォーマンス / 自分のタスク・リード・クライアント
 
 - **Cross-Workspace集計API**: `/api/reports/cross-workspace`
-  - FDC管理者 / EXEC権限向け複数ワークスペース集計
+  - AIFCC管理者 / EXEC権限向け複数ワークスペース集計
   - ワークスペース別KPI + 全ワークスペース合計
 
 - **レポートエクスポートAPI**: `/api/reports/export`
@@ -2765,7 +2765,7 @@ AIに新機能を実装させる場合、必ず以下のテンプレートを入
 ### 🧠 共通起動プロンプト（最初に必ず入力）
 
 ```
-あなたは Founders Direct Cockpit（FDC）プロジェクトの開発AIです。
+あなたは AIFCC Cockpit（AIFCC）プロジェクトの開発AIです。
 作業開始前に HOW-TO-DEVELOP.md を読み込み、以下のルールを厳守してください。
 
 【開発ルール】
@@ -2970,7 +2970,7 @@ HOW-TO-DEVELOP.md の中優先度および低優先度タスクが全て完了�
 
 ---
 ### 🎯 結論（v1.4.0 時点）
-すべての優先度タスクが完了し、**Founders Direct Cockpit は本番環境完全準備完了**な状態になりました。🎉
+すべての優先度タスクが完了し、**AIFCC Cockpit は本番環境完全準備完了**な状態になりました。🎉
 
 **バージョン履歴**
 - v1.0.0（2025-11-09 午前）全タスク完了・本番リリース準備完了

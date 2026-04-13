@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 **制定日:** 2025-12-02
-**適用範囲:** Founders Direct Cockpit 全サービス
+**適用範囲:** AIFCC Cockpit 全サービス
 
 ---
 
@@ -138,7 +138,7 @@
 ### 5.2 メンテナンス通知テンプレート
 
 ```
-【Founders Direct メンテナンスのお知らせ】
+【AIFCC メンテナンスのお知らせ】
 
 実施日時: YYYY年MM月DD日 HH:MM - HH:MM (JST)
 影響範囲: [全サービス / 一部機能（具体的に記載）]

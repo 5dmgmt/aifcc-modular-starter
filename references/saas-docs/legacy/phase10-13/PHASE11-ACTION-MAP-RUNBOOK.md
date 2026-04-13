@@ -12,7 +12,7 @@
 作業開始前に、必ず以下を読み込んでから処理を始めること：
 
 **必読ドキュメント:**
-- **DOCS/FDC-GRAND-GUIDE.md**
+- **DOCS/AIFCC-GRAND-GUIDE.md**
 - **DOCS/HOW-TO-DEVELOP.md**
 - **DOCS/PHASE9-ENCRYPTION-AND-API-RUNBOOK.md**（Phase 9完了が前提）
 - **DOCS/PHASE10-TODO-ELASTIC-RUNBOOK.md**（Phase 10完了が前提）
@@ -1163,7 +1163,7 @@ Phase 10-D で4象限ボードを実装したが、以下の課題が残って�
 
 2. **Google Calendar との役割重複**
    - Google Calendar の「Block off time for tasks」機能（2025年11月17日リリース）が時間ブロック管理を担当
-   - FDC 側で時間ブロックを二重管理する意味が薄い
+   - AIFCC 側で時間ブロックを二重管理する意味が薄い
 
 3. **Action Map との接続がない**
    - TODO が「どの上位ゴールに貢献するか」が見えない
@@ -1173,7 +1173,7 @@ Phase 10-D で4象限ボードを実装したが、以下の課題が残って�
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ FDC の役割                                                   │
+│ AIFCC の役割                                                   │
 ├─────────────────────────────────────────────────────────────┤
 │ ✅ 4象限分類（緊急度×重要度）                                 │
 │ ✅ Elastic Habits（松竹梅）のストリーク管理                   │
@@ -1424,17 +1424,17 @@ Phase 11 で段階的に実装：
 
 ### 12-7. Google Calendar 連携（Phase 10-D 継承）
 
-FDC から Google Calendar への連携は以下の方針：
+AIFCC から Google Calendar への連携は以下の方針：
 
 ```
-FDC TODO                    Google Calendar
+AIFCC TODO                    Google Calendar
 ───────────────────────────────────────────
 タスク作成                →  Google Tasks に同期
 「今日のフォーカス」に追加 →  「Block off time」で時間ブロック確保
 タスク完了                →  Tasks 完了 + カレンダー実績記録
 ```
 
-**注意:** 時間ブロックの詳細管理（開始時刻、所要時間）は Google Calendar に委譲。FDC では4象限分類とストリーク管理に集中。
+**注意:** 時間ブロックの詳細管理（開始時刻、所要時間）は Google Calendar に委譲。AIFCC では4象限分類とストリーク管理に集中。
 
 ---
 

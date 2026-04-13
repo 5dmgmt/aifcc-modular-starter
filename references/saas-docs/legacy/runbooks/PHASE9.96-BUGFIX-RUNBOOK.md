@@ -4,7 +4,7 @@
 >
 > ⚠️ **注意**: このドキュメントは Phase 9.96 時点の履歴です。
 > 権限体系は Phase 9.97 で以下のように変更されました：
-> - `globalRole: 'fdc_admin'` → `system_role: 'SA'`
+> - `globalRole: 'aifcc_admin'` → `system_role: 'SA'`
 > - `workspaceRole: 'owner/admin/member'` → `role: 'OWNER/ADMIN/MEMBER'`
 > 最新の権限仕様は `docs/runbooks/PHASE9.97-BUGFIX-RUNBOOK.md` を参照してください。
 
@@ -159,7 +159,7 @@ main ─────────────────────────
 
 **修正方針**:
 - `useReportsViewModel.ts` の権限チェック修正
-- `globalRole === 'fdc_admin'` の判定追加
+- `globalRole === 'aifcc_admin'` の判定追加
 - DBロールとの整合性確認
 
 **対象ファイル**:
@@ -194,7 +194,7 @@ main ─────────────────────────
 - 試用期間（14日）機能がない
 
 **修正方針**:
-1. SAタブ表示条件の確認（globalRole === 'fdc_admin'）
+1. SAタブ表示条件の確認（globalRole === 'aifcc_admin'）
 2. ユーザー一覧UIの改善
 3. 試用期間機能の実装：
 
@@ -273,7 +273,7 @@ function isTrialExpired(user: User): boolean {
 - `lib/hooks/useTemplatesViewModel.ts` - workspace data取得修正
 
 **WS-C（権限・管理機能）**:
-- `lib/hooks/useReportsViewModel.ts` - fdc_admin判定追加
+- `lib/hooks/useReportsViewModel.ts` - aifcc_admin判定追加
 - `lib/hooks/useAdminViewModel.ts` - メンバー/監査ログ取得
 - `app/api/audit-logs/route.ts` - Supabase join型修正
 - `lib/hooks/useSADashboardViewModel.ts` - AccountType/経過日数

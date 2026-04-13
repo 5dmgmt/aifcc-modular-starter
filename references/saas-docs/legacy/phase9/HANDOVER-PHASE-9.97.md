@@ -71,7 +71,7 @@ Phase 9.97（権限整理 + 徹底バグ修正）は**全て完了**しました
 
 ### 旧体系（削除済み）
 ```
-globalRole:    fdc_admin / normal           ← システム全体権限（削除）
+globalRole:    aifcc_admin / normal           ← システム全体権限（削除）
 workspaceRole: owner / admin / member / viewer  ← WS内権限（小文字・削除）
 UserRole:      EXEC / MANAGER / MEMBER      ← UI表示用（削除）
 ```
@@ -123,4 +123,4 @@ Phase 9.97 は完了。次は Phase 10 へ進行可能。
 
 詳細は以下を参照：
 - `docs/runbooks/PHASE10-TODO-ELASTIC-RUNBOOK.md`
-- `docs/FDC-GRAND-GUIDE.md`
+- `docs/AIFCC-GRAND-GUIDE.md`

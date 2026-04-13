@@ -9,7 +9,7 @@
 
 ## 概要
 
-本ドキュメントは、IPA（情報処理推進機構）の「非機能要求グレード2018」の6大項目に対する Founders Direct Cockpit の対応状況をまとめたものです。
+本ドキュメントは、IPA（情報処理推進機構）の「非機能要求グレード2018」の6大項目に対する AIFCC Cockpit の対応状況をまとめたものです。
 
 ---
 
@@ -218,7 +218,7 @@ gh workflow run monthly-audit.yml -f report_type=monthly
 
 # APIから監査レポート送信（SA権限必要）
 curl -X POST https://app.foundersdirect.jp/api/admin/audit-report \
-  -H "Cookie: fdc_session=YOUR_SESSION"
+  -H "Cookie: aifcc_session=YOUR_SESSION"
 ```
 
 ---

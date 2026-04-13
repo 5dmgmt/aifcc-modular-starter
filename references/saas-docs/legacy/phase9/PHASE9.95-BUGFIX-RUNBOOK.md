@@ -155,7 +155,7 @@ interface User {
 
 | globalRole | 説明 | 試用期間 |
 |------------|------|----------|
-| `fdc_admin` | SA管理者 | なし |
+| `aifcc_admin` | SA管理者 | なし |
 | `normal` | 通常ユーザー | なし |
 | `test` | 試用ユーザー | 14日間 |
 
@@ -177,7 +177,7 @@ function isTrialExpired(user: User): boolean {
 |--------|------|
 | ユーザー名 | 表示名 |
 | メール | メールアドレス |
-| 権限 | fdc_admin / normal / test |
+| 権限 | aifcc_admin / normal / test |
 | 登録日 | createdAt |
 | 経過日数 | 「5日目」「14日目（期限）」等 |
 | ステータス | 試用中 / 期限切れ / 正規 |

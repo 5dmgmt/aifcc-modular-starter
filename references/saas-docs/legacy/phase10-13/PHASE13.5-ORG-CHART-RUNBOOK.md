@@ -255,7 +255,7 @@ if (supervisorId && supervisorId !== sessionIdInt) {
 
 ## 6. 関連ドキュメント
 
-- [FDC Grand Guide](../FDC-GRAND-GUIDE.md)
+- [AIFCC Grand Guide](../AIFCC-GRAND-GUIDE.md)
 - [Phase 13 Tech Debt Runbook](./PHASE13-TECH-DEBT-RUNBOOK.md)
 - [Phase 13.6 Component Split Runbook](./PHASE13.6-COMPONENT-SPLIT-RUNBOOK.md)
 

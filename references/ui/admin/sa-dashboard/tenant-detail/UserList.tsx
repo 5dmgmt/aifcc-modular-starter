@@ -114,7 +114,7 @@ export const UserList = memo(function UserList({ users, loading }: UserListProps
 
   const getRoleBadgeStyle = (role: string) => {
     switch (role) {
-      case 'fdc_admin':
+      case 'aifcc_admin':
         return { backgroundColor: '#fef3c7', color: '#92400e' };
       case 'normal':
       default:
@@ -181,7 +181,7 @@ export const UserList = memo(function UserList({ users, loading }: UserListProps
                 </td>
                 <td style={styles.td}>
                   <span style={{ ...styles.roleBadge, ...getRoleBadgeStyle(user.global_role) }}>
-                    {user.global_role === 'fdc_admin' ? 'FDC Admin' : 'Normal'}
+                    {user.global_role === 'aifcc_admin' ? 'AIFCC Admin' : 'Normal'}
                   </span>
                 </td>
                 <td style={styles.td}>

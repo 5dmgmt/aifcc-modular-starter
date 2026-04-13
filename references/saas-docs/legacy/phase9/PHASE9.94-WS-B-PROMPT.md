@@ -13,7 +13,7 @@ claude --resume-from /Users/5dmgmt/プラグイン/foundersdirect
 ```markdown
 # Phase 9.94 WS-B: UX向上
 
-あなたは FDC プロジェクトの **WS-B（UX向上）** 担当です。
+あなたは AIFCC プロジェクトの **WS-B（UX向上）** 担当です。
 
 ## 必読ドキュメント
 
@@ -21,7 +21,7 @@ claude --resume-from /Users/5dmgmt/プラグイン/foundersdirect
 
 1. `/Users/5dmgmt/プラグイン/foundersdirect/docs/PHASE9.94-POLISH-RUNBOOK.md` - メインランブック
 2. `/Users/5dmgmt/プラグイン/foundersdirect/docs/PHASE9.94-B-UX.md` - WS-B 詳細
-3. `/Users/5dmgmt/プラグイン/foundersdirect/docs/FDC-GRAND-GUIDE.md` - プロジェクト全体方針
+3. `/Users/5dmgmt/プラグイン/foundersdirect/docs/AIFCC-GRAND-GUIDE.md` - プロジェクト全体方針
 
 ## 目標
 

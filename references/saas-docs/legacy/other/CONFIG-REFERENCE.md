@@ -18,7 +18,7 @@
 
 ### Google Cloud Console
 
-- **プロジェクト**: Founders Direct Cockpit
+- **プロジェクト**: AIFCC Cockpit
 - **コンソールURL**: https://console.cloud.google.com/apis/credentials
 
 ### OAuth 2.0 クライアント
@@ -112,7 +112,7 @@ interface AppData {
     googleUserId?: string;
     email?: string;
     role?: 'owner' | 'member' | 'viewer';
-    globalRole?: 'fdc_admin' | 'normal';
+    globalRole?: 'aifcc_admin' | 'normal';
   };
 
   // 見込み客データ

@@ -1,6 +1,6 @@
 # SaaS版ドキュメント（参照用）
 
-> **本フォルダは FDC SaaS版（本番運用中）のドキュメントのコピーです。**
+> **本フォルダは AIFCC SaaS版（本番運用中）のドキュメントのコピーです。**
 > **Workshop開発時の参照資料として使用してください。**
 
 ---
@@ -20,8 +20,8 @@
 ```
 saas-docs/
 ├── README.md ................. 本ファイル
-├── FDC-GRAND-GUIDE.md ........ SaaS版グランドガイド（最重要）
-├── FDC-CORE.md ............... SaaS版コアガイド
+├── AIFCC-GRAND-GUIDE.md ........ SaaS版グランドガイド（最重要）
+├── AIFCC-CORE.md ............... SaaS版コアガイド
 ├── CHANGELOG.md .............. SaaS版変更履歴
 ├── DOC-SPLIT-MAP.md .......... ドキュメント分割マップ
 │
@@ -51,7 +51,7 @@ saas-docs/
 
 | ドキュメント | パス | 目的 |
 |------------|------|------|
-| SaaS版グランドガイド | `Workshop/references/saas-docs/FDC-GRAND-GUIDE.md` | 全体アーキテクチャ |
+| SaaS版グランドガイド | `Workshop/references/saas-docs/AIFCC-GRAND-GUIDE.md` | 全体アーキテクチャ |
 | SaaS版開発ガイド | `Workshop/references/saas-docs/guides/DEVELOPMENT.md` | コーディング規約・詳細技術 |
 | SaaS版ランブック | `Workshop/references/saas-docs/runbooks/` | ランブック形式の参考 |
 ```
@@ -60,7 +60,7 @@ saas-docs/
 
 | 目的 | ファイル |
 |------|---------|
-| **アーキテクチャ全体像** | `FDC-GRAND-GUIDE.md` |
+| **アーキテクチャ全体像** | `AIFCC-GRAND-GUIDE.md` |
 | **コーディング規約** | `guides/DEVELOPMENT.md` |
 | **3層アーキテクチャ設計** | `runbooks/PHASE16-TASK-SYSTEM-V4-RUNBOOK.md` |
 | **ランブック形式** | `runbooks/PHASE19-AI-IMPLEMENTATION-RUNBOOK.md` |

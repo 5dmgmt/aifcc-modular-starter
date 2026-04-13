@@ -1,4 +1,4 @@
-# FDC Architecture Overview（Phase 14.6 完了時点）
+# AIFCC Architecture Overview（Phase 14.6 完了時点）
 
 **Version:** 5.1
 **作成日:** 2025-11-16
@@ -7,7 +7,7 @@
 
 ## 概要
 
-このドキュメントは、Founders Direct Cockpit (FDC) の Phase 14.6 完了時点におけるアーキテクチャとデータフローを可視化したものです。
+このドキュメントは、AIFCC Cockpit (AIFCC) の Phase 14.6 完了時点におけるアーキテクチャとデータフローを可視化したものです。
 
 ### 技術スタック（2025-12-02 時点）
 
@@ -138,7 +138,7 @@ Task完了 → ActionItem進捗更新 → ActionMap進捗更新 → KR進捗更�
 
 ## 1. システムコンテキスト図（C4 Level 1）
 
-FDC 全体を俯瞰する図です。Phase 9.8 完了内容（Supabase Auth・セッション管理・暗号化・AI基盤）を反映しています。
+AIFCC 全体を俯瞰する図です。Phase 9.8 完了内容（Supabase Auth・セッション管理・暗号化・AI基盤）を反映しています。
 
 > **Phase 9.97 更新**: RLS は無効化し、SERVICE_ROLE_KEY でのサーバーサイドアクセス制御に統一しました。
 
@@ -150,8 +150,8 @@ graph TD
     SupabaseAuth[🔐 Supabase Auth<br/>認証サービス]
     OpenAI[🤖 OpenAI<br/>GPT-4o-mini]
 
-    %% FDC System
-    FDC[🖥️ FDC Web App<br/>TypeScript SPA<br/>index.html + dist/main.js]
+    %% AIFCC System
+    AIFCC[🖥️ AIFCC Web App<br/>TypeScript SPA<br/>index.html + dist/main.js]
     API[⚙️ API Functions<br/>Vercel Serverless<br/>/api/*]
     AIAPI[🧠 AI Gateway<br/>/api/ai/chat<br/>レート制限 5req/min]
     DB[(🗄️ Supabase<br/>PostgreSQL 17.6<br/>SERVICE_ROLE_KEY)]
@@ -162,25 +162,25 @@ graph TD
     %% Data Flow - Auth
     User -->|1. Google認証| GoogleOAuth
     GoogleOAuth -->|2. Credential| User
-    User -->|3. Credential| FDC
-    FDC -->|4. Supabase Auth| SupabaseAuth
-    SupabaseAuth -->|5. Session Token| FDC
-    FDC -->|6. Cookie: fdc_session<br/>API呼び出し| API
+    User -->|3. Credential| AIFCC
+    AIFCC -->|4. Supabase Auth| SupabaseAuth
+    SupabaseAuth -->|5. Session Token| AIFCC
+    AIFCC -->|6. Cookie: aifcc_session<br/>API呼び出し| API
     API -->|7. セッション検証<br/>暗号化鍵取得| EnvSecrets
     API -->|8. SERVICE_ROLE_KEY<br/>権限チェック済みクエリ| DB
     DB -->|9. 暗号化データ| API
-    API -->|10. 復号済みAppData<br/>JSON| FDC
-    FDC -->|11. UI更新| User
+    API -->|10. 復号済みAppData<br/>JSON| AIFCC
+    AIFCC -->|11. UI更新| User
 
     %% Data Flow - AI (Phase 9.8-B)
-    User -->|12. AI質問| FDC
-    FDC -->|13. PII除外・マスキング<br/>Context Level選択| AIAPI
+    User -->|12. AI質問| AIFCC
+    AIFCC -->|13. PII除外・マスキング<br/>Context Level選択| AIAPI
     AIAPI -->|14. レート制限チェック<br/>AI有効化チェック| EnvSecrets
     AIAPI -->|15. 監査ログ記録| DB
     AIAPI -->|16. Sanitized Data| OpenAI
     OpenAI -->|17. AI応答| AIAPI
-    AIAPI -->|18. Streaming Response| FDC
-    FDC -->|19. AI応答表示| User
+    AIAPI -->|18. Streaming Response| AIFCC
+    AIFCC -->|19. AI応答表示| User
 
     %% Phase 9.8 完了領域の注記
     classDef phase9Complete fill:#d4edda,stroke:#28a745,stroke-width:3px
@@ -202,7 +202,7 @@ graph TD
 - **1-2**: Google OAuth認証（Credential取得）
 - **3-4**: フロントエンドがSupabase Authに認証情報送信
 - **5**: Supabase AuthがSession Token発行
-- **6**: Cookie（fdc_session）でAPIにリクエスト
+- **6**: Cookie（aifcc_session）でAPIにリクエスト
 - **7**: APIがセッション検証・マスターキーで暗号化鍵を復号
 - **8**: RLSセッション変数設定後、DBクエリ実行
 - **9-10**: 暗号化データを復号してフロントエンドへ
@@ -332,7 +332,7 @@ sequenceDiagram
     participant User as 👤 User
     participant Browser as 🖥️ Browser
     participant GoogleOAuth as 🔐 Google OAuth
-    participant FDC as FDC Web App
+    participant AIFCC as AIFCC Web App
     participant SupabaseAuth as Supabase Auth
     participant AuthAPI as /api/auth/google
     participant DB as 🗄️ Supabase<br/>sessions
@@ -342,8 +342,8 @@ sequenceDiagram
     GoogleOAuth->>User: 3. 認証画面表示
     User->>GoogleOAuth: 4. Google認証実施
     GoogleOAuth->>Browser: 5. Credential返却
-    Browser->>FDC: 6. Credential受信
-    FDC->>SupabaseAuth: 7. Supabase Auth認証<br/>{credential}
+    Browser->>AIFCC: 6. Credential受信
+    AIFCC->>SupabaseAuth: 7. Supabase Auth認証<br/>{credential}
 
     Note over SupabaseAuth: ✅Phase 9完了:<br/>Supabase Auth統合<br/>セッション管理
 
@@ -353,17 +353,17 @@ sequenceDiagram
     DB-->>AuthAPI: 11. User情報
     AuthAPI->>DB: 12. セッション作成<br/>INSERT INTO sessions
     DB-->>AuthAPI: 13. sessionId
-    AuthAPI-->>FDC: 14. Set-Cookie: fdc_session<br/>{user, sessionId}
-    FDC->>Browser: 15. Cookie保存（自動）
+    AuthAPI-->>AIFCC: 14. Set-Cookie: aifcc_session<br/>{user, sessionId}
+    AIFCC->>Browser: 15. Cookie保存（自動）
     Browser->>User: 16. Dashboard表示
 
-    Note over FDC,DB: ✅RLSセッション変数:<br/>SET app.current_user_id = userId<br/>（以降のAPI呼び出しで自動適用）
+    Note over AIFCC,DB: ✅RLSセッション変数:<br/>SET app.current_user_id = userId<br/>（以降のAPI呼び出しで自動適用）
 ```
 
 **重要ポイント（Phase 9完了）:**
 - **Step 7-8**: Supabase Auth統合による認証（Phase 9で実装完了）
 - **Step 12-13**: sessionsテーブルによるセッション管理（Phase 9で実装完了）
-- **Step 14**: Cookie `fdc_session` 発行（HttpOnly, SameSite=Lax, Secure）
+- **Step 14**: Cookie `aifcc_session` 発行（HttpOnly, SameSite=Lax, Secure）
 - **RLSセッション変数**: 以降のAPI呼び出しで自動的に `app.current_user_id` が設定される
 
 ---
@@ -373,13 +373,13 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant User as 👤 User
-    participant FDC as FDC Web App
+    participant AIFCC as AIFCC Web App
     participant WSAPI as /api/workspaces/{id}/data
     participant EncMW as 暗号化MW
     participant DB as 🗄️ Supabase<br/>workspace_data
 
-    User->>FDC: 1. Dashboard表示要求
-    FDC->>WSAPI: 2. GET /api/workspaces/123/data<br/>Cookie: fdc_session
+    User->>AIFCC: 1. Dashboard表示要求
+    AIFCC->>WSAPI: 2. GET /api/workspaces/123/data<br/>Cookie: aifcc_session
 
     Note over WSAPI: ✅Phase 9完了:<br/>セッション検証→RLS設定<br/>→暗号化データ取得
 
@@ -393,11 +393,11 @@ sequenceDiagram
     WSAPI->>EncMW: 7. decrypt(encryptedData, workspaceKey)
     EncMW->>EncMW: 8. AES-256-GCM復号<br/>authTag検証
     EncMW-->>WSAPI: 9. 平文AppData JSON
-    WSAPI-->>FDC: 10. {data: AppData, lastModified}
-    FDC->>FDC: 11. setState(appData)<br/>localStorage更新
-    FDC->>User: 12. Dashboard UI描画<br/>（KPI・ファネル・チャネル統計）
+    WSAPI-->>AIFCC: 10. {data: AppData, lastModified}
+    AIFCC->>AIFCC: 11. setState(appData)<br/>localStorage更新
+    AIFCC->>User: 12. Dashboard UI描画<br/>（KPI・ファネル・チャネル統計）
 
-    Note over FDC,DB: ✅パフォーマンス実測値:<br/>- 復号処理: P95 280ms ✅<br/>- 初回Dashboard表示: <1s ✅
+    Note over AIFCC,DB: ✅パフォーマンス実測値:<br/>- 復号処理: P95 280ms ✅<br/>- 初回Dashboard表示: <1s ✅
 ```
 
 **重要ポイント（Phase 9完了）:**
@@ -414,14 +414,14 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant User as 👤 User
-    participant FDC as Leads Module
+    participant AIFCC as Leads Module
     participant LeadAPI as /api/leads/*
     participant EncMW as 暗号化MW
     participant DB as 🗄️ Supabase
     participant AuditLog as audit_logs
 
-    User->>FDC: 1. Lead作成フォーム送信<br/>{name, email, company}
-    FDC->>LeadAPI: 2. POST /api/leads<br/>Cookie: fdc_session<br/>{leadData}
+    User->>AIFCC: 1. Lead作成フォーム送信<br/>{name, email, company}
+    AIFCC->>LeadAPI: 2. POST /api/leads<br/>Cookie: aifcc_session<br/>{leadData}
 
     LeadAPI->>LeadAPI: 3. verifySession()<br/>認可チェック（canEditLead）
     LeadAPI->>DB: 4. SET app.current_user_id = userId
@@ -438,9 +438,9 @@ sequenceDiagram
     LeadAPI->>AuditLog: 10. createAuditLog()<br/>{action: 'create', resource: 'lead'}
     AuditLog-->>LeadAPI: 11. ログ記録完了
 
-    LeadAPI-->>FDC: 12. {success: true, leadId}
-    FDC->>FDC: 13. UI更新・一覧再描画
-    FDC->>User: 14. 作成完了通知
+    LeadAPI-->>AIFCC: 12. {success: true, leadId}
+    AIFCC->>AIFCC: 13. UI更新・一覧再描画
+    AIFCC->>User: 14. 作成完了通知
 
     Note over LeadAPI,DB: ✅パフォーマンス実測値:<br/>- INSERT: P95 350ms ✅<br/>- 暗号化: P95 450ms ✅
 ```
@@ -458,19 +458,19 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant User as 👤 User
-    participant FDC as FDC Web App
+    participant AIFCC as AIFCC Web App
     participant AIAPI as /api/ai/chat
     participant AIContext as AI Context Control
     participant RateLimit as Rate Limiter
     participant DB as 🗄️ Supabase<br/>audit_logs
     participant OpenAI as 🤖 OpenAI<br/>GPT-4o-mini
 
-    User->>FDC: 1. AI質問入力<br/>{query, contextLevel}
-    FDC->>FDC: 2. データ準備<br/>（workspace_data から必要情報抽出）
+    User->>AIFCC: 1. AI質問入力<br/>{query, contextLevel}
+    AIFCC->>AIFCC: 2. データ準備<br/>（workspace_data から必要情報抽出）
 
-    Note over FDC: ✅Phase 9.8-B完了:<br/>フロントエンド側で<br/>Context Level選択
+    Note over AIFCC: ✅Phase 9.8-B完了:<br/>フロントエンド側で<br/>Context Level選択
 
-    FDC->>AIAPI: 3. POST /api/ai/chat<br/>Cookie: fdc_session<br/>{query, contextLevel, data}
+    AIFCC->>AIAPI: 3. POST /api/ai/chat<br/>Cookie: aifcc_session<br/>{query, contextLevel, data}
 
     AIAPI->>AIAPI: 4. verifySession()<br/>userId抽出
 
@@ -478,16 +478,16 @@ sequenceDiagram
 
     alt レート制限超過
         RateLimit-->>AIAPI: 6a. 制限超過
-        AIAPI-->>FDC: 7a. 429 Too Many Requests
-        FDC->>User: 8a. エラー表示<br/>「しばらくお待ちください」
+        AIAPI-->>AIFCC: 7a. 429 Too Many Requests
+        AIFCC->>User: 8a. エラー表示<br/>「しばらくお待ちください」
     else レート制限内
         RateLimit-->>AIAPI: 6b. OK
 
         AIAPI->>AIAPI: 9. AI有効化フラグチェック<br/>(workspace_settings.ai_enabled)
 
         alt AI無効
-            AIAPI-->>FDC: 10a. 403 Forbidden
-            FDC->>User: 11a. エラー表示<br/>「AI機能は無効です」
+            AIAPI-->>AIFCC: 10a. 403 Forbidden
+            AIFCC->>User: 11a. エラー表示<br/>「AI機能は無効です」
         else AI有効
             AIAPI->>AIContext: 10b. sanitizeForAI(data, contextLevel)
 
@@ -501,8 +501,8 @@ sequenceDiagram
             AIAPI->>OpenAI: 14. POST /chat/completions<br/>{model: 'gpt-4o-mini', messages}
             OpenAI-->>AIAPI: 15. Streaming Response<br/>(AI応答ストリーム)
 
-            AIAPI-->>FDC: 16. Streaming Response<br/>(逐次配信)
-            FDC->>User: 17. AI応答表示<br/>（リアルタイム更新）
+            AIAPI-->>AIFCC: 16. Streaming Response<br/>(逐次配信)
+            AIFCC->>User: 17. AI応答表示<br/>（リアルタイム更新）
 
             Note over AIAPI,DB: ✅監査ログ:<br/>AI利用記録（トークン量含む）
 
@@ -682,7 +682,7 @@ sequenceDiagram
 ## 7. 関連ドキュメント
 
 ### 7.1 開発ガイド
-- **`DOCS/FDC-GRAND-GUIDE.md`**: 開発全体の指針・AIチーム運用ガイド
+- **`DOCS/AIFCC-GRAND-GUIDE.md`**: 開発全体の指針・AIチーム運用ガイド
 - **`DOCS/HOW-TO-DEVELOP.md`**: 開発者・AI向け技術ガイド
 
 ### 7.2 Phase 9 関連

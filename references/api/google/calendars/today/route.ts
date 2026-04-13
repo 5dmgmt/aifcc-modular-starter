@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
   try {
     // 1. セッション確認
     const cookieStore = await cookies();
-    const sessionToken = cookieStore.get('fdc_session')?.value;
+    const sessionToken = cookieStore.get('aifcc_session')?.value;
 
     if (!sessionToken) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -174,7 +174,7 @@ export async function GET(request: NextRequest) {
       start: string;
       end: string;
       colorId?: string;
-      isFdcTask: boolean;
+      isAifccTask: boolean;
       htmlLink?: string;
     }> = [];
 
@@ -208,8 +208,8 @@ export async function GET(request: NextRequest) {
         // 終日イベントはスキップ（date のみ、dateTime なし）
         if (!event.start?.dateTime) continue;
 
-        // FDCタスクかどうかを判定（タイトルに [♠] [♥] [♦] [♣] があるか）
-        const isFdcTask = /\[♠\]|\[♥\]|\[♦\]|\[♣\]/.test(event.summary || '');
+        // AIFCCタスクかどうかを判定（タイトルに [♠] [♥] [♦] [♣] があるか）
+        const isAifccTask = /\[♠\]|\[♥\]|\[♦\]|\[♣\]/.test(event.summary || '');
 
         allEvents.push({
           id: event.id,
@@ -219,7 +219,7 @@ export async function GET(request: NextRequest) {
           start: event.start.dateTime,
           end: event.end?.dateTime || event.start.dateTime,
           colorId: event.colorId,
-          isFdcTask,
+          isAifccTask,
           htmlLink: event.htmlLink,
         });
       }

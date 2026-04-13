@@ -11,7 +11,7 @@
 作業開始前に、必ず以下を読み込んでから処理を始めること：
 
 **必読ドキュメント:**
-- **docs/FDC-GRAND-GUIDE.md**
+- **docs/AIFCC-GRAND-GUIDE.md**
 - **docs/guides/DEVELOPMENT.md**
 - **docs/guides/TESTING.md**
 
@@ -930,7 +930,7 @@ Day    │  Developer A      │  Developer B      │  Developer C      │  De
 
 ## 7. 関連ドキュメント
 
-- `docs/FDC-GRAND-GUIDE.md` - 全体ガイド
+- `docs/AIFCC-GRAND-GUIDE.md` - 全体ガイド
 - `docs/guides/DEVELOPMENT.md` - 開発ガイド
 - `docs/guides/TESTING.md` - テストガイド
 - `docs/runbooks/PHASE12-OKR-RUNBOOK.md` - 前Phase

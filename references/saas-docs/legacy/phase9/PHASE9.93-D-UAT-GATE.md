@@ -11,7 +11,7 @@
 
 | ドキュメント | パス | 確認項目 |
 |-------------|------|---------|
-| **グランドガイド** | `docs/FDC-GRAND-GUIDE.md` | プロジェクト全体方針、フェーズ定義 |
+| **グランドガイド** | `docs/AIFCC-GRAND-GUIDE.md` | プロジェクト全体方針、フェーズ定義 |
 | **開発ガイド** | `docs/guides/DEVELOPMENT.md` | 基本ルール、DOD 定義 |
 | **統括ランブック** | `docs/PHASE9.93-BUGFIX-RUNBOOK.md` | Phase 9.93 全体の DOD |
 | **技術負債** | `docs/TECH-DEBT-INVENTORY.md` | 解消状況の確認 |
@@ -66,7 +66,7 @@
 | EXEC | test-exec@example.com | *** | 全機能テスト |
 | MANAGER | test-manager@example.com | *** | 権限制限テスト |
 | MEMBER | test-member@example.com | *** | 権限制限テスト |
-| fdc_admin | admin@example.com | *** | SA機能テスト |
+| aifcc_admin | admin@example.com | *** | SA機能テスト |
 ```
 
 ### 1.3 テストデータ準備
@@ -484,7 +484,7 @@ Phase 9.93 完了時に以下を Phase 10 に引き継ぐ：
 
 すべてのワークストリーム（A, B, C, D）が完了したら、以下を実施：
 
-### 11.1 FDC-GRAND-GUIDE.md 更新
+### 11.1 AIFCC-GRAND-GUIDE.md 更新
 
 ```markdown
 ### Phase 9.93: 最終バグ修正 & 完全整合性確保

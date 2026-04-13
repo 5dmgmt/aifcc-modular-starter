@@ -1,16 +1,16 @@
-# FDC Modular Starter - Claude Code 設定
+# AIFCC Modular Starter - Claude Code 設定
 
 コーディング前にこのファイルと参照ドキュメントを確認してください。
 
 ## 必読ドキュメント
 
 - **`docs/guides/DEVELOPMENT.md`** — 技術スタック・コーディング規約・デザインガイドライン（最重要）
-- **`docs/FDC-CORE.md`** — プロジェクト全体像・現在のPhase状況
+- **`docs/AIFCC-CORE.md`** — プロジェクト全体像・現在のPhase状況
 
 ## プロジェクト概要
 
-- **名称**: FDC Modular Starter（学習用スターター）
-- **技術スタック**: Next.js 16.0.10 / React 19 / TypeScript 5.x
+- **名称**: AIFCC Modular Starter（学習用スターター）
+- **技術スタック**: Next.js 16 / React 19 / TypeScript 5.x
 - **Node.js**: 22.x 以上
 - **コミット前必須**: `npm run type-check && npm run lint && npm run build`
 
@@ -18,19 +18,18 @@
 
 1. **絵文字（Emoji）使用禁止** — SVGアイコン（Lucide React）を使用
 2. **`any` 型の使用禁止** — 具体的な型を定義
-3. **4色以外のブランドカラー追加禁止**
+3. **ブランドカラー以外の色追加禁止**
 
-## カラーパレット（4色厳守）
+## カラーパレット（aifcc.jp 準拠）
 
-> プロジェクト開始時に調和のとれた4色を選定してください。
-> 参考: [Canva 配色アイデア](https://www.canva.com/ja_jp/learn/100-color-combinations/)
-
-| 用途 | CSS変数 | 役割 |
+| 用途 | CSS変数 | 値 |
 |------|---------|------|
-| プライマリ | `--ws-primary` | 警告・重要・削除系 |
-| セカンダリ | `--ws-secondary` | メインアクション・リンク |
-| アクセント | `--ws-accent` | 注目・ヒント・進行中 |
-| 成功 | `--ws-success` | 完了・正常・承認 |
+| テキスト | `--ancc-text` | #191918 |
+| 背景 | `--ancc-bg` | #faf9f6 |
+| 背景(alt) | `--ancc-bg-alt` | #f0eeeb |
+| ボーダー | `--ancc-border` | #e5e3df |
+| アクセント | `--ancc-accent` | #d4a27f（テラコッタ） |
+| ボタン | `--ancc-btn-bg` | #000000 |
 
 ## Next.js 16 の注意点
 

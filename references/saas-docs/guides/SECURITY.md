@@ -1,4 +1,4 @@
-# 🔐 Founders Direct Modular - セキュリティポリシー
+# 🔐 AIFCC Modular - セキュリティポリシー
 
 **Version:** 2.0
 **Last Updated:** 2025-12-04
@@ -26,7 +26,7 @@
 
 ## 概要
 
-Founders Direct Modular は、企業の営業・マーケティングデータを扱うため、高度なセキュリティ対策が必要です。本ドキュメントは、開発者・運用者が遵守すべきセキュリティポリシーと、脆弱性への対応手順を定めます。
+AIFCC Modular は、企業の営業・マーケティングデータを扱うため、高度なセキュリティ対策が必要です。本ドキュメントは、開発者・運用者が遵守すべきセキュリティポリシーと、脆弱性への対応手順を定めます。
 
 ### セキュリティ目標
 
@@ -133,7 +133,7 @@ sequenceDiagram
     G->>S: ID Token 発行
     S->>S: Token 検証・セッション作成
     S->>C: アクセストークン・リフレッシュトークン発行
-    C->>A: API Call + Cookie (fdc_session)
+    C->>A: API Call + Cookie (aifcc_session)
     A->>A: セッション検証（middleware.ts）
     A->>C: レスポンス
 ```
@@ -159,7 +159,7 @@ Phase 9 で導入したセッション管理テーブル（`sessions`）によ�
 - **セッションID**: UUID v4 形式
 - **有効期限**: デフォルト7日間（`expires_at`）
 - **無効化**: `revoked_at` による明示的な無効化
-- **Cookie名**: `fdc_session`（HttpOnly、Secure、SameSite=Lax）
+- **Cookie名**: `aifcc_session`（HttpOnly、Secure、SameSite=Lax）
 
 ```sql
 CREATE TABLE sessions (
@@ -647,7 +647,7 @@ const apiKey = 'sk-ant-1234567890'; // ハードコーディング禁止！
 
 ### 設計原則
 
-FDC のマルチテナント対応では、**RLS（Row Level Security）を使用せず**、アプリケーション層でテナント間のデータ分離を担保します。
+AIFCC のマルチテナント対応では、**RLS（Row Level Security）を使用せず**、アプリケーション層でテナント間のデータ分離を担保します。
 
 ### テナント分離アーキテクチャ
 
@@ -739,7 +739,7 @@ describe("マルチテナント分離", () => {
 
 マルチテナント環境では、すべての監査ログに `tenant_id` を付与し、テナント単位での監査を可能にします。
 
-**詳細:** `docs/runbooks/PHASE14.4-FDC-MULTITENANT-WORKSPACE-RUNBOOK.md` を参照
+**詳細:** `docs/runbooks/PHASE14.4-AIFCC-MULTITENANT-WORKSPACE-RUNBOOK.md` を参照
 
 ---
 

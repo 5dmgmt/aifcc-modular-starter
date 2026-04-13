@@ -1,5 +1,5 @@
-# FDC-SESSION-BOOTSTRAP.prompt.md
-Founders Direct Cockpit 開発セッション共通起動プロンプト（v2.1）
+# AIFCC-SESSION-BOOTSTRAP.prompt.md
+AIFCC Cockpit 開発セッション共通起動プロンプト（v2.1）
 
 【このファイルは、Claude Code / ChatGPT での開発開始メッセージとして使用する】
 
@@ -13,7 +13,7 @@ Founders Direct Cockpit 開発セッション共通起動プロンプト（v2.1�
 
 ## 手順
 
-1. `DOCS/FDC-GRAND-GUIDE.md` を読み込み、前提とルールを理解してください。
+1. `DOCS/AIFCC-GRAND-GUIDE.md` を読み込み、前提とルールを理解してください。
 2. **必須:** `DOCS/HOW-TO-DEVELOP.md` を読み込み、技術的詳細・フェーズ完了報告フローを確認してください。
 3. 私が指定する「フェーズ」「目的」「対象ファイル」の範囲内でのみ作業してください。
 4. 1回の応答で扱うスコープは次に従ってください：
@@ -75,7 +75,7 @@ Claude Codeは、フェーズ内で**途中確認を挟まず**、可能な限�
 
 例1: Phase 2（state.ts拡張）
 
-> FDC-GRAND-GUIDE.md と HOW-TO-DEVELOP.md を前提に、
+> AIFCC-GRAND-GUIDE.md と HOW-TO-DEVELOP.md を前提に、
 > Phase 2: `core/state.ts` に `UserRole` と `workspaceId` を追加し、
 > 既存データと互換性のある初期値ロジックを提案してください。
 > 上記フォーマットで出力してください。

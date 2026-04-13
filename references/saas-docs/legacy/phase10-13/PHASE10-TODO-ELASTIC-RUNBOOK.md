@@ -41,7 +41,7 @@
 
 ### 1.1 Phase 10 の位置づけ
 
-本フェーズは、FDC の核心機能である **「アイゼンハワーマトリクス（4象限）」** と **「Elastic Habits（柔軟な習慣化）」** を実装するフェーズです。
+本フェーズは、AIFCC の核心機能である **「アイゼンハワーマトリクス（4象限）」** と **「Elastic Habits（柔軟な習慣化）」** を実装するフェーズです。
 
 **戦略的変更点（Phase 9.8 統合）**:
 Phase 9.8 で積み残した「スケーラビリティ・ガバナンス課題（楽観的ロック、圧縮、管理画面）」を、**本フェーズのサブタスクとして完全に統合** します。
@@ -178,13 +178,13 @@ function suggestDuration(task: Partial<Task>, history: Task[]): DurationSuggesti
 > disturb settings. You'll also see the task on your task list and get reminded
 > until the task is completed.
 
-**FDC での活用方針**:
+**AIFCC での活用方針**:
 
 1. **タスクの時間予約はGoogle Calendar側で行う**
-   - FDC で作成したタスクは、ユーザーが Google Calendar の新機能を使って「いつやるか」を予約
+   - AIFCC で作成したタスクは、ユーザーが Google Calendar の新機能を使って「いつやるか」を予約
    - カレンダーで時間をブロックすると、通知オフ（Do Not Disturb）状態を作れる
 
-2. **FDC の役割**:
+2. **AIFCC の役割**:
    - タスクの分類（4象限）
    - 習慣タスクの自動生成（松竹梅）
    - 進捗・ストリークの管理
@@ -192,16 +192,16 @@ function suggestDuration(task: Partial<Task>, history: Task[]): DurationSuggesti
 
 3. **連携フロー**:
    ```
-   [FDC] タスク作成 → [Google Tasks] 同期 → [Google Calendar] Block off time
+   [AIFCC] タスク作成 → [Google Tasks] 同期 → [Google Calendar] Block off time
                                           ↓
-   [FDC] 完了状態を同期 ← [Google Tasks] タスク完了
+   [AIFCC] 完了状態を同期 ← [Google Tasks] タスク完了
    ```
 
 - **タイトル規則**: `[♠] 会議` のようにスート記号を自動付与。
 - **同期方向**:
-  - **FDC → Google Tasks**（作成・更新）：標準機能
-  - **Google Tasks → FDC**（完了状態の同期）
-- **削除**: FDC でタスク削除時、Google Tasks は**削除しない**（安全側優先）。
+  - **AIFCC → Google Tasks**（作成・更新）：標準機能
+  - **Google Tasks → AIFCC**（完了状態の同期）
+- **削除**: AIFCC でタスク削除時、Google Tasks は**削除しない**（安全側優先）。
 
 ### 2.6 Elastic Habits（松竹梅）定義 v2
 
@@ -369,8 +369,8 @@ type HabitProgress = {
 
 > **重要な方針変更（2025年11月）**:
 > Google Calendar に「Block off time for tasks」機能が追加されたため、
-> FDC はタスクの「いつやるか」を管理せず、Google Calendar/Tasks に委譲する。
-> FDC は「何をやるか（4象限分類）」と「時間の有効活用度」に集中する。
+> AIFCC はタスクの「いつやるか」を管理せず、Google Calendar/Tasks に委譲する。
+> AIFCC は「何をやるか（4象限分類）」と「時間の有効活用度」に集中する。
 
 **実装タスク**:
 
@@ -378,13 +378,13 @@ type HabitProgress = {
 
 1.  **Google Tasks 同期**:
     - `googleapis` の Tasks API を使用
-    - FDC タスク作成時に Google Tasks に同期（タイトルは `[♠] タイトル` 形式）
-    - Google Tasks での完了状態を FDC に同期（ポーリング方式）
-    - **時間予約は Google Calendar の新機能「Block off time」で行う**（FDC は関与しない）
+    - AIFCC タスク作成時に Google Tasks に同期（タイトルは `[♠] タイトル` 形式）
+    - Google Tasks での完了状態を AIFCC に同期（ポーリング方式）
+    - **時間予約は Google Calendar の新機能「Block off time」で行う**（AIFCC は関与しない）
 
 2.  **Google Calendar 4色分け連携**:
     - カレンダー予定を4象限で色分け
-    - FDC同期時: タイトルに `[♠]` プレフィックスを付与
+    - AIFCC同期時: タイトルに `[♠]` プレフィックスを付与
     - 既存予定: colorId で判定（Graphite→♠, Tomato→♥, Banana→♦, Blueberry→♣）
     - 判定できない予定 → 🃏 ジョーカー
 
@@ -442,13 +442,13 @@ type TimeAllocation = {
 
 **時間の集計方法**:
 
-1. **FDC タスク（estimatedMinutes）**:
+1. **AIFCC タスク（estimatedMinutes）**:
    - 「今日のフォーカス」に追加されたタスクの推定時間を suit 別に合計
 
 2. **Google Calendar 予定**:
    - colorId または タイトルプレフィックス `[♠]` で suit を判定
    - 判定できない予定は 🃏 ジョーカー
-   - FDC タスクと重複しない予定のみカウント
+   - AIFCC タスクと重複しない予定のみカウント
 
 3. **ジョーカー時間**:
    - `jokerMinutes = availableMinutes - (spade + heart + diamond + club)`
@@ -499,8 +499,8 @@ type TimeAllocation = {
 ```
 
 **DOD**: ✅ 全項目達成
-- [x] FDC でタスクを作ると Google Tasks に反映される。
-- [x] Google Tasks で完了にすると FDC のタスクも完了になる。
+- [x] AIFCC でタスクを作ると Google Tasks に反映される。
+- [x] Google Tasks で完了にすると AIFCC のタスクも完了になる。
 - [x] Google Calendar の予定が4色 + ジョーカーで分類される。
 - [x] 今日の時間配分が5色バーで可視化される（TimeAllocationBar.tsx）。
 - [x] 時間有効活用度（%）がリアルタイムで表示される。
@@ -552,10 +552,10 @@ type TimeAllocation = {
     - DELETE: タスク削除
 
 2.  ✅ **双方向同期エンドポイント** (`/api/google/tasks/sync`):
-    - POST: FDC → Google Tasks（絵文字プレフィックス⬛️🟥🟨🟦付きで同期）
-    - GET: Google Tasks → FDC（完了状態取得、新規タスクインポート）
-    - 「FDC Todo」タスクリストを自動作成
-    - notes に `[FDC:taskId]` を埋め込み双方向追跡
+    - POST: AIFCC → Google Tasks（絵文字プレフィックス⬛️🟥🟨🟦付きで同期）
+    - GET: Google Tasks → AIFCC（完了状態取得、新規タスクインポート）
+    - 「AIFCC Todo」タスクリストを自動作成
+    - notes に `[AIFCC:taskId]` を埋め込み双方向追跡
 
 3.  ✅ **絵文字プレフィックス対応**:
     - ⬛️ = spade（すぐやる）
@@ -566,8 +566,8 @@ type TimeAllocation = {
 4.  ✅ **UIコンポーネント**:
     - GoogleTasksSyncButton: ドロップダウンメニュー付き同期ボタン
       - 双方向同期
-      - FDC → Tasks（送信のみ）
-      - Tasks → FDC（受信のみ）
+      - AIFCC → Tasks（送信のみ）
+      - Tasks → AIFCC（受信のみ）
 
 5.  ✅ **カレンダーイベント連携強化**:
     - 予定タブの日付切り替え（昨日/今日/明日）が正しく動作
@@ -575,9 +575,9 @@ type TimeAllocation = {
     - タスク追加時にカレンダーイベントを絵文字プレフィックスでリネーム
 
 **DOD**: ✅ 全項目達成
-- [x] FDC タスクが Google Tasks に絵文字プレフィックス付きで同期される
-- [x] Google Tasks での完了が FDC に反映される
-- [x] Google Tasks/Calendar で絵文字プレフィックス付きタスクを作成するとFDCにインポートできる
+- [x] AIFCC タスクが Google Tasks に絵文字プレフィックス付きで同期される
+- [x] Google Tasks での完了が AIFCC に反映される
+- [x] Google Tasks/Calendar で絵文字プレフィックス付きタスクを作成するとAIFCCにインポートできる
 - [x] 予定タブの日付切り替えが正しくカレンダー予定を取得する
 - [x] 4象限のタイトル色がスートに応じて変化する
 
@@ -588,7 +588,7 @@ type TimeAllocation = {
 ### Phase 10-A プロンプト
 
 ```markdown
-あなたは FDC Phase 10-A 担当エンジニアです。
+あなたは AIFCC Phase 10-A 担当エンジニアです。
 TODO機能のデータ基盤を作成し、同時に**楽観的排他制御**を確立します。
 
 実施事項:
@@ -611,7 +611,7 @@ DOD:
 ### Phase 10-B プロンプト
 
 ```markdown
-あなたは FDC Phase 10-B 担当エンジニアです。
+あなたは AIFCC Phase 10-B 担当エンジニアです。
 4象限ボードUIを実装し、データ容量対策として**圧縮**を導入します。
 
 実施事項:
@@ -640,7 +640,7 @@ DOD:
 ### Phase 10-C プロンプト
 
 ```markdown
-あなたは FDC Phase 10-C 担当エンジニアです。
+あなたは AIFCC Phase 10-C 担当エンジニアです。
 Elastic Habits（松竹梅習慣）と、運用ガバナンス機能を実装します。
 
 実施事項:
@@ -666,26 +666,26 @@ DOD:
 ### Phase 10-D プロンプト
 
 ```markdown
-あなたは FDC Phase 10-D 担当エンジニアです。
+あなたは AIFCC Phase 10-D 担当エンジニアです。
 Google Tasks/Calendar連携と**時間有効活用ダッシュボード**を実装し、Phase 10 を完成させます。
 
 **重要な方針（2025年11月17日更新）:**
 Google Calendar に「Block off time for tasks」機能が追加されたため、
-FDC はタスクの「いつやるか」を管理せず、Google Tasks/Calendar に委譲します。
-FDC は「何をやるか（4象限分類）」と「時間の有効活用度」に集中します。
+AIFCC はタスクの「いつやるか」を管理せず、Google Tasks/Calendar に委譲します。
+AIFCC は「何をやるか（4象限分類）」と「時間の有効活用度」に集中します。
 
 実施事項:
 
 ### 10-D-1: Google Tasks/Calendar 連携
 1. **Google Tasks 同期**:
    - `googleapis` の Tasks API を使用
-   - FDC タスク作成時に Google Tasks に同期
+   - AIFCC タスク作成時に Google Tasks に同期
    - タイトルは `[♠] タイトル` の形式
-   - Google Tasks での完了状態を FDC に同期（ポーリング方式）
+   - Google Tasks での完了状態を AIFCC に同期（ポーリング方式）
 
 2. **Google Calendar 4色分け連携**:
    - カレンダー予定を4象限で色分け
-   - FDC同期時: タイトルに `[♠]` プレフィックスを付与
+   - AIFCC同期時: タイトルに `[♠]` プレフィックスを付与
    - 既存予定: colorId で判定
      - colorId: 8 (Graphite) → ♠
      - colorId: 11 (Tomato) → ♥
@@ -720,8 +720,8 @@ FDC は「何をやるか（4象限分類）」と「時間の有効活用度」
    - 改善ポイントの提案
 
 DOD:
-- [ ] FDC タスクが Google Tasks に同期される
-- [ ] Google Tasks での完了が FDC に反映される
+- [ ] AIFCC タスクが Google Tasks に同期される
+- [ ] Google Tasks での完了が AIFCC に反映される
 - [ ] Google Calendar の予定が4色 + ジョーカーで分類される
 - [ ] 今日の時間配分が5色バーで可視化される
 - [ ] 時間有効活用度（%）がリアルタイムで表示される
@@ -759,11 +759,11 @@ Phase 10 で実装する UX 強化機能の一覧：
 
 ### 7.1 Phase 10-D 実装後の役割分担
 
-Phase 10-D 実装後、FDC と Google Calendar の役割を以下のように整理します。
+Phase 10-D 実装後、AIFCC と Google Calendar の役割を以下のように整理します。
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ FDC の役割（Phase 10-D 以降）                                │
+│ AIFCC の役割（Phase 10-D 以降）                                │
 ├─────────────────────────────────────────────────────────────┤
 │ ✅ 4象限分類（緊急度×重要度）                                 │
 │ ✅ Elastic Habits（松竹梅）のストリーク管理                   │

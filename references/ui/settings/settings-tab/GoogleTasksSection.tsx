@@ -108,7 +108,7 @@ export function GoogleTasksSection({
             <div style={{ fontSize: '13px', color: 'var(--text-light)' }}>
               {isConnected
                 ? 'タスクは Google Tasks と同期されます'
-                : '連携すると FDC のタスクが Google Tasks に同期されます'}
+                : '連携すると AIFCC のタスクが Google Tasks に同期されます'}
             </div>
           </div>
         </div>

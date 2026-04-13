@@ -2,7 +2,7 @@
 
 > **事前必読**: 作業を開始する前に、以下のドキュメントを順番にお読みください。
 >
-> 1. **[FDC-CORE.md](../FDC-CORE.md)** - 開発全体の指針・技術スタック・AIチーム運用
+> 1. **[AIFCC-CORE.md](../AIFCC-CORE.md)** - 開発全体の指針・技術スタック・AIチーム運用
 > 2. **[CODE-REVIEW-2025-12-03.md](../CODE-REVIEW-2025-12-03.md)** - 本ランブックの根拠となるコードレビュー報告書
 > 3. **[guides/SECURITY.md](../guides/SECURITY.md)** - セキュリティガイド
 
@@ -94,7 +94,7 @@ const isTestMode = process.env.NODE_ENV !== 'production' &&
 
 // After: 安全なパターン
 const isTestMode =
-  process.env.FDC_E2E_TEST_MODE_ENABLED === 'true' &&
+  process.env.AIFCC_E2E_TEST_MODE_ENABLED === 'true' &&
   process.env.NODE_ENV === 'development' &&
   process.env.VERCEL_ENV !== 'production' &&
   process.env.VERCEL_ENV !== 'preview' &&
@@ -109,13 +109,13 @@ const isTestMode =
 `.env.local` (開発環境のみ):
 ```env
 # E2E テストモードを有効化（開発環境限定）
-FDC_E2E_TEST_MODE_ENABLED=true
+AIFCC_E2E_TEST_MODE_ENABLED=true
 ```
 
 `.env.production` (本番環境):
 ```env
 # E2E テストモードは本番では絶対に有効化しない
-# FDC_E2E_TEST_MODE_ENABLED は設定しない（undefined）
+# AIFCC_E2E_TEST_MODE_ENABLED は設定しない（undefined）
 ```
 
 #### Step 2: 共通ヘルパー関数の作成
@@ -131,7 +131,7 @@ FDC_E2E_TEST_MODE_ENABLED=true
  * 【セキュリティポリシー】
  * - E2E テストモードは開発環境（localhost）でのみ有効
  * - 本番環境・Preview 環境では絶対に有効化しない
- * - 環境変数 FDC_E2E_TEST_MODE_ENABLED が明示的に 'true' の場合のみ有効
+ * - 環境変数 AIFCC_E2E_TEST_MODE_ENABLED が明示的に 'true' の場合のみ有効
  */
 
 import { cookies } from 'next/headers';
@@ -154,7 +154,7 @@ export function isE2ETestModeEnabled(): boolean {
   }
 
   // 環境変数で明示的に有効化されていない場合は無効
-  if (process.env.FDC_E2E_TEST_MODE_ENABLED !== 'true') {
+  if (process.env.AIFCC_E2E_TEST_MODE_ENABLED !== 'true') {
     return false;
   }
 
@@ -281,7 +281,7 @@ if (await isE2ETestRequestFromCookies()) {
 
 ```bash
 # 1. ローカル開発環境でテストモードが動作することを確認
-FDC_E2E_TEST_MODE_ENABLED=true npm run dev
+AIFCC_E2E_TEST_MODE_ENABLED=true npm run dev
 # → test-mode Cookie でアクセス可能
 
 # 2. 本番ビルドでテストモードが無効化されることを確認
@@ -836,9 +836,9 @@ npm run build
 
 ## ドキュメント更新
 
-### FDC-GRAND-GUIDE.md への追記
+### AIFCC-GRAND-GUIDE.md への追記
 
-`docs/FDC-GRAND-GUIDE.md` の「非機能要求 > セキュリティ」セクションに以下を追記:
+`docs/AIFCC-GRAND-GUIDE.md` の「非機能要求 > セキュリティ」セクションに以下を追記:
 
 ```markdown
 ### セキュリティポリシー（Phase 14.6.7 追加）
@@ -847,7 +847,7 @@ npm run build
 
 - 本番環境（`NODE_ENV=production`）では E2E テストモードを完全無効化
 - Preview 環境（`VERCEL_ENV=preview`）でも無効化
-- 開発環境でのみ、環境変数 `FDC_E2E_TEST_MODE_ENABLED=true` で有効化可能
+- 開発環境でのみ、環境変数 `AIFCC_E2E_TEST_MODE_ENABLED=true` で有効化可能
 - Cookie によるバイパスは開発環境限定
 
 #### API エラーレスポンスポリシー
@@ -874,7 +874,7 @@ npm run build
 - [x] P1-A: workspace_id 権限チェック追加（Google Sync は workspace_id 不使用のため対象外）
 - [x] P1-B: ログ PII マスキングが完了
 - [x] 全テスト（型チェック・ビルド）がパス
-- [x] FDC-GRAND-GUIDE.md にセキュリティポリシーが追記されている
+- [x] AIFCC-GRAND-GUIDE.md にセキュリティポリシーが追記されている
 - [x] CHANGELOG.md に Phase 14.6.7 の変更が記載されている
 
 ### 実装完了日

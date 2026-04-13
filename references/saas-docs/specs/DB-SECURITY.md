@@ -6,7 +6,7 @@
 ## 📋 概要
 
 本ドキュメントは、Supabase PostgreSQL 17.6 における Row Level Security (RLS) の設定手順と、
-Founders Direct Cockpit (FDC) における RLS ポリシーの詳細を記述します。
+AIFCC Cockpit (AIFCC) における RLS ポリシーの詳細を記述します。
 
 ---
 
@@ -124,7 +124,7 @@ export async function listTodos({ tenantId, workspaceId, userId }: TenantAwarePa
 | **メンバーシップ検証** | `workspace_members` | ユーザーの所属確認 |
 | **監査ログ** | `audit_logs` | すべての操作を記録（tenant_id 付き） |
 
-**詳細:** `docs/runbooks/PHASE14.4-FDC-MULTITENANT-WORKSPACE-RUNBOOK.md` を参照
+**詳細:** `docs/runbooks/PHASE14.4-AIFCC-MULTITENANT-WORKSPACE-RUNBOOK.md` を参照
 
 ---
 
@@ -293,7 +293,7 @@ RLS を導入するまでの間は、以下の原則で運用する。
 - 「どの条件になったら RLS を導入するのか」
 - 「導入するときの進め方」
 
-が FDC 全体のアーキテクチャガイドとして明文化される。
+が AIFCC 全体のアーキテクチャガイドとして明文化される。
 
 ---
 
@@ -545,7 +545,7 @@ CREATE POLICY sessions_delete_own ON sessions
 
 **Phase 9 での追加理由:**
 - JWT認証から Cookie ベースのセッション管理に移行
-- HttpOnly Cookie `fdc_session` によるセキュリティ強化
+- HttpOnly Cookie `aifcc_session` によるセキュリティ強化
 - セッション情報の DB 管理により、強制ログアウトやセッション監査が可能に
 
 ---
@@ -558,7 +558,7 @@ CREATE POLICY sessions_delete_own ON sessions
 
 ```sql
 -- ===================================================================
--- Founders Direct Modular - RLS Policies Migration
+-- AIFCC Modular - RLS Policies Migration
 -- Phase 7-12 STEP4.8: Security Hardening
 -- ===================================================================
 

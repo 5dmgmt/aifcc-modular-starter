@@ -11,7 +11,7 @@
 
 | ドキュメント | パス | 確認項目 |
 |-------------|------|---------|
-| **グランドガイド** | `docs/FDC-GRAND-GUIDE.md` | プロジェクト全体方針、技術スタック |
+| **グランドガイド** | `docs/AIFCC-GRAND-GUIDE.md` | プロジェクト全体方針、技術スタック |
 | **開発ガイド** | `docs/guides/DEVELOPMENT.md` | 基本ルール、React実装ルール |
 | **統括ランブック** | `docs/PHASE9.93-BUGFIX-RUNBOOK.md` | Phase 9.93 全体の DOD、パフォーマンス要件 |
 | **技術負債** | `docs/TECH-DEBT-INVENTORY.md` | 現在の技術負債一覧 |

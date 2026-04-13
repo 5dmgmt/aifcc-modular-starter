@@ -2,7 +2,7 @@
 
 Version: 3.0  
 Date: 2025-11-18  
-Prepared for: Founders Direct Cockpit Phase 10+
+Prepared for: AIFCC Cockpit Phase 10+
 
 ---
 
@@ -13,7 +13,7 @@ Prepared for: Founders Direct Cockpit Phase 10+
 作業開始前に、必ず以下を読み込んでから処理を始めること：
 
 **必読ドキュメント:**
-- DOCS/FDC-GRAND-GUIDE.md
+- DOCS/AIFCC-GRAND-GUIDE.md
 - DOCS/HOW-TO-DEVELOP.md
 
 
@@ -39,7 +39,7 @@ Phase 10 以降（TODO / Calendar / Action Map / OKR）を安全かつ高速に�
 
 結論として、
 
-> **Phase 9.5 完了 = Founders Direct Cockpit が “本当の Production-ready” な Next 時代の土台に乗ること**
+> **Phase 9.5 完了 = AIFCC Cockpit が “本当の Production-ready” な Next 時代の土台に乗ること**
 
 を意味する。
 
@@ -47,7 +47,7 @@ Phase 10 以降（TODO / Calendar / Action Map / OKR）を安全かつ高速に�
 
 ## 0.1 Phase 9 からの引き継ぎ – 残存する差異8%の解消
 
-Phase 9 完了時点で、FDC-GRAND-GUIDE.md と実際のコードベースの一致度は **約92%** に達している。
+Phase 9 完了時点で、AIFCC-GRAND-GUIDE.md と実際のコードベースの一致度は **約92%** に達している。
 残る **8%の差異** のうち、**約4%（高優先度）は Phase 9.5-A-0/A-3 で完了済み**：
 
 ### 高優先度（Phase 9.5-A-0/A-3 で完了）: 約4%
@@ -226,7 +226,7 @@ Phase 9で約50%実装済みの状態から完成：
 
 ### 4.1 目標
 
-- Founders Direct Cockpit のフロント・API を、Next.js 15（App Router）前提の構成に統一
+- AIFCC Cockpit のフロント・API を、Next.js 15（App Router）前提の構成に統一
 - 既存の AppData / 暗号化 / Supabase / RLS 設計は最大限流用しつつ、「Next 時代の標準構成」に揃える
 
 ### 4.2 タスク一覧
@@ -476,7 +476,7 @@ Phase 9で約50%実装済みの状態から完成：
 
 **C-3. ドキュメントの Next 対応リライト**
 
-- `FDC-GRAND-GUIDE.md`：
+- `AIFCC-GRAND-GUIDE.md`：
   - アーキテクチャ図を Next.js 15 ベースに差し替え
   - フロント／API／DB／暗号化／RLS の関係を最新版に更新
 - `HOW-TO-DEVELOP.md`：
@@ -546,7 +546,7 @@ Phase 9.5 を完了することで：
 
 が整う。
 
-**Phase 9.5 = 「Founders Direct Cockpit を Next 時代のレールに完全に乗せるフェーズ」**
+**Phase 9.5 = 「AIFCC Cockpit を Next 時代のレールに完全に乗せるフェーズ」**
 と位置づけ、ここを確実に完了させたうえで、Phase 10 以降の「機能拡張フェーズ」に入る。
 
 ---

@@ -13,7 +13,7 @@ claude --resume-from /Users/5dmgmt/プラグイン/foundersdirect
 ```markdown
 # Phase 9.94 WS-D: 品質プラットフォーム強化
 
-あなたは FDC プロジェクトの **WS-D（品質プラットフォーム強化）** 担当です。
+あなたは AIFCC プロジェクトの **WS-D（品質プラットフォーム強化）** 担当です。
 
 **重要:** WS-D は他の WS（A/B）が依存する CI 基盤を構築します。**最優先で Day 2 までに完了**してください。
 

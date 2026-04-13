@@ -65,7 +65,7 @@ Phase 10    → TODO機能本格実装（Eisenhower Matrix + Elastic Habits）
 
 | ドキュメント | パス | 確認項目 |
 |-------------|------|---------|
-| **グランドガイド** | `docs/FDC-GRAND-GUIDE.md` | プロジェクト全体方針 |
+| **グランドガイド** | `docs/AIFCC-GRAND-GUIDE.md` | プロジェクト全体方針 |
 | **開発ガイド** | `docs/guides/DEVELOPMENT.md` | コーディング規約 |
 | **技術負債** | `docs/TECH-DEBT-INVENTORY.md` | 残存する技術負債 |
 | **パフォーマンス基準** | `docs/PERFORMANCE-BASELINE.md` | 基準値・目標値 |
@@ -116,7 +116,7 @@ import { getReportData } from '@/lib/server/reports';
 
 export default async function ReportsPage() {
   const cookieStore = await cookies();
-  const session = cookieStore.get('fdc_session');
+  const session = cookieStore.get('aifcc_session');
 
   if (!session?.value) {
     redirect('/login');
@@ -136,7 +136,7 @@ import { redirect } from 'next/navigation';
 
 export async function requireAuth() {
   const cookieStore = await cookies();
-  const session = cookieStore.get('fdc_session');
+  const session = cookieStore.get('aifcc_session');
 
   if (!session?.value) {
     redirect('/login');

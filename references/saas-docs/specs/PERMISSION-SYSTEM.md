@@ -5,7 +5,7 @@
 
 ## 概要
 
-FDCは2レイヤーの権限体系を採用しています。
+AIFCCは2レイヤーの権限体系を採用しています。
 
 ```
 ┌─────────────────────────────────────────────────┐
@@ -235,7 +235,7 @@ CREATE TABLE workspace_members (
 |----|-----|------|
 | `users.global_role` | `users.system_role` | カラム名変更 |
 | `users.account_type` | 削除 | system_roleに統合 |
-| `fdc_admin` | `SA` | 値変更 |
+| `aifcc_admin` | `SA` | 値変更 |
 | `normal` | `USER` | 値変更 |
 | `owner` (小文字) | `OWNER` | 大文字に統一 |
 | `admin` (小文字) | `ADMIN` | 大文字に統一 |
@@ -270,7 +270,7 @@ CREATE TABLE workspace_members (
 1. Google OAuth → Supabase Auth
 2. users テーブルに upsert
 3. sessions テーブルにトークン保存
-4. fdc_session Cookie でセッション管理
+4. aifcc_session Cookie でセッション管理
 5. Vercel KV でセッションキャッシュ
 6. 7日間有効（自動延長なし）
 7. Phase 14.6: セッション JOIN 最適化（3クエリ → 1クエリ）

@@ -258,7 +258,7 @@ VERCEL_OIDC_TOKEN="..."
 #### 4.2 管理者権限
 
 **テストケース:**
-1. FDC管理者（global_role = 'fdc_admin'）でログイン
+1. AIFCC管理者（global_role = 'aifcc_admin'）でログイン
 2. すべてのワークスペースデータにアクセス可能
 3. すべてのユーザー情報にアクセス可能
 

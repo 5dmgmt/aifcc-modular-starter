@@ -21,7 +21,7 @@
 
 ### 0.3 必読ドキュメント
 
-- `docs/FDC-GRAND-GUIDE.md`
+- `docs/AIFCC-GRAND-GUIDE.md`
 - `docs/guides/DEVELOPMENT.md`
 - `lib/types/app-data.ts` - 全データ型定義
 
@@ -673,7 +673,7 @@ userName,田中太郎
 │                            │                               │
 │                            ↓                               │
 │                   ┌──────────────────┐                     │
-│                   │  FDCにインポート │                     │
+│                   │  AIFCCにインポート │                     │
 │                   └──────────────────┘                     │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
@@ -694,19 +694,19 @@ userName,田中太郎
   1. AI-PROMPTS.md から該当プロンプトをコピー
   2. 【】内を自分のビジネス情報に置換
   3. GPT/Claudeに貼り付け → CSV出力
-  4. FDCにインポート
+  4. AIFCCにインポート
 
 【パターン2】テンプレート活用
   1. csv-templates/ からテンプレートをダウンロード
   2. AIに「このCSVを埋めて」と依頼
   3. 出力されたCSVを保存
-  4. FDCにインポート
+  4. AIFCCにインポート
 
 【パターン3】既存データ分析
-  1. FDCからデータをエクスポート
+  1. AIFCCからデータをエクスポート
   2. AIに分析・改善提案を依頼
   3. 新規CSV or 改善版CSVを生成
-  4. FDCにインポート
+  4. AIFCCにインポート
 ```
 
 ### 3.4 CSVテンプレート一覧
@@ -1385,7 +1385,7 @@ export interface CSVExportOptions {
 
 ## 9. 関連ドキュメント
 
-- `docs/FDC-GRAND-GUIDE.md` - 全体ガイド
+- `docs/AIFCC-GRAND-GUIDE.md` - 全体ガイド
 - `docs/specs/API-SPEC.md` - API仕様
 - `docs/runbooks/PHASE14-AI-RUNBOOK.md` - AI統合ランブック
 - `lib/types/app-data.ts` - データ型定義

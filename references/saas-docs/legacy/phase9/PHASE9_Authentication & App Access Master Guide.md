@@ -1,4 +1,4 @@
-あなたは Founders Direct Cockpit (FDC) の Phase 9 認証まわりを
+あなたは AIFCC Cockpit (AIFCC) の Phase 9 認証まわりを
 「JWT ベース → サーバーサイドセッション方式」に全面移行する
 リファクタリング担当エンジニアです。
 
@@ -20,7 +20,7 @@
 
 作業前に、以下のドキュメントを開き、認証・暗号化・RLS の前提と制約を把握してください。
 
-- DOCS/FDC-GRAND-GUIDE.md
+- DOCS/AIFCC-GRAND-GUIDE.md
 - DOCS/PHASE9-ENCRYPTION-AND-API-RUNBOOK.md
 - DOCS/PHASE9_AUTH_ISSUE_SUMMARY.md（名称に揺れがあれば `ls DOCS` で探索）
 - DOCS/HOW-TO-DEVELOP.md
@@ -48,7 +48,7 @@
 
 2. Cookie 設計：
 
-   - 名前：`fdc_session`
+   - 名前：`aifcc_session`
    - 値：セッションID（ランダム文字列 or UUID）
    - 属性：
      - HttpOnly
@@ -63,17 +63,17 @@
    - `POST /api/auth/google`
      - Google トークンを検証し、user + workspace + role を確定
      - `sessions` テーブルに新しいセッションを INSERT
-     - `Set-Cookie: fdc_session=...` を返す
+     - `Set-Cookie: aifcc_session=...` を返す
      - レスポンス JSON: `{ success: true, data: { user: {...}, workspaceId, role } }`
 
    - `GET /api/auth/session`（新規）
-     - Cookie の fdc_session からセッションを検索
+     - Cookie の aifcc_session からセッションを検索
      - 有効であれば user + role + workspaceId を返す
      - 無効/期限切れなら 401 or 403 を返す
 
    - `POST /api/auth/logout`（新規 or 既存修正）
-     - Cookie の fdc_session を参照し、該当セッションを無効化（削除 or revoked_at 設定）
-     - `Set-Cookie` で `fdc_session` を Max-Age=0 で破棄
+     - Cookie の aifcc_session を参照し、該当セッションを無効化（削除 or revoked_at 設定）
+     - `Set-Cookie` で `aifcc_session` を Max-Age=0 で破棄
 
 4. 認証ミドルウェア：
 
@@ -81,7 +81,7 @@
      「セッションテーブル読み込み」ベースに書き換える。
    - 流れ：
      1. Request Headers から Cookie を取得
-     2. `fdc_session` をパース
+     2. `aifcc_session` をパース
      3. DB の `sessions` テーブルから該当行を取得
      4. 存在し、有効期限内かつ revoked されていなければ `user_id` / `workspace_id` / `role` をコンテキストに載せる
      5. RLS 用の `setRLSUserId()` なども、この `user_id` を元に呼び出す
@@ -176,7 +176,7 @@ workspaceId / role を決定（既存ロジックを流用）
 
 createSession(userId, workspaceId, role) を呼び出し、新しい Session を作成
 
-レスポンスヘッダに Set-Cookie: fdc_session=... をセット
+レスポンスヘッダに Set-Cookie: aifcc_session=... をセット
 
 Cookie 属性は前述の要件通り：
 
@@ -213,7 +213,7 @@ Step 3. /api/auth/session.ts（新規）を実装
 
 Request から Cookie ヘッダを取得
 
-fdc_session をパース
+aifcc_session をパース
 
 getSessionById(sessionId) でセッションを取得
 
@@ -239,7 +239,7 @@ json
 Step 4. middleware.ts をセッション方式に書き換え
 getTokenFromRequest() など JWT 専用のメソッドがある場合、次のように変更：
 
-Cookie ヘッダから fdc_session を最優先で読む
+Cookie ヘッダから aifcc_session を最優先で読む
 
 取得した sessionId を getSessionById() に渡す
 
@@ -278,18 +278,18 @@ Step 5. /api/auth/roles.ts の扱い
 を明記する。
 
 Step 6. /api/auth/logout.ts（無ければ新規）を実装
-Cookie の fdc_session を読み取る。
+Cookie の aifcc_session を読み取る。
 
 revokeSession(sessionId) を呼んでセッションを無効化。
 
-Set-Cookie で fdc_session を Max-Age=0 / 空文字 などにして削除。
+Set-Cookie で aifcc_session を Max-Age=0 / 空文字 などにして削除。
 
 Step 7. フロントエンド（js/main.ts / js/core/apiClient.ts）の調整
 Google ログイン後のフロー：
 
 これまで：/api/auth/google → JWT Cookie → unlockApp() → /api/auth/roles
 
-今後： /api/auth/google → fdc_session Cookie → unlockApp() → /api/auth/session（または /api/auth/roles 経由）
+今後： /api/auth/google → aifcc_session Cookie → unlockApp() → /api/auth/session（または /api/auth/roles 経由）
 
 fetchCurrentUserWithRole() が /api/auth/roles を呼んでいる場合、
 
@@ -318,13 +318,13 @@ npm run build
 
 ローカル（http://localhost:3000）で Google ログイン
 
-Developer Tools → Application → Cookies で fdc_session が存在すること
+Developer Tools → Application → Cookies で aifcc_session が存在すること
 
 Network タブで /api/auth/session が 200 を返すこと
 
 リロードしても Dashboard が表示され続けること
 
-/api/auth/logout の後に fdc_session が削除され、再読み込みでログイン画面に戻ること
+/api/auth/logout の後に aifcc_session が削除され、再読み込みでログイン画面に戻ること
 
 最後に、変更したファイルの diff を
 1つのコードブロックにまとめて出力すること（git diff 相当）。

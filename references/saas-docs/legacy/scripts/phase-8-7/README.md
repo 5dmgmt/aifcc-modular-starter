@@ -127,7 +127,7 @@ psql $TEST_DATABASE_URL
 \i scripts/phase-8-7/verify-rls-test.sql
 ```
 
-**検証項目（FDC-GRAND-GUIDE.md 準拠）:**
+**検証項目（AIFCC-GRAND-GUIDE.md 準拠）:**
 
 1. **RLS 有効化状況の確認** - 全5テーブルで `rowsecurity = t`
 2. **ポリシー一覧の確認** - 11ポリシーが存在
@@ -142,7 +142,7 @@ psql $TEST_DATABASE_URL
 11. **パフォーマンステスト（EXPLAIN ANALYZE）** - インデックススキャン使用確認
 12. **テスト完了** - エラーなく全項目実行完了
 
-**✅ TEST DB 完了の総合判定基準（FDC-GRAND-GUIDE.md 576-641行目準拠）:**
+**✅ TEST DB 完了の総合判定基準（AIFCC-GRAND-GUIDE.md 576-641行目準拠）:**
 
 - [ ] 上記12項目すべてクリア
 - [ ] `psql $TEST_DATABASE_URL -f scripts/phase-8-7/verify-rls-test.sql` がエラーなく完了
@@ -432,7 +432,7 @@ psql $DATABASE_URL -f scripts/phase-8-7/rollback-rls.sql
 
 - [DOCS/Phase-8-6-Final-Review.md](../../DOCS/Phase-8-6-Final-Review.md) - Phase 8-6 最終レビュー
 - [DOCS/RLS-VERIFICATION-GUIDE.md](../../DOCS/RLS-VERIFICATION-GUIDE.md) - RLS 適用・検証ガイド
-- [DOCS/FDC-GRAND-GUIDE.md](../../DOCS/FDC-GRAND-GUIDE.md) - プロジェクト全体規範書
+- [DOCS/AIFCC-GRAND-GUIDE.md](../../DOCS/AIFCC-GRAND-GUIDE.md) - プロジェクト全体規範書
 - [migrations/001-rls-policies.sql](../../migrations/001-rls-policies.sql) - RLS ポリシー定義
 - [migrations/002-workspace-keys.sql](../../migrations/002-workspace-keys.sql) - Workspace 鍵テーブル
 

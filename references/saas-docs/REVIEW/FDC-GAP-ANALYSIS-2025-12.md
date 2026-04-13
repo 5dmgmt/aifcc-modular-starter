@@ -1,4 +1,4 @@
-# FDC 業界トップランナー級 B2B SaaS ギャップ分析レポート
+# AIFCC 業界トップランナー級 B2B SaaS ギャップ分析レポート
 
 **Version:** 1.0
 **作成日:** 2025-12-04
@@ -21,7 +21,7 @@
 
 ## Step 0: 文脈の取得
 
-### FDC が明示的に採用しているベストプラクティス
+### AIFCC が明示的に採用しているベストプラクティス
 
 | カテゴリ | 採用済み |
 |---------|---------|
@@ -60,7 +60,7 @@
 | PII マスキング | `lib/server/logger.ts:redactPaths` | email, name, phone, googleSub 等を自動マスク |
 | CSP Nonce | `middleware.ts` | リクエスト毎にランダム Nonce 生成、`strict-dynamic` 適用 |
 | エラーマスキング | `lib/server/api-errors.ts` | 本番環境で内部エラー詳細を非公開 |
-| E2E テストモード制御 | `lib/server/test-mode.ts` | `FDC_E2E_TEST_MODE_ENABLED` + `NODE_ENV` + `VERCEL_ENV` の 3 条件チェック |
+| E2E テストモード制御 | `lib/server/test-mode.ts` | `AIFCC_E2E_TEST_MODE_ENABLED` + `NODE_ENV` + `VERCEL_ENV` の 3 条件チェック |
 
 **現状評価**: セキュリティ監査スコア 100/100点（Phase 14.6-J 完了後）。App 層での多層防御は十分。ただし、DB 層 RLS は SERVICE_ROLE_KEY バイパスで実質無効。
 
@@ -120,7 +120,7 @@
 | ブランチ戦略 | `master` ブランチ | シンプルな trunk-based |
 | コード分割 | Phase 14.35, 14.6.3-5 | 61 ファイル分割、500 行以上 2 件のみ |
 | 技術負債管理 | 技術負債ゼロ達成 | `as any` 0 件、Lint/ビルド警告 0 件 |
-| ドキュメント | `docs/` (FDC-CORE, guides, specs, runbooks) | 階層化されたドキュメント体系 |
+| ドキュメント | `docs/` (AIFCC-CORE, guides, specs, runbooks) | 階層化されたドキュメント体系 |
 
 **現状評価**: 技術負債ゼロは素晴らしい。ただし、CODEOWNERS、Feature Flag、Staging 環境は未導入。Lighthouse CI は導入済みだが、Visual Regression Testing は未実装。
 
@@ -359,7 +359,7 @@
 - **技術負債ゼロ**: `as any` 0件、Lint/ビルド警告 0件
 - **CI/CD**: quality-gate.yml で PR ごとに自動検証
 - **テスト**: E2E 94件、Unit 129件
-- **ドキュメント**: 階層化されたドキュメント体系（FDC-CORE, guides, specs, runbooks）
+- **ドキュメント**: 階層化されたドキュメント体系（AIFCC-CORE, guides, specs, runbooks）
 - **Lighthouse CI**: `.github/workflows/lighthouse.yml` 導入済み
 
 #### 余地
@@ -515,11 +515,11 @@ Phase 15 は既に設計済み（PHASE15-RUNBOOK.md）のため、このまま�
 
 ## Step 5: 経営目線でのひとことサマリ
 
-### 今の FDC は、業界水準のどの辺にいるのか
+### 今の AIFCC は、業界水準のどの辺にいるのか
 
 **現在地: 「堅牢なスタートアップ級」〜「Mid-Market SaaS の入口」**
 
-FDC は Phase 14 までで「技術負債ゼロ」「セキュリティ監査 100/100 点」「IPA 非機能要求 6 大項目 100%対応」を達成しており、**スタートアップ B2B SaaS としては上位 20% に入る品質**です。特に App 層でのテナント分離、暗号化、監査ログの基盤は十分に整っています。
+AIFCC は Phase 14 までで「技術負債ゼロ」「セキュリティ監査 100/100 点」「IPA 非機能要求 6 大項目 100%対応」を達成しており、**スタートアップ B2B SaaS としては上位 20% に入る品質**です。特に App 層でのテナント分離、暗号化、監査ログの基盤は十分に整っています。
 
 ただし、**Notion / Linear / Slack のようなトップランナー級**と比較すると、Observability（分散トレーシング）、Data/Analytics（イベントトラッキング）、Developer Experience（Feature Flag）において明確なギャップがあります。
 
@@ -553,7 +553,7 @@ FDC は Phase 14 までで「技術負債ゼロ」「セキュリティ監査 10
 
 ### 結論
 
-> **FDC は「しっかりした基盤を持つ Mid-Market SaaS」として、今から 3〜6ヶ月の投資で「トップランナー候補」に上がれるポジションにいます。**
+> **AIFCC は「しっかりした基盤を持つ Mid-Market SaaS」として、今から 3〜6ヶ月の投資で「トップランナー候補」に上がれるポジションにいます。**
 >
 > Phase 15〜17 に集中し、Observability / Scalability / Data 基盤を強化することで、**競合との差別化**と**エンタープライズ準備**の両方を実現できます。
 
@@ -563,7 +563,7 @@ FDC は Phase 14 までで「技術負債ゼロ」「セキュリティ監査 10
 
 ### 最初の想定から修正した点
 
-1. **RLS の評価**: 当初「大きなギャップ」と考えたが、FDC のコードを読むと App 層での `checkTenantBoundary()` が全 API に適用されており、SERVICE_ROLE_KEY バイパスでも十分な分離が実現されている。RLS は「あると更に良い」レベルに格下げ。
+1. **RLS の評価**: 当初「大きなギャップ」と考えたが、AIFCC のコードを読むと App 層での `checkTenantBoundary()` が全 API に適用されており、SERVICE_ROLE_KEY バイパスでも十分な分離が実現されている。RLS は「あると更に良い」レベルに格下げ。
 
 2. **Phase 15 の位置づけ**: PHASE15-RUNBOOK.md を読んで、既に Google Token 暗号化・監査ログ・BG Sync 並列化が設計済みであることを確認。ロードマップにそのまま組み込み。
 
@@ -577,8 +577,8 @@ FDC は Phase 14 までで「技術負債ゼロ」「セキュリティ監査 10
 
 本レポートは以下のドキュメント・ファイルを参照して作成:
 
-- `docs/FDC-GRAND-GUIDE.md` - インデックスドキュメント
-- `docs/FDC-CORE.md` - 開発コアガイド
+- `docs/AIFCC-GRAND-GUIDE.md` - インデックスドキュメント
+- `docs/AIFCC-CORE.md` - 開発コアガイド
 - `docs/guides/SECURITY.md` - セキュリティポリシー
 - `docs/guides/NFR-COMPLIANCE.md` - IPA 非機能要求グレード対応表
 - `docs/guides/Performance-Specification-v1.0.md` - パフォーマンス仕様
@@ -602,12 +602,12 @@ FDC は Phase 14 までで「技術負債ゼロ」「セキュリティ監査 10
 
 対象:
 - リポジトリ: /Users/5dmgmt/プラグイン/foundersdirect
-- プロダクト: Founders Direct Cockpit (FDC)
-- ドキュメント: docs/FDC-GRAND-GUIDE.md, docs/guides 配下,
+- プロダクト: AIFCC Cockpit (AIFCC)
+- ドキュメント: docs/AIFCC-GRAND-GUIDE.md, docs/guides 配下,
   docs/runbooks/PHASE*.md などを前提にしてください。
 
 ゴール:
-1. FDC の現在の実装レベルを、以下の7観点で棚卸ししてください。
+1. AIFCC の現在の実装レベルを、以下の7観点で棚卸ししてください。
    - Security / Compliance
    - Scalability / Architecture
    - Reliability / SRE
@@ -623,7 +623,7 @@ FDC は Phase 14 までで「技術負債ゼロ」「セキュリティ監査 10
    を表形式で整理してください。
 
 3. その上で、
-   - 「いまのFDCが業界全体のどのポジションにいるか」
+   - 「いまのAIFCCが業界全体のどのポジションにいるか」
    - 「3〜6ヶ月でどこまで持っていけるか（トップランナー候補ライン）」
    を経営目線でコメントしてください。
 

@@ -83,7 +83,7 @@
 
 2. ✅ **Step 2: Google 認証 API リファクタ**
    - `api/auth/google.ts` を JWT → セッション方式に移行
-   - Cookie `fdc_session`（HttpOnly, SameSite=Lax, Secure（本番のみ）, Max-Age=604800）発行
+   - Cookie `aifcc_session`（HttpOnly, SameSite=Lax, Secure（本番のみ）, Max-Age=604800）発行
 
 3. ✅ **Step 3: セッション検証 API 実装**
    - `api/auth/session.ts` 新規作成
@@ -174,7 +174,7 @@
    - Performance Specification v1.0 基準との比較
 
 5. **ドキュメント最終更新**
-   - ✅ `DOCS/FDC-GRAND-GUIDE.md` - Supabase 移行・認証方式更新完了（2025-11-18）
+   - ✅ `DOCS/AIFCC-GRAND-GUIDE.md` - Supabase 移行・認証方式更新完了（2025-11-18）
    - ✅ `DOCS/CHANGELOG.md` - Phase 9 残タスク完遂記録追加完了（2025-11-18）
    - ⏳ `DOCS/HOW-TO-DEVELOP.md` - 認証方式の更新が必要
    - ⏳ `DOCS/PHASE9-ENCRYPTION-AND-API-RUNBOOK.md` - 完了基準の更新が必要
@@ -398,7 +398,7 @@ grep "^DATABASE_URL" .env | cut -c1-50
 ### 認証方式変更
 
 - ✅ JWT → サーバーセッション方式に移行完了
-- ✅ Cookie `fdc_session`（HttpOnly, SameSite=Lax, Secure（本番のみ））
+- ✅ Cookie `aifcc_session`（HttpOnly, SameSite=Lax, Secure（本番のみ））
 - ✅ セッションテーブル実装（`sessions`）
 - ✅ セッション CRUD 関数実装（`api/_lib/session.ts`）
 
@@ -408,7 +408,7 @@ grep "^DATABASE_URL" .env | cut -c1-50
 
 - `DOCS/PHASE9_Authentication & App Access Master Guide.md` - 認証レイヤー移行ガイド
 - `DOCS/PHASE9-ENCRYPTION-AND-API-RUNBOOK.md` - Phase 9 ランブック
-- `DOCS/FDC-GRAND-GUIDE.md` - プロジェクト全体ガイド（2025-11-18 更新済み）
+- `DOCS/AIFCC-GRAND-GUIDE.md` - プロジェクト全体ガイド（2025-11-18 更新済み）
 - `DOCS/HOW-TO-DEVELOP.md` - 開発ルール
 - `DOCS/CHANGELOG.md` - 変更履歴（2025-11-18 更新済み）
 
@@ -479,7 +479,7 @@ Phase 9 までで実現したこと:
 
 **Phase 9.5 の目的**: これらの負債を「Next.js 15 + Supabase + Vercel」前提で一度きれいに整理し、Phase 10 以降（TODO / Calendar / Action Map / OKR）を安全かつ高速に積み上げられる土台をつくること。
 
-> **Phase 9.5 完了 = Founders Direct Cockpit が "本当の Production-ready" な Next 時代の土台に乗ること**
+> **Phase 9.5 完了 = AIFCC Cockpit が "本当の Production-ready" な Next 時代の土台に乗ること**
 
 ### Phase 9.5 のスコープ
 
@@ -556,6 +556,6 @@ Phase 9.5 を完了することで:
 
 が整う。
 
-**Phase 9.5 = 「Founders Direct Cockpit を Next 時代のレールに完全に乗せるフェーズ」**と位置づけ、ここを確実に完了させたうえで、Phase 9.7 以降の「最終ハードニング・機能拡張フェーズ」に入る。
+**Phase 9.5 = 「AIFCC Cockpit を Next 時代のレールに完全に乗せるフェーズ」**と位置づけ、ここを確実に完了させたうえで、Phase 9.7 以降の「最終ハードニング・機能拡張フェーズ」に入る。
 
 **詳細設計書**: `DOCS/Phase9.5-Core-Hardening-Next-Ready-Migration-Design.md`

@@ -85,11 +85,11 @@ Phase 10（TODO機能）開始直前ですが、**「管理者がログアウト
 **目的**: システム利用の前提となる「設定アクセス」と「ログアウト」を可能にする。
 
 **タスク**:
-1.  **Seed Fix**: `scripts/seed-admin.ts` を修正・実行し、`admin@example.com` を確実に `fdc_admin` (Global Role) に設定する。
+1.  **Seed Fix**: `scripts/seed-admin.ts` を修正・実行し、`admin@example.com` を確実に `aifcc_admin` (Global Role) に設定する。
 2.  **UI Logic Fix**: `app/_components/Sidebar.tsx` (またはLayout) を修正。
     - `Settings` (設定): **Global Role / Workspace Role に関わらず全員表示**。
-    - `Admin` (管理者): `global_role === 'fdc_admin'` の場合のみ表示。
-    - `SA` (スーパーアドミン): `global_role === 'fdc_admin'` の場合のみ表示。
+    - `Admin` (管理者): `global_role === 'aifcc_admin'` の場合のみ表示。
+    - `SA` (スーパーアドミン): `global_role === 'aifcc_admin'` の場合のみ表示。
 
 **DOD**:
 - [ ] `mochizuki` アカウントで「設定」「管理者」タブが見え、ログアウトできる。
@@ -146,7 +146,7 @@ Phase 10（TODO機能）開始直前ですが、**「管理者がログアウト
 **目的**: スーパーアドミンによる全視界の確保と、組織階層の秩序維持。
 
 **タスク**:
-1.  **SA Tab**: `app/(app)/admin/sa/page.tsx` を作成（`fdc_admin` 専用）。
+1.  **SA Tab**: `app/(app)/admin/sa/page.tsx` を作成（`aifcc_admin` 専用）。
     - `sessions` テーブルをクエリし、全ユーザーの「現在のワークスペース」と「最終アクセス」を一覧表示。
 2.  **3-2-1 Rule**: `lib/core/roles.ts` に `canManageRole(myRole, targetRole)` を実装。
     - Admin(3) > EXEC(2) > MANAGER(1) > MEMBER(0)
@@ -208,7 +208,7 @@ Phase 9.9 の残務（未処理タスク）を処理する場合は、以下の�
 ### 4.2 Phase 9.93 で使用する Claude Code への指示テンプレート
 
 ```markdown
-あなたは Founders Direct Cockpit (FDC) プロジェクトの Phase 9.93 担当エンジニアです。
+あなたは AIFCC Cockpit (AIFCC) プロジェクトの Phase 9.93 担当エンジニアです。
 
 【作業内容】
 Phase 9.9 の残務を処理します。
@@ -256,9 +256,9 @@ Phase 9.93 の開発プロンプトは、`docs/PHASE9.93-BUGFIX-RUNBOOK.md` の�
 
 ---
 
-## 6. FDC-GRAND-GUIDE 更新テンプレート
+## 6. AIFCC-GRAND-GUIDE 更新テンプレート
 
-Phase 9.9 完了時に `docs/FDC-GRAND-GUIDE.md` を以下のように更新してください：
+Phase 9.9 完了時に `docs/AIFCC-GRAND-GUIDE.md` を以下のように更新してください：
 
 ```markdown
 ### Phase 9.9: 緊急バグ修正 & ガバナンス強化

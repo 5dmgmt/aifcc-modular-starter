@@ -11,7 +11,7 @@
 
 | ドキュメント | パス | 確認項目 |
 |-------------|------|---------|
-| **グランドガイド** | `docs/FDC-GRAND-GUIDE.md` | UI/UX 方針、ガラスモーフィズム設計 |
+| **グランドガイド** | `docs/AIFCC-GRAND-GUIDE.md` | UI/UX 方針、ガラスモーフィズム設計 |
 | **開発ガイド** | `docs/guides/DEVELOPMENT.md` | React 実装ルール、DOM 操作禁止 |
 | **統括ランブック** | `docs/PHASE9.93-BUGFIX-RUNBOOK.md` | Phase 9.93 全体の DOD、UI 差異の定義 |
 

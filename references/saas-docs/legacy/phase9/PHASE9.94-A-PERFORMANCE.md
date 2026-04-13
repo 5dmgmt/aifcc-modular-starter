@@ -97,7 +97,7 @@ import { getReportData } from '@/lib/server/reports';
 
 export default async function ReportsPage() {
   const cookieStore = await cookies();
-  const session = cookieStore.get('fdc_session');
+  const session = cookieStore.get('aifcc_session');
 
   if (!session?.value) {
     redirect('/login');
@@ -132,7 +132,7 @@ import { redirect } from 'next/navigation';
 
 export async function requireAuth() {
   const cookieStore = await cookies();
-  const session = cookieStore.get('fdc_session');
+  const session = cookieStore.get('aifcc_session');
 
   if (!session?.value) {
     redirect('/login');

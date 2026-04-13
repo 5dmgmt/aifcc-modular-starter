@@ -5,8 +5,8 @@
  * 【Phase 15-A】リフレッシュトークンの鍵バージョン管理対応
  *
  * 【機能】
- * - POST: FDCタスク → Google Tasks 同期（新規作成・更新）
- * - GET: Google Tasks → FDC 同期（完了状態の取得）
+ * - POST: AIFCCタスク → Google Tasks 同期（新規作成・更新）
+ * - GET: Google Tasks → AIFCC 同期（完了状態の取得）
  */
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -42,8 +42,8 @@ const EMOJI_TO_SUIT: Record<string, string> = {
   '🟦': 'club',
 };
 
-// FDCタスクリスト名（Google Tasks側での識別用）
-const FDC_TASK_LIST_NAME = 'FDC Todo';
+// AIFCCタスクリスト名（Google Tasks側での識別用）
+const AIFCC_TASK_LIST_NAME = 'AIFCC Todo';
 
 interface GoogleTask {
   id: string;
@@ -130,7 +130,7 @@ async function getAccessToken(userId: number): Promise<string | null> {
 }
 
 /**
- * FDC用タスクリストを取得または作成
+ * AIFCC用タスクリストを取得または作成
  */
 async function getOrCreateFdcTaskList(accessToken: string): Promise<string> {
   // 既存のタスクリストを検索
@@ -145,14 +145,14 @@ async function getOrCreateFdcTaskList(accessToken: string): Promise<string> {
 
   const listsData = await listsResponse.json();
   const fdcList = (listsData.items as GoogleTaskList[] || []).find(
-    (list) => list.title === FDC_TASK_LIST_NAME
+    (list) => list.title === AIFCC_TASK_LIST_NAME
   );
 
   if (fdcList) {
     return fdcList.id;
   }
 
-  // FDC用リストを新規作成
+  // AIFCC用リストを新規作成
   const createResponse = await fetch(
     'https://tasks.googleapis.com/tasks/v1/users/@me/lists',
     {
@@ -161,25 +161,25 @@ async function getOrCreateFdcTaskList(accessToken: string): Promise<string> {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ title: FDC_TASK_LIST_NAME }),
+      body: JSON.stringify({ title: AIFCC_TASK_LIST_NAME }),
     }
   );
 
   if (!createResponse.ok) {
-    throw new Error('Failed to create FDC task list');
+    throw new Error('Failed to create AIFCC task list');
   }
 
   const newList = await createResponse.json();
-  googleLogger.info({ taskListId: newList.id }, '[Google Tasks Sync] Created FDC task list');
+  googleLogger.info({ taskListId: newList.id }, '[Google Tasks Sync] Created AIFCC task list');
   return newList.id;
 }
 
 /**
- * FDCタスクIDをGoogle Taskのnotesから抽出
+ * AIFCCタスクIDをGoogle Taskのnotesから抽出
  */
 function extractFdcTaskId(notes?: string): string | null {
   if (!notes) return null;
-  const match = notes.match(/\[FDC:([^\]]+)\]/);
+  const match = notes.match(/\[AIFCC:([^\]]+)\]/);
   return match ? match[1] : null;
 }
 
@@ -198,7 +198,7 @@ function detectSuitFromTitle(title: string): string | null {
 /**
  * POST /api/google/tasks/sync
  *
- * FDCタスク → Google Tasks 同期
+ * AIFCCタスク → Google Tasks 同期
  * - 新規タスクをGoogle Tasksに作成
  * - 完了状態を同期
  */
@@ -207,7 +207,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const cookieStore = await cookies();
-    const sessionToken = cookieStore.get('fdc_session')?.value;
+    const sessionToken = cookieStore.get('aifcc_session')?.value;
 
     if (!sessionToken) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -254,7 +254,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid tasks data' }, { status: 400 });
     }
 
-    // FDC用タスクリストを取得または作成
+    // AIFCC用タスクリストを取得または作成
     const taskListId = await getOrCreateFdcTaskList(accessToken);
 
     // 既存のGoogle Tasksを取得
@@ -266,7 +266,7 @@ export async function POST(request: NextRequest) {
     const existingTasksData = await existingTasksResponse.json();
     const existingTasks = (existingTasksData.items as GoogleTask[] || []);
 
-    // FDCタスクIDでマッピング
+    // AIFCCタスクIDでマッピング
     const taskIdMap = new Map<string, GoogleTask>();
     for (const gt of existingTasks) {
       const fdcId = extractFdcTaskId(gt.notes);
@@ -312,7 +312,7 @@ export async function POST(request: NextRequest) {
         // 新規タスクを作成
         const taskData = {
           title: taskTitle,
-          notes: `[FDC:${task.id}]${task.description ? '\n' + task.description : ''}`,
+          notes: `[AIFCC:${task.id}]${task.description ? '\n' + task.description : ''}`,
           status: googleStatus,
         };
 
@@ -355,7 +355,7 @@ export async function POST(request: NextRequest) {
 /**
  * GET /api/google/tasks/sync
  *
- * Google Tasks → FDC 同期状態を取得
+ * Google Tasks → AIFCC 同期状態を取得
  * - Google Tasksの完了状態を返す
  * - 絵文字プレフィックス付きタスクも含む
  */
@@ -364,7 +364,7 @@ export async function GET(_request: NextRequest) {
 
   try {
     const cookieStore = await cookies();
-    const sessionToken = cookieStore.get('fdc_session')?.value;
+    const sessionToken = cookieStore.get('aifcc_session')?.value;
 
     if (!sessionToken) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -397,7 +397,7 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ error: 'Google API not connected' }, { status: 400 });
     }
 
-    // FDC用タスクリストを取得
+    // AIFCC用タスクリストを取得
     const listsResponse = await fetch(
       'https://tasks.googleapis.com/tasks/v1/users/@me/lists',
       { headers: { Authorization: `Bearer ${accessToken}` } }
@@ -409,11 +409,11 @@ export async function GET(_request: NextRequest) {
 
     const listsData = await listsResponse.json();
     const fdcList = (listsData.items as GoogleTaskList[] || []).find(
-      (list) => list.title === FDC_TASK_LIST_NAME
+      (list) => list.title === AIFCC_TASK_LIST_NAME
     );
 
     if (!fdcList) {
-      // FDCリストがまだない場合は空を返す
+      // AIFCCリストがまだない場合は空を返す
       return NextResponse.json({
         tasks: [],
         newTasks: [],
@@ -433,7 +433,7 @@ export async function GET(_request: NextRequest) {
     const tasksData = await tasksResponse.json();
     const googleTasks = (tasksData.items as GoogleTask[] || []);
 
-    // FDCタスクと新規タスクを分離
+    // AIFCCタスクと新規タスクを分離
     const fdcTasks: Array<{
       fdcTaskId: string;
       googleTaskId: string;
@@ -454,7 +454,7 @@ export async function GET(_request: NextRequest) {
       const completed = gt.status === 'completed';
 
       if (fdcId) {
-        // FDCから同期されたタスク
+        // AIFCCから同期されたタスク
         fdcTasks.push({
           fdcTaskId: fdcId,
           googleTaskId: gt.id,

@@ -2,7 +2,7 @@
 
 ## 概要
 
-FDCのタスクとGoogle Calendar/Tasks を連携し、15分単位のタイムブロックを実現する。
+AIFCCのタスクとGoogle Calendar/Tasks を連携し、15分単位のタイムブロックを実現する。
 
 ---
 
@@ -153,7 +153,7 @@ export const DEFAULT_SCOPES = [
 ### 連携フロー
 
 ```
-[FDC タスク作成]
+[AIFCC タスク作成]
       ↓
 [時間ブロック設定] （例: 09:00, 15分）
       ↓
@@ -170,7 +170,7 @@ export const DEFAULT_SCOPES = [
 
 interface CreateEventRequest {
   calendarId: string;
-  taskId: string;           // 紐付けるFDCタスクID
+  taskId: string;           // 紐付けるAIFCCタスクID
   summary: string;          // "[♥] タスク名" 形式
   startTime: string;        // ISO 8601
   durationMinutes: number;  // 15, 30, 45, 60 など
@@ -185,7 +185,7 @@ interface CreateEventResponse {
 
 ### 色の対応（Google Calendar ColorId）
 
-| Suit    | FDC色    | GCal ColorId | GCal色名    |
+| Suit    | AIFCC色    | GCal ColorId | GCal色名    |
 |---------|----------|--------------|-------------|
 | spade   | #1a1a2e  | 8            | Graphite    |
 | heart   | #E53935  | 11           | Tomato      |
@@ -194,7 +194,7 @@ interface CreateEventResponse {
 
 ---
 
-## 3. Google Calendar → FDC 同期（予定表示）
+## 3. Google Calendar → AIFCC 同期（予定表示）
 
 ### 取得する予定の範囲
 - 今日の予定（カットオフ3時〜翌日3時）
@@ -202,8 +202,8 @@ interface CreateEventResponse {
 
 ### 表示方法
 - TODO画面の上部または右側に「今日のスケジュール」エリア
-- FDCタスクと外部予定を区別表示
-- FDCタスクはタップで編集可能
+- AIFCCタスクと外部予定を区別表示
+- AIFCCタスクはタップで編集可能
 
 ### データ構造
 
@@ -215,8 +215,8 @@ interface CalendarEvent {
   end: string;
   colorId?: string;
 
-  // FDC連携
-  isFdcTask: boolean;   // FDCから作成したか
+  // AIFCC連携
+  isAifccTask: boolean;   // AIFCCから作成したか
   fdcTaskId?: string;   // 紐付いたタスクID
 }
 ```
@@ -227,7 +227,7 @@ interface CalendarEvent {
 
 ### 同期ルール
 
-| 操作 | FDC → Google Tasks | Google Tasks → FDC |
+| 操作 | AIFCC → Google Tasks | Google Tasks → AIFCC |
 |------|--------------------|--------------------|
 | 作成 | 自動同期           | 手動インポート     |
 | 完了 | 自動同期           | 次回同期時に反映   |
@@ -265,7 +265,7 @@ interface CalendarEvent {
 1. `/api/google/calendars/events` GET エンドポイント
 2. 今日の予定取得
 3. TODO画面にスケジュール表示
-4. FDCタスクとの紐付け表示
+4. AIFCCタスクとの紐付け表示
 
 ### Phase 10-E-4: Google Tasks 同期
 1. 同期ボタンをTODO画面に追加

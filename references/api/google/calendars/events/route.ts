@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
   try {
     // 1. セッション確認
     const cookieStore = await cookies();
-    const sessionToken = cookieStore.get('fdc_session')?.value;
+    const sessionToken = cookieStore.get('aifcc_session')?.value;
 
     if (!sessionToken) {
       return NextResponse.json(
@@ -215,7 +215,7 @@ export async function PATCH(request: NextRequest) {
   try {
     // 1. セッション確認
     const cookieStore = await cookies();
-    const sessionToken = cookieStore.get('fdc_session')?.value;
+    const sessionToken = cookieStore.get('aifcc_session')?.value;
 
     if (!sessionToken) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -343,7 +343,7 @@ export async function DELETE(request: NextRequest) {
   try {
     // 1. セッション確認
     const cookieStore = await cookies();
-    const sessionToken = cookieStore.get('fdc_session')?.value;
+    const sessionToken = cookieStore.get('aifcc_session')?.value;
 
     if (!sessionToken) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

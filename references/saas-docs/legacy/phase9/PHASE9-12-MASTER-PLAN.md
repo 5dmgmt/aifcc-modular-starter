@@ -194,7 +194,7 @@ Phase 12: OKR（戦略レイヤー）
   - Next構成で必要なテスト復活
   - 不要テストの明示的削除
 - [ ] ドキュメントNext対応
-  - FDC-GRAND-GUIDE.md（Next.js 15アーキテクチャ図）
+  - AIFCC-GRAND-GUIDE.md（Next.js 15アーキテクチャ図）
   - HOW-TO-DEVELOP.md（App Router前提の開発手順）
   - Performance-Specification-v1.0（Next構成でのP95目標）
 
@@ -579,7 +579,7 @@ Phase 10 に移行し、Phase 9.8 の残タスクを並行実装する。
 Phase 9〜12開発時に以下を含める:
 
 ```
-あなたは FDC Phase X 完了エンジニアです。
+あなたは AIFCC Phase X 完了エンジニアです。
 DOD（完了基準）を厳密に遵守してください。
 新機能は追加しないでください。
 差分のみを生成してください。

@@ -1,22 +1,22 @@
 # Google Tasks/Calendar 双方向同期設計書
 
-> Phase 10-D-1: FDC と Google Tasks/Calendar の双方向同期
+> Phase 10-D-1: AIFCC と Google Tasks/Calendar の双方向同期
 
 ## 1. 概要
 
 ### 1.1 目的
 
-FDC のタスクと Google Tasks/Calendar を双方向同期し、以下を実現する：
+AIFCC のタスクと Google Tasks/Calendar を双方向同期し、以下を実現する：
 
-1. **FDC → Google Tasks**: タスク作成・更新・完了を同期
-2. **Google Tasks → FDC**: 完了状態・変更を同期
+1. **AIFCC → Google Tasks**: タスク作成・更新・完了を同期
+2. **Google Tasks → AIFCC**: 完了状態・変更を同期
 3. **Google Calendar 連携**: 予定の4象限分類（色分け）
 
 ### 1.2 設計方針
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│ FDC (Founders Direct Connect)                                    │
+│ AIFCC (AIFCC Connect)                                    │
 │                                                                  │
 │ ┌─────────────┐   ┌─────────────┐   ┌─────────────────────────┐ │
 │ │  Tasks[]    │──▶│ SyncEngine  │──▶│ Google API Client       │ │
@@ -45,13 +45,13 @@ FDC のタスクと Google Tasks/Calendar を双方向同期し、以下を実�
 
 ### 2.1 現状の認証フロー
 
-現在の FDC は Supabase Auth 経由で Google ログインを行っているが、
+現在の AIFCC は Supabase Auth 経由で Google ログインを行っているが、
 **Google API 用のアクセストークンは保存していない**。
 
 ```
 現状:
-User → Supabase Auth (Google Provider) → FDC Session
-       ↳ Google OAuth Token は Supabase が管理（FDC からアクセス不可）
+User → Supabase Auth (Google Provider) → AIFCC Session
+       ↳ Google OAuth Token は Supabase が管理（AIFCC からアクセス不可）
 ```
 
 ### 2.2 新しい認証フロー（Google API 用）
@@ -60,7 +60,7 @@ Google Tasks/Calendar API を使用するため、追加の OAuth 認証が必�
 
 ```
 新フロー:
-1. [FDC ログイン] Supabase Auth (既存)
+1. [AIFCC ログイン] Supabase Auth (既存)
 2. [Google API 連携] 別途 OAuth 2.0 フローを追加
    - スコープ: tasks, calendar.readonly
    - トークンを暗号化して DB 保存
@@ -123,11 +123,11 @@ interface TaskSyncMetadata {
 
 | 方向 | トリガー | 処理 |
 |------|----------|------|
-| FDC → Google | タスク作成 | Google Tasks に INSERT |
-| FDC → Google | タスク更新 | Google Tasks を UPDATE |
-| FDC → Google | タスク完了 | Google Tasks を COMPLETE |
-| Google → FDC | ポーリング（5分） | 変更を検知して FDC を UPDATE |
-| Google → FDC | 手動リフレッシュ | 即時同期 |
+| AIFCC → Google | タスク作成 | Google Tasks に INSERT |
+| AIFCC → Google | タスク更新 | Google Tasks を UPDATE |
+| AIFCC → Google | タスク完了 | Google Tasks を COMPLETE |
+| Google → AIFCC | ポーリング（5分） | 変更を検知して AIFCC を UPDATE |
+| Google → AIFCC | 手動リフレッシュ | 即時同期 |
 
 ### 3.3 同期アルゴリズム
 
@@ -152,7 +152,7 @@ async function syncTask(task: Task): Promise<SyncResult> {
     await googleTasksClient.update(task.googleTaskId, toGoogleTask(task));
     return { status: 'pushed' };
   } else {
-    // リモートが新しい → FDC を UPDATE
+    // リモートが新しい → AIFCC を UPDATE
     return {
       status: 'pulled',
       updates: fromGoogleTask(remoteTask),
@@ -171,14 +171,14 @@ async function syncTask(task: Task): Promise<SyncResult> {
 │ タスク: 「プレゼン資料作成」                                      │
 │                                                                 │
 │ ┌─────────────────────┐   ┌─────────────────────┐              │
-│ │ 📱 FDC の変更        │   │ 📅 Google の変更    │              │
+│ │ 📱 AIFCC の変更        │   │ 📅 Google の変更    │              │
 │ ├─────────────────────┤   ├─────────────────────┤              │
 │ │ タイトル: プレゼン〜 │   │ タイトル: プレゼン〜│              │
 │ │ 状態: 進行中        │   │ 状態: 完了 ✅       │              │
 │ │ 更新: 10:30         │   │ 更新: 10:45        │              │
 │ └─────────────────────┘   └─────────────────────┘              │
 │                                                                 │
-│ [FDC を優先] [Google を優先] [両方を確認して選択]                │
+│ [AIFCC を優先] [Google を優先] [両方を確認して選択]                │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -186,21 +186,21 @@ async function syncTask(task: Task): Promise<SyncResult> {
 
 ### 4.1 タスクリスト戦略
 
-**方針**: FDC 専用のタスクリストを作成
+**方針**: AIFCC 専用のタスクリストを作成
 
 ```typescript
-const FDC_TASK_LIST_TITLE = 'FDC Tasks';
+const AIFCC_TASK_LIST_TITLE = 'AIFCC Tasks';
 
 async function ensureFdcTaskList(): Promise<string> {
   const lists = await googleTasksClient.listTaskLists();
-  const fdcList = lists.find(l => l.title === FDC_TASK_LIST_TITLE);
+  const fdcList = lists.find(l => l.title === AIFCC_TASK_LIST_TITLE);
 
   if (fdcList) {
     return fdcList.id;
   }
 
   // 存在しない場合は作成
-  const newList = await googleTasksClient.createTaskList({ title: FDC_TASK_LIST_TITLE });
+  const newList = await googleTasksClient.createTaskList({ title: AIFCC_TASK_LIST_TITLE });
   return newList.id;
 }
 ```
@@ -208,7 +208,7 @@ async function ensureFdcTaskList(): Promise<string> {
 ### 4.2 タスクマッピング
 
 ```typescript
-// FDC Task → Google Task
+// AIFCC Task → Google Task
 function toGoogleTask(task: Task): GoogleTaskInput {
   return {
     title: `[${SUIT_CONFIG[task.suit].symbol}] ${task.title}`,
@@ -218,7 +218,7 @@ function toGoogleTask(task: Task): GoogleTaskInput {
   };
 }
 
-// Google Task → FDC Task Updates
+// Google Task → AIFCC Task Updates
 function fromGoogleTask(googleTask: GoogleTask): Partial<Task> {
   // タイトルからスートを抽出
   const suitMatch = googleTask.title?.match(/^\[([♠♥♦♣])\]\s*/);
@@ -404,6 +404,6 @@ function classifyEventSuit(event: CalendarEvent): Suit | 'joker' {
 ## 10. 今後の拡張
 
 1. **Webhook 対応**: Google Tasks の変更をリアルタイム通知（Push Notifications）
-2. **Calendar 書き込み**: FDC からカレンダーイベント作成
+2. **Calendar 書き込み**: AIFCC からカレンダーイベント作成
 3. **複数カレンダー対応**: 仕事/プライベートカレンダーの統合
 4. **オフライン対応**: 同期キューとバックグラウンド同期

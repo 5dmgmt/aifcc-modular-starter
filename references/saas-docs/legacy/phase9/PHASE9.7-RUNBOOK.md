@@ -4,10 +4,10 @@
 
 ### 1.1 Phase 9.7 の位置づけ
 
-Phase 9.7 は、**FDC における技術負債ゼロ化フェーズ** です。
+Phase 9.7 は、**AIFCC における技術負債ゼロ化フェーズ** です。
 Phase 1–9.6 までに積み上がった技術的負債をすべて解消し、Phase 10 以降の開発を「最も健全な状態」で開始するための **最終ハードニング** です。
 
-> **注意**: 本ランブックの内容は、`DOCS/FDC-GRAND-GUIDE.md` の Phase 9.7 セクションと一体で運用します。いずれか一方を更新した場合、**必ずもう一方も同期をとってください**。
+> **注意**: 本ランブックの内容は、`DOCS/AIFCC-GRAND-GUIDE.md` の Phase 9.7 セクションと一体で運用します。いずれか一方を更新した場合、**必ずもう一方も同期をとってください**。
 
 ### 1.2 技術負債ゼロの定義（5つの柱）
 
@@ -37,7 +37,7 @@ Phase 1–9.6 までに積み上がった技術的負債をすべて解消し、
 |----|------|----------------------|-----------------|------------------|---------|
 | **TD-01** | 旧 `api/` 残存と二重実装 | 段階的移行時の並行稼働措置 | archive/ 移動, ESLint ルール追加, CI ガードレール設定 | **CI で archive import があれば Build Fail** | ✅ 解消済み (9.7-A-1) |
 | **TD-02** | `vercel.json` の旧ビルド設定 | SPA 時代の設定踏襲 | Next.js 15 完全移行, App Router + Route Handlers 実装 | **`npm run build` 成功, `/api/auth/*` が動作** | ✅ 解消済み (9.7-A-2) |
-| **TD-03** | Cookie 名の分裂 | 認証基盤の移行過渡期 | `fdc_session` 統一, 旧名 grep 削除 | **ブラウザ Cookie 一覧に `fdc_session` 1つのみ** | ✅ 解消済み (9.7-A-1) |
+| **TD-03** | Cookie 名の分裂 | 認証基盤の移行過渡期 | `aifcc_session` 統一, 旧名 grep 削除 | **ブラウザ Cookie 一覧に `aifcc_session` 1つのみ** | ✅ 解消済み (9.7-A-1) |
 | **TD-04** | Auth/CSRF/RateLimit の不統一 | 機能ごとの個別実装による分散 | 共通 `api-utils` 実装, 全 API 適用 | **全 API が共通関数経由かつ 403/429 応答確認** | ✅ 解消済み (9.7-B) |
 | **TD-05** | スキップテスト残存 | 実装先行によるテスト後回し | スキップ解消, RLS 境界テスト強化 | **`npm test` 結果の skipped が 0件** | ✅ 解消済み (9.7-B - security-rls.spec.ts 実装) |
 | **TD-06** | 巨大ファイルの存在 | 初期開発速度優先の集約 | ファイル行数確認、推奨範囲内を確認 | **db.ts < 500行, auth.ts < 400行** | ✅ 解消済み (9.7-C - db.ts: 167行, auth.ts: 121行) |
@@ -85,7 +85,7 @@ Phase 1–9.6 までに積み上がった技術的負債をすべて解消し、
   - `workspace_data` の容量チェック（開発環境用）
   - これを CI (または pre-push) に組み込む
 - `vercel.json` を Next.js 15 公式設定に書き換え
-- すべてのセッション Cookie が `fdc_session` に統一され、ブラウザ devtools で確認可能
+- すべてのセッション Cookie が `aifcc_session` に統一され、ブラウザ devtools で確認可能
 - `lib/core/auth.ts` から `unlockApp()` 関数が削除され、grep で検索してもヒットしない
 - `lib/server/db.ts` で globalThis パターンが適用され、開発環境でのリロード連打でも接続リークが発生しない
 - `tests/e2e/architecture.spec.ts` が作成され、旧ルートが 404 を返すことを自動検証
@@ -176,7 +176,7 @@ Phase 9.7 の Definition of Done は、**技術負債カタログ（TD-01〜TD-1
 
 - [ ] **TD-01**: 旧 `api/` ディレクトリが `archive/phase9-api-legacy/` に移動され、`package.json` の `build` スクリプトから `tsc` が削除され、`tsconfig.next.json` の exclude に archive が追加されている
 - [ ] **TD-02**: `vercel.json` が Next.js 15 公式設定に書き換えられ、本番環境で `next build` の出力が確認できる
-- [ ] **TD-03**: すべてのセッション Cookie が `fdc_session` に統一され、`founders-direct-session` が grep で検索してもヒットしない
+- [ ] **TD-03**: すべてのセッション Cookie が `aifcc_session` に統一され、`founders-direct-session` が grep で検索してもヒットしない
 - [ ] **TD-04（一部）**: `unlockApp()` 関数が削除され、localStorage fallback が削除されている
 - [ ] **TD-04（残り）**: CSRF 検証とレート制限が Route Handler 共通処理で実装され、すべての `/api/**` エンドポイントに適用されている
 - [ ] **TD-05（Phase 9.7 スコープ分）**: E2E スキップテスト（auth, session, workspace 関連）が 0 件になっている
@@ -196,7 +196,7 @@ Phase 9.7 の Definition of Done は、**技術負債カタログ（TD-01〜TD-1
 ### 4.3 再発防止策が文書化されている
 
 - [ ] 技術負債カタログ（本ランブック 2 章）のすべての行が、「✅ 解消済み」または「Phase 10 で対応 → (リンク)」のいずれかに更新されている
-- [ ] Phase 9.7 で解消した TD について、なぜ発生したか、どう防ぐかが `DOCS/FDC-GRAND-GUIDE.md` の「Lessons Learned」セクションに追記されている
+- [ ] Phase 9.7 で解消した TD について、なぜ発生したか、どう防ぐかが `DOCS/AIFCC-GRAND-GUIDE.md` の「Lessons Learned」セクションに追記されている
 
 ## 5. 前提条件
 
@@ -308,7 +308,7 @@ archive/
 3. **DB**: Supabase PostgreSQL 17.6（RLS + Row-level isolation）
 4. **暗号化**: AES-256-GCM（ワークスペース鍵単位、2層暗号化）
 5. **認証**: Supabase Auth + Google OAuth（唯一の ID プロバイダ）
-6. **セッション**: Cookie ベース（`fdc_session`、HttpOnly, Secure, SameSite=Lax）
+6. **セッション**: Cookie ベース（`aifcc_session`、HttpOnly, Secure, SameSite=Lax）
 7. **デプロイ**: Vercel（GitHub 連携、自動デプロイ）
 
 ## 9. テスト要件
@@ -347,7 +347,7 @@ archive/
 ### Phase 9.7-A プロンプト
 
 ```
-あなたは FDC Phase 9.7-A オーナーエンジニアです。
+あなたは AIFCC Phase 9.7-A オーナーエンジニアです。
 目的は「アーキテクチャ負債の解消」と「再発防止ガードレールの構築」です。
 
 DOCS/PHASE9.7-RUNBOOK.md v2.0 に従い、以下のタスクを実行してください。
@@ -363,7 +363,7 @@ DOCS/PHASE9.7-RUNBOOK.md v2.0 に従い、以下のタスクを実行してく�
    - `vercel.json` を Next.js 15 公式設定に書き換え
    - `package.json` の `build` スクリプトから `tsc` を削除
 4. **TD-03 (Cookie 統一):**
-   - すべてのセッション Cookie を `fdc_session` に統一
+   - すべてのセッション Cookie を `aifcc_session` に統一
    - `founders-direct-session` を grep で検索して削除
 5. **TD-04（一部）:**
    - `lib/core/auth.ts` から `unlockApp()` 関数と localStorage fallback を削除
@@ -385,13 +385,13 @@ DOD:
 - [ ] メトリクス: リロード 50回後の DB 接続数が閾値以下（max_connections < 5）
 - [ ] `npm run lint` で archive への import があれば失敗する
 - [ ] `vercel inspect` で Next.js ビルダー出力を確認
-- [ ] Cookie 名統一（ブラウザで `fdc_session` 1つのみ）
+- [ ] Cookie 名統一（ブラウザで `aifcc_session` 1つのみ）
 ```
 
 ### Phase 9.7-B プロンプト
 
 ```
-あなたは FDC Phase 9.7-B オーナーエンジニアです。
+あなたは AIFCC Phase 9.7-B オーナーエンジニアです。
 目的は「テスト＆セキュリティ負債の解消」および「API 実装の共通化・標準化」です。
 
 技術負債カタログ（DOCS/PHASE9.7-RUNBOOK.md 2 章）の TD-04（残り）, TD-05, TD-10, TD-12 を解消してください。
@@ -430,7 +430,7 @@ DOD:
 ### Phase 9.7-C プロンプト
 
 ```
-あなたは FDC Phase 9.7-C オーナーエンジニアです。
+あなたは AIFCC Phase 9.7-C オーナーエンジニアです。
 目的は「将来フェーズへ送る構造的負債の棚卸し」と「データ整合性のガードレール構築」です。
 
 技術負債カタログ（DOCS/PHASE9.7-RUNBOOK.md 2 章）の TD-06, TD-07, TD-08 について、
@@ -482,7 +482,7 @@ DOD:
    - TD-01〜TD-12 の各完了指標（Metric）が満たされていない
 
 6. **Human Guardrails (CODEOWNERS)**
-   - `.github/CODEOWNERS` が設定され、`/app/api/**` および `/lib/server/**` の変更にはリードエンジニア（Founders Direct オーナー）の承認が必須化されていること
+   - `.github/CODEOWNERS` が設定され、`/app/api/**` および `/lib/server/**` の変更にはリードエンジニア（AIFCC オーナー）の承認が必須化されていること
 
 ---
 
@@ -505,7 +505,7 @@ Phase 9.7 完了時に、以下のフォーマットで `DOCS/TECH-DEBT-AUDIT.md
 
 ## 3. 最終レビューチェックリスト
 - [ ] 旧 API 完全撤去
-- [ ] Cookie 名の統一 (fdc_session)
+- [ ] Cookie 名の統一 (aifcc_session)
 - [ ] CSRF & RateLimit 完全適用
 - [ ] 全 API 共通ユーティリティ化
 - [ ] Decrypt Error の 422 化
@@ -584,7 +584,7 @@ const sessionCookie = 'founders-direct-session';
 **必須**:
 ```typescript
 // ✅ 統一された Cookie 名
-const sessionCookie = 'fdc_session';
+const sessionCookie = 'aifcc_session';
 ```
 
 ### 13.5 認証バイパス
@@ -638,7 +638,7 @@ import { newFunction } from '@/lib/server/utils';
 
 - ✅ **TD-01**: 旧API完全撤去（`archive/phase9-api-legacy/` へ移動、6,009行）
 - ✅ **TD-02**: `vercel.json` Next.js 15対応完了
-- ✅ **TD-03**: Cookie名統一完了（`fdc_session` のみ）
+- ✅ **TD-03**: Cookie名統一完了（`aifcc_session` のみ）
 - ✅ **TD-04**: 共通APIユーティリティ化完了（`lib/server/api-utils.ts` 作成）
 - ✅ **TD-05**: スキップテスト 0件達成（Phase 9.7スコープ）
 - ✅ **TD-06**: 巨大ファイル確認完了（db.ts: 167行, auth.ts: 121行 - 推奨範囲内）
@@ -684,7 +684,7 @@ import { newFunction } from '@/lib/server/utils';
 1. **ドキュメント**:
    - ✅ `DOCS/TECH-DEBT-AUDIT.md` - 技術負債解消監査ログ
    - ✅ `DOCS/MANUAL-TEST-CHECKLIST.md` - 手動テスト項目（7項目）
-   - ✅ `DOCS/FDC-GRAND-GUIDE.md` v3.0 - Phase 9.7完了状態に更新
+   - ✅ `DOCS/AIFCC-GRAND-GUIDE.md` v3.0 - Phase 9.7完了状態に更新
 
 2. **スクリプト**:
    - ✅ `scripts/verify-debt-free.sh` - 再発防止スクリプト

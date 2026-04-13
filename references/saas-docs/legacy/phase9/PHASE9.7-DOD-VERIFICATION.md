@@ -25,7 +25,7 @@
 |----|--------------|--------------|------|
 | **TD-01** | `archive/phase9-api-legacy/` 存在 | ✅ 存在確認（11/20作成、12ディレクトリ） | ✅ |
 | **TD-02** | `vercel.json` Next.js 15対応 | ✅ 確認済み（Runbook記載） | ✅ |
-| **TD-03** | Cookie名 `fdc_session` 統一 | ✅ 旧名 `founders-direct-session` grep結果0件 | ✅ |
+| **TD-03** | Cookie名 `aifcc_session` 統一 | ✅ 旧名 `founders-direct-session` grep結果0件 | ✅ |
 | **TD-04一部** | `unlockApp()` 削除 | ✅ grep結果0件 | ✅ |
 | **TD-09** | DB接続リーク対策 | ✅ N/A（Supabase client使用） | ✅ |
 | **TD-11** | `architecture.spec.ts` 作成 | ✅ 存在確認（3,838バイト、11/20 20:29作成） | ✅ |
@@ -295,7 +295,7 @@
 
 | 項目 | 書類ベース要件 | 実際ベース検証 | 判定 |
 |------|--------------|--------------|------|
-| セクション存在 | `DOCS/FDC-GRAND-GUIDE.md` 内 | ❌ **セクション不存在** | ❌ |
+| セクション存在 | `DOCS/AIFCC-GRAND-GUIDE.md` 内 | ❌ **セクション不存在** | ❌ |
 | 内容追記 | Phase 9.7 の Lessons Learned | ❌ **未追記** | ❌ |
 
 **判定**: ❌ **未完了**

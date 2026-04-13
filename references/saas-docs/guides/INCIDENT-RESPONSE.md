@@ -2,7 +2,7 @@
 
 **Version:** 1.0
 **制定日:** 2025-12-02
-**適用範囲:** Founders Direct Cockpit 運用チーム
+**適用範囲:** AIFCC Cockpit 運用チーム
 
 ---
 

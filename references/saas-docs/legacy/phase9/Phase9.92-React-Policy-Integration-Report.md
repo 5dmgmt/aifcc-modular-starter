@@ -8,7 +8,7 @@
 
 ## 📋 変更ファイル一覧
 
-### 1. `docs/FDC-GRAND-GUIDE.md`
+### 1. `docs/AIFCC-GRAND-GUIDE.md`
 **変更箇所**: Phase 9.92 の記述（83-124行目）
 
 **追加内容**:
@@ -102,7 +102,7 @@
 
 | ファイル | 追加行数 | 変更内容 |
 |---------|---------|---------|
-| FDC-GRAND-GUIDE.md | 約50行 | Phase 9.92 の詳細化 |
+| AIFCC-GRAND-GUIDE.md | 約50行 | Phase 9.92 の詳細化 |
 | DEVELOPMENT.md | 約140行 | React 実装ルール新設 |
 | PHASE9.92-LEGACY-UI-REACT-RUNBOOK.md | 約180行 | React 移行プロトコル詳細化 |
 | **合計** | **約370行** | **3ファイル更新** |
@@ -111,7 +111,7 @@
 
 ## 📝 必須反映項目の達成状況
 
-### 【1. FDC-GRAND-GUIDE.md に追加】
+### 【1. AIFCC-GRAND-GUIDE.md に追加】
 - ✅ Phase 9.92 は React / ViewModel 実装フェーズであること
 - ✅ 旧 TypeScript DOM 実装（js/tabs/*.ts）は React 版の仕様書として扱うこと
 - ✅ React の採用理由と Next.js 15 移行との整合性
@@ -137,7 +137,7 @@
 ## 🔍 影響範囲
 
 ### 直接影響を受けるドキュメント
-- ✅ `docs/FDC-GRAND-GUIDE.md`（プロジェクト全体方針）
+- ✅ `docs/AIFCC-GRAND-GUIDE.md`（プロジェクト全体方針）
 - ✅ `docs/guides/DEVELOPMENT.md`（開発ルール）
 - ✅ `docs/PHASE9.92-LEGACY-UI-REACT-RUNBOOK.md`（Phase 9.92 ランブック）
 
@@ -164,7 +164,7 @@
    - ドキュメント変更のため、コードには影響なし
 
 2. **ドキュメント整合性の確認**
-   - FDC-GRAND-GUIDE.md、DEVELOPMENT.md、PHASE9.92 ランブックの記述に矛盾がないか確認
+   - AIFCC-GRAND-GUIDE.md、DEVELOPMENT.md、PHASE9.92 ランブックの記述に矛盾がないか確認
    - 特に「1画面 = 1 ViewModel Hook」などの原則が一貫しているか確認
 
 ### Phase 9.92 実装開始前に実施すべきこと
@@ -251,7 +251,7 @@ export interface DashboardStats {
 ## 🔍 検証項目
 
 ### ドキュメント整合性チェック
-- [x] FDC-GRAND-GUIDE.md と DEVELOPMENT.md の記述が一致している
+- [x] AIFCC-GRAND-GUIDE.md と DEVELOPMENT.md の記述が一致している
 - [x] DEVELOPMENT.md と PHASE9.92 ランブックの記述が一致している
 - [x] 「1画面 = 1 ViewModel Hook」などの原則が3ファイルで一貫している
 - [x] Phase 9.92 → 9.93 の責務分離が明確に記述されている
@@ -282,7 +282,7 @@ export interface DashboardStats {
 Phase 9.92 を「全 UI の React / ViewModel 化フェーズ」として正式に位置づけ、以下を達成しました：
 
 1. ✅ **3つの主要ドキュメントを React 方針で統一**
-   - FDC-GRAND-GUIDE.md（全体方針）
+   - AIFCC-GRAND-GUIDE.md（全体方針）
    - DEVELOPMENT.md（実装ガイドライン）
    - PHASE9.92 ランブック（詳細手順）
 

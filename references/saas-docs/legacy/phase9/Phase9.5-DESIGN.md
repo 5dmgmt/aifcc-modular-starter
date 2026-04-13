@@ -2,7 +2,7 @@ Phase 9.5 – Technical Debt Recovery & Performance Stabilization（Final）
 
 Version: 2.0（確定版）
 Date: 2025-11-19
-Prepared for: Founders Direct Cockpit Phase 10
+Prepared for: AIFCC Cockpit Phase 10
 
 0. Purpose – なぜ Phase 9.5 が必須なのか（確定版）
 
@@ -178,7 +178,7 @@ HOW-TO-DEVELOP.md
 
 PHASE9-ENCRYPTION-AND-API-RUNBOOK.md
 
-FDC-GRAND-GUIDE.md（Phase 9.5 追加）
+AIFCC-GRAND-GUIDE.md（Phase 9.5 追加）
 
 package.json（不要依存排除）
 
@@ -236,5 +236,5 @@ Phase 12（OKR）
 
 を 高速・安全・破綻なし に実装できる状態が整う。
 
-Phase 9.5 の完了は、Founders Direct Cockpit の
+Phase 9.5 の完了は、AIFCC Cockpit の
 「本当のProduction-ready化」を意味する。

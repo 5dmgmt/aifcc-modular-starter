@@ -3,17 +3,23 @@
 /**
  * app/(app)/layout.tsx
  *
- * 認証済みユーザー用レイアウト（Phase 0: 認証のみ）
- * Phase 1 で DataProvider を追加します
+ * 認証済みユーザー用レイアウト
+ * タブナビゲーション: 8タブ構成（UIシェル）
  */
 
 import { useEffect, useState, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { AuthProvider, type AuthUser } from '@/lib/contexts/AuthContext';
-// Phase 1 で追加: import { DataProvider } from '@/lib/contexts/DataContext';
-import LandingPage from '@/components/landing/default/LandingPage';
+import WelcomePage from '@/components/landing/WelcomePage';
 import {
   LayoutDashboard,
+  Calendar,
+  Map,
+  Target,
+  Layers,
+  Users,
+  UserPlus,
+  Settings,
   LogOut,
   type LucideIcon,
 } from 'lucide-react';
@@ -26,8 +32,13 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { href: '/dashboard', label: 'ダッシュボード', icon: LayoutDashboard },
-  // ランブックで追加: { href: '/tasks', label: 'タスク', icon: CheckSquare },
-  // ランブックで追加: { href: '/settings', label: '設定', icon: Settings },
+  { href: '/tasks', label: 'タスク', icon: Calendar },
+  { href: '/action-map', label: 'Action Map', icon: Map },
+  { href: '/okr', label: 'OKR', icon: Target },
+  { href: '/mvv', label: 'MVV', icon: Layers },
+  { href: '/clients', label: '既存客', icon: Users },
+  { href: '/leads', label: '見込み客', icon: UserPlus },
+  { href: '/settings', label: '設定', icon: Settings },
 ];
 
 export default function AppLayout({
@@ -41,9 +52,8 @@ export default function AppLayout({
   const [loading, setLoading] = useState(true);
 
   const checkAuth = useCallback(() => {
-    const session = localStorage.getItem('fdc_session');
+    const session = localStorage.getItem('aifcc_session');
     if (!session) {
-      // 未ログイン時はリダイレクトせず、LPを表示
       setLoading(false);
       return;
     }
@@ -52,7 +62,6 @@ export default function AppLayout({
       const parsed = JSON.parse(session);
       setUser(parsed.user);
     } catch {
-      // セッション無効の場合もLPを表示
       setLoading(false);
     } finally {
       setLoading(false);
@@ -64,34 +73,32 @@ export default function AppLayout({
   }, [checkAuth]);
 
   const handleLogout = () => {
-    localStorage.removeItem('fdc_session');
+    localStorage.removeItem('aifcc_session');
+    document.cookie = 'aifcc_session=; path=/; max-age=0';
     router.push('/login');
   };
 
   if (loading) {
     return (
-      <div style={{ padding: '40px', textAlign: 'center' }}>
+      <div style={{ padding: '40px', textAlign: 'center', color: 'rgba(25,25,24,0.5)' }}>
         読み込み中...
       </div>
     );
   }
 
-  // 未ログイン時はLPを表示
   if (!user) {
-    return <LandingPage />;
+    return <WelcomePage />;
   }
 
   return (
     <AuthProvider user={user} loading={loading}>
-      {/* Phase 1 で DataProvider でラップ */}
-      {/* ヘッダー */}
       <header className="header">
         <div className="header-content">
-          <h1>FDC Modular</h1>
-          <p className="subtitle">Founders Direct Cockpit - 学習用スターター</p>
+          <h1>AIFCC Cockpit</h1>
+          <p className="subtitle">AIFCC Modular Starter</p>
         </div>
         <div className="header-actions">
-          <span style={{ fontSize: '14px', color: 'var(--text-light)' }}>
+          <span style={{ fontSize: '14px', color: 'rgba(25,25,24,0.6)' }}>
             {user.name || user.email}
           </span>
           <button className="btn btn-secondary btn-small" onClick={handleLogout}>
@@ -101,7 +108,6 @@ export default function AppLayout({
         </div>
       </header>
 
-      {/* タブナビゲーション */}
       <div className="container">
         <nav className="tabs">
           {NAV_ITEMS.map((item) => {
@@ -112,14 +118,13 @@ export default function AppLayout({
                 href={item.href}
                 className={`tab ${pathname === item.href ? 'active' : ''}`}
               >
-                <Icon className="tab-icon" size={20} />
+                <Icon className="tab-icon" size={18} />
                 {item.label}
               </a>
             );
           })}
         </nav>
 
-        {/* メインコンテンツ */}
         <main>{children}</main>
       </div>
     </AuthProvider>

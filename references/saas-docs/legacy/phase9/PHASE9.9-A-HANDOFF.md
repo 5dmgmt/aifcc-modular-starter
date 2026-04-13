@@ -5,7 +5,7 @@
 ### ✅ 完了したこと
 
 1. **Grand Guide 更新**
-   - `docs/FDC-GRAND-GUIDE.md` に Phase 9.9 セクション追加完了
+   - `docs/AIFCC-GRAND-GUIDE.md` に Phase 9.9 セクション追加完了
 
 2. **Phase 9.9 ランブック作成**
    - `docs/PHASE9.9-BUGFIX-LEADS-RUNBOOK.md` 作成完了
@@ -50,7 +50,7 @@
 
 3. **Admin Seed 未実行**
    - `scripts/seed-admin.ts` は準備完了
-   - admin@example.com に `fdc_admin` 権限を付与する必要あり
+   - admin@example.com に `aifcc_admin` 権限を付与する必要あり
    - 実行コマンド: `npx tsx scripts/seed-admin.ts`
 
 ## 次にやるべきこと（Phase 9.9-A 完了）
@@ -108,7 +108,7 @@
 - `docs/PHASE9.9-A-HANDOFF.md`（本ファイル）
 
 **更新**:
-- `docs/FDC-GRAND-GUIDE.md`
+- `docs/AIFCC-GRAND-GUIDE.md`
 - `app/(app)/dashboard/page.tsx`
 - `lib/server/supabase.ts` - 遅延初期化パターン
 - `app/api/auth/google/route.ts` - PKCE フロー対応
@@ -167,13 +167,13 @@ npm run dev
 **原因**: Cookie が正しく設定されていない
 
 **解決方法**:
-1. ブラウザの Cookie を確認（`fdc_session`）
+1. ブラウザの Cookie を確認（`aifcc_session`）
 2. `.env.local` の環境変数確認
 3. Supabase Redirect URLs 確認
 
 ### 問題: Admin タブが表示されない
 
-**原因**: `global_role` が `fdc_admin` ではない
+**原因**: `global_role` が `aifcc_admin` ではない
 
 **解決方法**:
 ```bash
@@ -185,7 +185,7 @@ npx tsx scripts/seed-admin.ts
 - [ ] `/dashboard` にアクセスして Sidebar が表示される
 - [ ] 設定タブが全ユーザーに表示される
 - [ ] ログアウトボタンが動作する
-- [ ] admin@example.com に `fdc_admin` 権限が付与される
+- [ ] admin@example.com に `aifcc_admin` 権限が付与される
 - [ ] 管理者・SAタブが mochizuki のみに表示される
 - [ ] `npm run type-check` が成功
 - [ ] `npm run build` が成功

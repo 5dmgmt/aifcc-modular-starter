@@ -1,4 +1,4 @@
-# 🚀 Founders Direct - デプロイ運用ガイド（再発防止版）
+# 🚀 AIFCC - デプロイ運用ガイド（再発防止版）
 
 **Version:** 1.0
 **Last Updated:** 2025-11-17
@@ -19,7 +19,7 @@
 
 ## 概要
 
-本ドキュメントは、Founders Direct Modular / Founders Direct Cockpit のデプロイにおいて発生した問題を記録し、再発防止のための運用ルールを定めたものです。
+本ドキュメントは、AIFCC Modular / AIFCC Cockpit のデプロイにおいて発生した問題を記録し、再発防止のための運用ルールを定めたものです。
 
 ### 対象環境
 

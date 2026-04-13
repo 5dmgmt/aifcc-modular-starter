@@ -1,13 +1,13 @@
-# FDC Modular ランブック
+# AIFCC Modular ランブック
 
-このディレクトリには、FDC Modular Starter に機能を追加するためのランブックが含まれています。
+このディレクトリには、AIFCC Modular Starter に機能を追加するためのランブックが含まれています。
 
 ---
 
 ## 学習の進め方
 
 1. **Phase 0** でスターターを構築（新規プロジェクト作成の場合）
-2. `docs/FDC-CORE.md` を読んで全体像を理解
+2. `docs/AIFCC-CORE.md` を読んで全体像を理解
 3. 各Phase のランブックを順番に実行
 4. コードを理解しながら実装
 5. ビルドが通ることを確認
@@ -48,7 +48,7 @@ Phase 3, 4, 5 のランブックを作成して docs/runbooks/ に保存して�
 
 | ドキュメント | パス |
 |------------|------|
-| グランドガイド | docs/FDC-MODULAR-GUIDE.md |
+| グランドガイド | docs/AIFCC-MODULAR-GUIDE.md |
 | 開発ガイド | docs/guides/DEVELOPMENT.md |
 
 ## 2. 参照ファイル
@@ -114,7 +114,7 @@ Phase 6, 7, 8 のランブックを作成して docs/runbooks/ に保存して�
 
 | ドキュメント | パス |
 |------------|------|
-| グランドガイド | docs/FDC-MODULAR-GUIDE.md |
+| グランドガイド | docs/AIFCC-MODULAR-GUIDE.md |
 | 開発ガイド | docs/guides/DEVELOPMENT.md |
 
 ## 2. 参照ファイル
@@ -174,7 +174,7 @@ Phase 9, 10, 11 のランブックを作成して docs/runbooks/ に保存して
 
 | ドキュメント | パス |
 |------------|------|
-| グランドガイド | docs/FDC-MODULAR-GUIDE.md |
+| グランドガイド | docs/AIFCC-MODULAR-GUIDE.md |
 | 開発ガイド | docs/guides/DEVELOPMENT.md |
 
 ## 2. 参照ファイル
@@ -262,7 +262,7 @@ Phase N を実行してください。
 
 完了後、以下を更新してください:
 1. docs/CHANGELOG.md に変更内容を追記
-2. docs/FDC-CORE.md のフェーズ状況を更新
+2. docs/AIFCC-CORE.md のフェーズ状況を更新
 3. docs/runbooks/README.md のPhase状態を更新
 4. package.json のバージョンを更新
 
@@ -278,7 +278,7 @@ Phase N を実行してください。
 
 | ドキュメント | パス |
 |------------|------|
-| グランドガイド | docs/FDC-MODULAR-GUIDE.md |
+| グランドガイド | docs/AIFCC-MODULAR-GUIDE.md |
 | 開発ガイド | docs/guides/DEVELOPMENT.md |
 ```
 
@@ -301,4 +301,4 @@ Phase N を実行してください。
 
 **Last Updated**: 2026-02-22
 **Version**: v1.1
-**Maintained by**: FDC Development Team
+**Maintained by**: AIFCC Development Team

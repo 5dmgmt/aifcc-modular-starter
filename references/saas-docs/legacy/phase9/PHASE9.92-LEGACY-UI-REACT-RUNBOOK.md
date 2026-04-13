@@ -455,7 +455,7 @@ ls -la archive/phase9-legacy-js/tabs/
 
 ### 1.2 アクセス権限マトリクス
 
-| タブ | MEMBER | MANAGER | EXEC | fdc_admin |
+| タブ | MEMBER | MANAGER | EXEC | aifcc_admin |
 |------|--------|---------|------|-----------|
 | ダッシュボード〜レポート (1-10) | ✅ | ✅ | ✅ | ✅ |
 | 設定 (11) | ❌ | 👁 閲覧のみ | ✏️ 編集可 | ✏️ 編集可 |
@@ -466,7 +466,7 @@ ls -la archive/phase9-legacy-js/tabs/
 - **MEMBER**: 一般社員。業務タブのみアクセス可能
 - **MANAGER**: マネージャー。設定閲覧 + MEMBER一覧の閲覧が可能
 - **EXEC**: 経営者/管理者。自社ワークスペースの全メンバー管理（招待・削除・ロール変更）が可能
-- **fdc_admin**: システム管理者。全ワークスペース横断での管理が可能
+- **aifcc_admin**: システム管理者。全ワークスペース横断での管理が可能
 
 ### 1.3 進捗更新ルール
 
@@ -664,7 +664,7 @@ ls -la archive/phase9-legacy-js/tabs/
 - MEMBER: アクセス不可
 - MANAGER: MEMBER一覧の閲覧のみ
 - EXEC: 全メンバー管理（招待・削除・ロール変更）
-- fdc_admin: 全ワークスペース管理
+- aifcc_admin: 全ワークスペース管理
 
 主要関数:
 - `initAdminTab()` - タブ初期化
@@ -714,7 +714,7 @@ ls -la archive/phase9-legacy-js/tabs/
 
 **Legacy ファイル**: 新規実装（既存の `app/(app)/admin/sa/page.tsx` を拡張）
 
-**アクセス権限**: fdc_admin のみ
+**アクセス権限**: aifcc_admin のみ
 
 主要関数（新規設計）:
 - `useSADashboardViewModel()` - SAダッシュボード用ViewModel
@@ -1718,7 +1718,7 @@ Phase 9.92 全体を「完了」とみなす条件：
 ### Phase 9.92-1 用
 
 ```markdown
-あなたは Founders Direct Cockpit (FDC) プロジェクトの Phase 9.92-1 担当エンジニアです。
+あなたは AIFCC Cockpit (AIFCC) プロジェクトの Phase 9.92-1 担当エンジニアです。
 
 【作業指示】
 1. `/Users/5dmgmt/プラグイン/foundersdirect` をプロジェクトルートとする
@@ -1743,7 +1743,7 @@ Phase 9.92 全体を「完了」とみなす条件：
 ### Phase 9.92-2〜10 用
 
 ```markdown
-あなたは Founders Direct Cockpit (FDC) プロジェクトの Phase 9.92-X 担当エンジニアです。
+あなたは AIFCC Cockpit (AIFCC) プロジェクトの Phase 9.92-X 担当エンジニアです。
 
 【作業指示】
 1. `/Users/5dmgmt/プラグイン/foundersdirect` をプロジェクトルートとする
@@ -1767,7 +1767,7 @@ Phase 9.92 全体を「完了」とみなす条件：
 ## 10. 参考資料
 
 ### 関連ドキュメント
-- `docs/FDC-GRAND-GUIDE.md` — プロジェクト全体の設計方針
+- `docs/AIFCC-GRAND-GUIDE.md` — プロジェクト全体の設計方針
 - `docs/PHASE9.9-BUGFIX-LEADS-RUNBOOK.md` — Phase 9.9 の権限・リード管理修正（必要に応じて参照）
 
 ### 現行の各タブ UI 実装
@@ -1836,9 +1836,9 @@ Phase 9.92 全体を「完了」とみなす条件：
 
 ---
 
-## 12. FDC-GRAND-GUIDE 更新テンプレート
+## 12. AIFCC-GRAND-GUIDE 更新テンプレート
 
-Phase 9.92 完了時（全10タブ移行完了時）に `docs/FDC-GRAND-GUIDE.md` を以下のように更新してください：
+Phase 9.92 完了時（全10タブ移行完了時）に `docs/AIFCC-GRAND-GUIDE.md` を以下のように更新してください：
 
 ```markdown
 ### Phase 9.9: 緊急バグ修正 & ガバナンス強化

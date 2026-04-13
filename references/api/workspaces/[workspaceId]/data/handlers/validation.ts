@@ -19,7 +19,7 @@ import { isE2ETestRequest } from '@/lib/server/test-mode';
  */
 function isSuperTenantMode(request: NextRequest): boolean {
   // 環境変数で有効化されていない場合は無効
-  if (process.env.FDC_SUPER_TENANT_MODE !== 'true') {
+  if (process.env.AIFCC_SUPER_TENANT_MODE !== 'true') {
     return false;
   }
 

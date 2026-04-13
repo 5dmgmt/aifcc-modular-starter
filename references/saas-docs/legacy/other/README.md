@@ -1,6 +1,6 @@
-# 📚 Founders Direct Modular - ドキュメント
+# 📚 AIFCC Modular - ドキュメント
 
-このディレクトリには、Founders Direct Modular プロジェクトの技術ドキュメントが格納されています。
+このディレクトリには、AIFCC Modular プロジェクトの技術ドキュメントが格納されています。
 
 **Last Updated:** 2025-11-16
 
@@ -86,7 +86,7 @@
 
 ## 🗺️ その他のドキュメント
 
-### [FDC-GRAND-GUIDE.md](./FDC-GRAND-GUIDE.md)
+### [AIFCC-GRAND-GUIDE.md](./AIFCC-GRAND-GUIDE.md)
 
 **プロジェクト全体のマスタープラン**
 
@@ -132,7 +132,7 @@ Playwright を使用した E2E テストの実装方法と実行手順。
 | 環境変数を設定したい | `SECURITY.md` → 環境変数の管理 |
 | 現在の設定値を確認したい | `js/core/state.ts` を直接参照 |
 | E2E テストを書きたい | `TESTING-GUIDE.md` |
-| プロジェクトの全体像を把握したい | `FDC-GRAND-GUIDE.md` |
+| プロジェクトの全体像を把握したい | `AIFCC-GRAND-GUIDE.md` |
 | 過去の設計経緯を知りたい | `legacy/WORKSPACE-SECURITY-DESIGN.md` |
 
 ---

@@ -121,7 +121,7 @@ export function SettingsTab() {
       >
         <div style={{ padding: '8px 0' }}>
           <p style={{ color: 'var(--text-light)', marginBottom: '16px', fontSize: '14px' }}>
-            Founders Direct Cockpit のサービス紹介、機能一覧、料金プランをご覧いただけます。
+            AIFCC Cockpit のサービス紹介、機能一覧、料金プランをご覧いただけます。
           </p>
           <a
             href="/about"

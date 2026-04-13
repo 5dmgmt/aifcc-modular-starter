@@ -4,7 +4,7 @@ Security & Scale NEXT Step（Google Token / Audit Log / Background Sync）
 - Version: 1.0
 - Status: Phase 15 事前設計
 - 対象リポジトリ: `/Users/5dmgmt/プラグイン/foundersdirect`
-- 対象プロダクト: Founders Direct Cockpit（FDC）
+- 対象プロダクト: AIFCC Cockpit（AIFCC）
 - 前提フェーズ:
   - Phase 14.6.7 SECURITY HOTFIX 完了
   - Phase 14.9-C Tenant Boundary Hardening 完了（全 API checkTenantBoundary 適用済）
@@ -63,8 +63,8 @@ Google OAuth Refresh Token Encryption
 
 2. **鍵管理**
    - Vercel 環境変数でバージョン付き管理
-     - `FDC_GOOGLE_TOKEN_KEY_V1`（本番）
-     - `FDC_GOOGLE_TOKEN_KEY_V1_STG`（ステージング）
+     - `AIFCC_GOOGLE_TOKEN_KEY_V1`（本番）
+     - `AIFCC_GOOGLE_TOKEN_KEY_V1_STG`（ステージング）
    - コード側では
      - `ENCRYPTION_KEYS = { v1: ..., v2: ... }`
      - `CURRENT_KEY_VERSION = "v1"`
@@ -119,7 +119,7 @@ Google OAuth Refresh Token Encryption
 
 ### 1-6. DOD（Definition of Done）
 
-- [ ] 本番・ステージングに `FDC_GOOGLE_TOKEN_KEY_V1` が安全に設定されている
+- [ ] 本番・ステージングに `AIFCC_GOOGLE_TOKEN_KEY_V1` が安全に設定されている
 - [ ] 新規に連携したユーザーの `refresh_token` が暗号化されて保存される
 - [ ] Google 同期・タスク・カレンダーが通常どおり動作する
 - [ ] 既存ユーザーについての方針（マイグレーション or 再連携）が決まっている

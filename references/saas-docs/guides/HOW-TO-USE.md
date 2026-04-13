@@ -1,4 +1,4 @@
-# Founders Direct Cockpit - 使い方ガイド
+# AIFCC Cockpit - 使い方ガイド
 
 **バージョン:** v2.8.7（Phase 14.6 完了）
 **最終更新:** 2025-12-02
@@ -16,7 +16,7 @@
 | フレームワーク | Next.js 15.5.6 + React 19.2.0 + TypeScript 5.9.3 |
 | データベース | Supabase PostgreSQL 17.6 |
 | 認証 | Supabase Auth（Google OAuth PKCE） |
-| セッション | Cookie ベース（HttpOnly `fdc_session`） |
+| セッション | Cookie ベース（HttpOnly `aifcc_session`） |
 | AI | Vercel AI SDK 5.0.100 + OpenAI GPT-4o-mini |
 | テスト | Playwright E2E（420+テスト）+ Vitest |
 | セキュリティ | CSP Nonce ベース + SameSite Cookie |
@@ -247,7 +247,7 @@ foundersdirect/
 1. ログインページで「Google でログイン」をクリック
 2. Google OAuth 認証
 3. Supabase Auth でトークン検証
-4. サーバーでセッション作成、Cookie 設定（fdc_session）
+4. サーバーでセッション作成、Cookie 設定（aifcc_session）
 5. ダッシュボードにリダイレクト
 ```
 
@@ -336,8 +336,8 @@ npm run report:tech-debt  # 技術負債レポート生成
 - `docs/guides/Performance-Specification-v1.0.md` - P95 目標値
 
 ### アーキテクチャ
-- `docs/FDC-GRAND-GUIDE.md` - マスター規範書
-- `docs/guides/FDC-ARCHITECTURE-OVERVIEW.md` - 構造概要
+- `docs/AIFCC-GRAND-GUIDE.md` - マスター規範書
+- `docs/guides/AIFCC-ARCHITECTURE-OVERVIEW.md` - 構造概要
 
 ---
 

@@ -89,7 +89,7 @@ headers: async () => [
 ### 仕様
 - favicon: 32x32 ICO形式
 - apple-touch-icon: 180x180 PNG形式
-- ブランドカラー: #00B8C4（FDCプライマリカラー）
+- ブランドカラー: #00B8C4（AIFCCプライマリカラー）
 
 ---
 
@@ -102,18 +102,18 @@ headers: async () => [
 
 ```typescript
 export const metadata: Metadata = {
-  title: 'ログイン | Founders Direct Cockpit',
+  title: 'ログイン | AIFCC Cockpit',
   description: '自走型AI開発基盤 - Googleアカウントでログイン',
   openGraph: {
-    title: 'Founders Direct Cockpit',
+    title: 'AIFCC Cockpit',
     description: '自走型AI開発基盤',
     url: 'https://app.foundersdirect.jp/login',
-    siteName: 'Founders Direct Cockpit',
+    siteName: 'AIFCC Cockpit',
     type: 'website',
   },
   twitter: {
     card: 'summary',
-    title: 'Founders Direct Cockpit',
+    title: 'AIFCC Cockpit',
     description: '自走型AI開発基盤',
   },
 };
@@ -129,7 +129,7 @@ export const metadata: Metadata = {
 - `app/global-error.tsx` (新規) - ルートエラーページ
 
 ### 要件
-- FDCブランドデザインに統一
+- AIFCCブランドデザインに統一
 - トップページ（/login）へのリンク
 - エラーメッセージの明確化
 

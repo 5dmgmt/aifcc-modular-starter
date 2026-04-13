@@ -125,8 +125,8 @@ app/_components/[component-name]/
 
 | ドキュメント | 内容 |
 |-------------|------|
-| [PHASE14.4 マルチテナント](./PHASE14.4-FDC-MULTITENANT-WORKSPACE-RUNBOOK.md) | 本Phaseの後続作業 |
-| [FDC Grand Guide](../FDC-GRAND-GUIDE.md) | 全体設計ガイド |
+| [PHASE14.4 マルチテナント](./PHASE14.4-AIFCC-MULTITENANT-WORKSPACE-RUNBOOK.md) | 本Phaseの後続作業 |
+| [AIFCC Grand Guide](../AIFCC-GRAND-GUIDE.md) | 全体設計ガイド |
 
 ---
 

@@ -1,4 +1,4 @@
-# Founders Direct Cockpit - API 仕様書
+# AIFCC Cockpit - API 仕様書
 
 **バージョン:** v4.2 (Phase 14.6 対応)
 **最終更新:** 2025-12-02
@@ -8,7 +8,7 @@
 
 ## 📋 概要
 
-Founders Direct Cockpit (FDC) のサーバー連携API仕様を定義します。
+AIFCC Cockpit (AIFCC) のサーバー連携API仕様を定義します。
 
 **技術スタック:**
 - Next.js 15.5.6 Route Handlers (`app/api/**/route.ts`)
@@ -72,7 +72,7 @@ Founders Direct Cockpit (FDC) のサーバー連携API仕様を定義します�
 2. Credential を Supabase Auth に送信
 3. Supabase Auth が Google tokeninfo API で検証
 4. サーバー側でセッション作成 (`sessions` テーブル)
-5. HttpOnly Cookie `fdc_session` を発行
+5. HttpOnly Cookie `aifcc_session` を発行
 6. **セッションキャッシュ** (Vercel KV, TTL 5分)
 7. 以降のリクエストは自動的に Cookie が送信される
 
@@ -137,7 +137,7 @@ Founders Direct Cockpit (FDC) のサーバー連携API仕様を定義します�
 すべての API で以下の順序で認証・認可を実施:
 
 1. **キャッシュチェック**: Vercel KV でセッションキャッシュ確認
-2. **セッション検証**: Cookie `fdc_session` からセッションIDを取得
+2. **セッション検証**: Cookie `aifcc_session` からセッションIDを取得
 3. **セッション確認**: `sessions` テーブルでセッションの有効性を検証
 4. **ユーザー取得**: DB からユーザー情報を取得
 5. **キャッシュ保存**: 検証成功時にキャッシュに保存 (TTL 5分)
@@ -167,7 +167,7 @@ Founders Direct Cockpit (FDC) のサーバー連携API仕様を定義します�
 2. Supabase Auth でトークン交換
 3. users テーブルに upsert
 4. sessions テーブルにセッション作成
-5. Cookie `fdc_session` を発行
+5. Cookie `aifcc_session` を発行
 6. セッションキャッシュに保存
 
 ---
@@ -176,7 +176,7 @@ Founders Direct Cockpit (FDC) のサーバー連携API仕様を定義します�
 
 **責務:** セッション検証 & 現在ユーザー情報を返却
 
-**認証:** 必須 (Cookie `fdc_session`)
+**認証:** 必須 (Cookie `aifcc_session`)
 
 **レスポンス:**
 ```json
@@ -200,12 +200,12 @@ Founders Direct Cockpit (FDC) のサーバー連携API仕様を定義します�
 
 **責務:** セッション無効化 + Cookie削除 + キャッシュ無効化
 
-**認証:** 必須 (Cookie `fdc_session`)
+**認証:** 必須 (Cookie `aifcc_session`)
 
 **処理内容:**
 1. `sessions` テーブルのセッションを無効化 (revoked_at更新)
 2. セッションキャッシュを無効化
-3. Cookie `fdc_session` を削除
+3. Cookie `aifcc_session` を削除
 
 ---
 

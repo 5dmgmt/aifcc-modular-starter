@@ -81,14 +81,14 @@ app/_components/settings/ProfileSection.tsx
 
 ```typescript
 // Before
-<img src="/apple-touch-icon.png" alt="FDC" className={styles.logoIcon} />
+<img src="/apple-touch-icon.png" alt="AIFCC" className={styles.logoIcon} />
 
 // After
 import Image from 'next/image';
 
 <Image
   src="/apple-touch-icon.png"
-  alt="FDC"
+  alt="AIFCC"
   width={32}
   height={32}
   priority  // ファーストビューの画像は priority を付ける
@@ -662,8 +662,8 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
 ```json
 // public/manifest.json
 {
-  "name": "Founders Direct CRM",
-  "short_name": "FDC",
+  "name": "AIFCC CRM",
+  "short_name": "AIFCC",
   "description": "スタートアップ向けCRM・営業管理ツール",
   "start_url": "/dashboard",
   "display": "standalone",

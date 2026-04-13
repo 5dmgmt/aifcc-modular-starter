@@ -1,4 +1,4 @@
-# FDC Modular 開発ガイド
+# AIFCC Modular 開発ガイド
 
 **バージョン:** v1.0.0
 **最終更新:** 2025-12-06
@@ -7,7 +7,7 @@
 
 ### 0.1 目的
 
-このドキュメントは、FDC Modular Starter の開発・拡張を安全かつ一貫性をもって進めるための
+このドキュメントは、AIFCC Modular Starter の開発・拡張を安全かつ一貫性をもって進めるための
 **AI・人間共通の開発規範**です。
 
 Claude Code を使用する場合は、必ず本ドキュメントを読み込み遵守してください。
@@ -60,8 +60,8 @@ founders-direct-modular/
 │       └── index.ts        # 全型定義
 │
 ├── docs/                   # ドキュメント
-│   ├── FDC-MODULAR-GUIDE.md
-│   ├── FDC-CORE.md
+│   ├── AIFCC-MODULAR-GUIDE.md
+│   ├── AIFCC-CORE.md
 │   ├── CHANGELOG.md
 │   ├── guides/
 │   │   └── DEVELOPMENT.md  # 本ファイル
@@ -172,9 +172,9 @@ const NAV_ITEMS = [
 
 | イベント | 更新対象 |
 |---------|---------|
-| 機能追加 | CHANGELOG.md, FDC-CORE.md |
+| 機能追加 | CHANGELOG.md, AIFCC-CORE.md |
 | バグ修正 | CHANGELOG.md |
-| アーキテクチャ変更 | DEVELOPMENT.md, FDC-CORE.md |
+| アーキテクチャ変更 | DEVELOPMENT.md, AIFCC-CORE.md |
 | 新規ランブック作成 | runbooks/README.md |
 
 ### 5.2 CHANGELOG 形式
@@ -190,7 +190,7 @@ const NAV_ITEMS = [
 - ナビゲーションにタスクリンク追加
 ```
 
-### 5.3 FDC-CORE.md 更新
+### 5.3 AIFCC-CORE.md 更新
 
 フェーズ完了時に以下を更新:
 1. 「現在の開発状況」セクション
@@ -206,7 +206,7 @@ const NAV_ITEMS = [
 このプロジェクトの開発を行います。
 
 以下のファイルを読み込んでください:
-- docs/FDC-CORE.md
+- docs/AIFCC-CORE.md
 - docs/guides/DEVELOPMENT.md
 
 プロジェクトパス: /Users/5dmgmt/プラグイン/founders-direct-modular
@@ -221,7 +221,7 @@ Phase N を実行してください。
 
 実行後、以下を更新してください:
 1. docs/CHANGELOG.md に変更内容を追記
-2. docs/FDC-CORE.md のフェーズ状況を更新
+2. docs/AIFCC-CORE.md のフェーズ状況を更新
 3. package.json のバージョンを更新（minor バージョンアップ）
 ```
 
@@ -234,7 +234,7 @@ Phase N を実行してください。
 2. npm run type-check が成功するか
 3. ドキュメントが更新されているか
    - CHANGELOG.md
-   - FDC-CORE.md
+   - AIFCC-CORE.md
 ```
 
 ---
@@ -294,7 +294,7 @@ npm run dev
 
 # ブラウザで確認
 # http://localhost:3000
-# パスワード: fdc
+# パスワード: aifcc
 ```
 
 ### 8.2 ビルドテスト
@@ -324,4 +324,4 @@ npm run build
 
 **Last Updated**: 2026-02-22
 **Version**: v2.0.0
-**Maintained by**: FDC Development Team
+**Maintained by**: AIFCC Development Team

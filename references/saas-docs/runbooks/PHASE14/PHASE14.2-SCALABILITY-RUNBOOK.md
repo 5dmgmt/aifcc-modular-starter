@@ -141,7 +141,7 @@ export async function getSession(_request: NextRequest): Promise<User | null> {
 import { invalidateSessionCache } from '@/lib/server/session-cache';
 
 export async function POST(request: NextRequest) {
-  const sessionToken = cookieStore.get('fdc_session')?.value;
+  const sessionToken = cookieStore.get('aifcc_session')?.value;
 
   if (sessionToken) {
     // キャッシュを無効化

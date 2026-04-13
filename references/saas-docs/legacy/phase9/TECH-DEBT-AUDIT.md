@@ -144,10 +144,10 @@ drwxr-xr-x   5 5dmgmt  staff   160 11月 20 20:15 auth
 
 ### 3.2 Cookie名の統一
 
-**目標**: すべてのセッションCookieが `fdc_session` に統一
+**目標**: すべてのセッションCookieが `aifcc_session` に統一
 
 **実績**:
-- **統一Cookie名**: `fdc_session`
+- **統一Cookie名**: `aifcc_session`
 - **旧Cookie名**: `founders-direct-session`（完全削除）
 - **設定**: HttpOnly, Secure (本番), SameSite=Lax, Path=/
 
@@ -237,7 +237,7 @@ drwxr-xr-x   5 5dmgmt  staff   160 11月 20 20:15 auth
 ## 5. 最終レビューチェックリスト
 
 - [x] 旧 API 完全撤去（`archive/phase9-api-legacy/` へ移動）
-- [x] Cookie 名の統一 (`fdc_session`)
+- [x] Cookie 名の統一 (`aifcc_session`)
 - [x] CSRF & RateLimit 完全適用（共通ユーティリティ化）
 - [x] 全 API 共通ユーティリティ化（`lib/server/api-utils.ts`）
 - [x] Decrypt Error の 422 化
@@ -316,7 +316,7 @@ psql $DATABASE_URL -f scripts/monitor-workspace-size.sql
 **Phase 9.7 関連コミット**（直近20件）:
 
 ```
-3eddef4 Phase 9.7 準備完了 - FDC-GRAND-GUIDE.md を現実の構成に更新
+3eddef4 Phase 9.7 準備完了 - AIFCC-GRAND-GUIDE.md を現実の構成に更新
 2047578 Phase 9.5 完了報告 - 最終ドキュメント更新（3ファイル）
 1ed9597 Phase 9.5 完了報告 - 追加ドキュメント更新（5ファイル）
 ae99619 Phase 9.5 完了報告 - E2E テスト完全化タスク Phase 9.7 へ正式移管
@@ -460,7 +460,7 @@ DIRECT_DATABASE_URL="postgresql://postgres:PASSWORD@db.PROJECT_REF.supabase.co:5
 
 **ドキュメント更新**:
 - ✅ `PHASE9.8-RUNBOOK.md`: セクション 7.2 に記録済み
-- 📋 `FDC-GRAND-GUIDE.md`: Lessons Learned への追記が必要（DOC-01）
+- 📋 `AIFCC-GRAND-GUIDE.md`: Lessons Learned への追記が必要（DOC-01）
 
 ---
 

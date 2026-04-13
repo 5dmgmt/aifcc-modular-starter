@@ -1,5 +1,5 @@
 📘 PHASE9-DB-MIGRATION-DESIGN.md
-Founders Direct Cockpit (FDC)
+AIFCC Cockpit (AIFCC)
 Phase 9 – DB基盤移行（Neon → Supabase）設計方針レポート
 
 作成日: 2025-11-17
@@ -7,7 +7,7 @@ Phase 9 – DB基盤移行（Neon → Supabase）設計方針レポート
 
 1. 目的
 
-Founders Direct Cockpit (FDC) のデータベース基盤を
+AIFCC Cockpit (AIFCC) のデータベース基盤を
 Vercel Postgres (Neon) から Supabase（PostgreSQL） へ移行する。
 
 移行範囲

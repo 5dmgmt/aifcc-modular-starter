@@ -1,5 +1,5 @@
 # WORKSPACE-SECURITY-DESIGN.md
-FDC Workspace & セキュリティ設計書（v2.0）
+AIFCC Workspace & セキュリティ設計書（v2.0）
 
 > **⚠️ このドキュメントはアーカイブされています**
 >
@@ -15,7 +15,7 @@ FDC Workspace & セキュリティ設計書（v2.0）
 
 ## 1. 目的と現状
 
-- ✅ FDCを「個人利用ツール」から「組織単位の業務基盤」へ進化（完了）
+- ✅ AIFCCを「個人利用ツール」から「組織単位の業務基盤」へ進化（完了）
 - ✅ Workspace（会社）ごとのデータ分離と、3ロール（EXEC/MANAGER/MEMBER）によるRBACを実現（完了）
 - ✅ 完全サーバー保存＋Row Level Security (RLS) によるセキュリティ強化（完了）
 - ✅ 監査ログによる操作履歴の記録（完了）
@@ -24,7 +24,7 @@ FDC Workspace & セキュリティ設計書（v2.0）
 **Phase 7-12 完了状況:**
 本書で定義した設計は Phase 7-12 STEP4.9 で完全実装されました。
 
-本書は `FDC-GRAND-GUIDE.md` の詳細設計版です。
+本書は `AIFCC-GRAND-GUIDE.md` の詳細設計版です。
 
 ---
 
@@ -55,7 +55,7 @@ FDC Workspace & セキュリティ設計書（v2.0）
 ### 3.1 ロール（2階層実装完了）
 
 #### グローバルロール（users テーブル）
-- `fdc_admin`: システム全体の管理者（全ワークスペースにアクセス可能）
+- `aifcc_admin`: システム全体の管理者（全ワークスペースにアクセス可能）
 - `normal`: 通常ユーザー（所属ワークスペースのみアクセス可能）
 
 #### ワークスペースロール（workspace_members テーブル）
@@ -97,7 +97,7 @@ FDC Workspace & セキュリティ設計書（v2.0）
 
 ```typescript
 // グローバルロール
-type GlobalRole = 'fdc_admin' | 'normal';
+type GlobalRole = 'aifcc_admin' | 'normal';
 
 // UIロール
 type UserRole = 'EXEC' | 'MANAGER' | 'MEMBER';

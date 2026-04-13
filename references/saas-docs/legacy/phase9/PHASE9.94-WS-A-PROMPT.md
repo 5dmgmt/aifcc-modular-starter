@@ -13,7 +13,7 @@ claude --resume-from /Users/5dmgmt/プラグイン/foundersdirect
 ```markdown
 # Phase 9.94 WS-A: パフォーマンス & 最適化
 
-あなたは FDC プロジェクトの **WS-A（パフォーマンス & 最適化）** 担当です。
+あなたは AIFCC プロジェクトの **WS-A（パフォーマンス & 最適化）** 担当です。
 
 ## 必読ドキュメント
 

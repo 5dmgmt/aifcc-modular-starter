@@ -3,42 +3,34 @@
 /**
  * app/(app)/dashboard/page.tsx
  *
- * ダッシュボードページ（Phase 0: 空ダッシュボード）
- * Phase 1 でタスク機能を追加します
+ * ダッシュボードページ（Phase 0: 初期状態）
  */
 
-import { Rocket, ArrowRight, CheckSquare, Settings, Database, BookOpen } from 'lucide-react';
+import { ArrowRight, CheckSquare, Settings, Database, BookOpen } from 'lucide-react';
 
 export default function DashboardPage() {
   return (
     <div>
       {/* ウェルカムカード */}
       <div className="card" style={{ textAlign: 'center', padding: '48px 32px' }}>
-        <Rocket
-          size={64}
-          style={{
-            color: 'var(--primary)',
-            marginBottom: '24px',
-          }}
-        />
-
         <h2 style={{
-          fontSize: '28px',
+          fontSize: '24px',
           fontWeight: 700,
           marginBottom: '16px',
-          color: 'var(--text-dark)',
+          color: 'var(--ancc-black)',
           border: 'none',
           padding: 0,
         }}>
-          FDC Modular Starter へようこそ！
+          AIFCC Modular Starter へようこそ
         </h2>
 
         <p style={{
-          color: 'var(--text-light)',
+          color: 'rgba(25, 25, 24, 0.6)',
           fontSize: '16px',
           marginBottom: '32px',
           maxWidth: '500px',
           margin: '0 auto 32px',
+          lineHeight: 1.8,
         }}>
           このダッシュボードは Phase 0 の初期状態です。<br />
           各 Phase を進めることで機能が追加されていきます。
@@ -46,8 +38,8 @@ export default function DashboardPage() {
 
         {/* 次のステップ */}
         <div style={{
-          background: 'var(--bg-gray)',
-          borderRadius: '12px',
+          background: 'var(--ancc-bg-alt)',
+          borderRadius: '4px',
           padding: '24px',
           textAlign: 'left',
           maxWidth: '400px',
@@ -56,13 +48,14 @@ export default function DashboardPage() {
           <h3 style={{
             fontSize: '14px',
             fontWeight: 600,
-            color: 'var(--text-dark)',
+            color: 'var(--ancc-black)',
             marginBottom: '16px',
             display: 'flex',
             alignItems: 'center',
             gap: '8px',
           }}>
-            <BookOpen className="inline-block mr-2 h-4 w-4" />次のステップ
+            <BookOpen size={16} />
+            次のステップ
           </h3>
 
           <ul style={{
@@ -74,25 +67,25 @@ export default function DashboardPage() {
             gap: '12px',
           }}>
             <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <CheckSquare size={18} style={{ color: 'var(--primary)' }} />
-              <span style={{ fontSize: '14px', color: 'var(--text-medium)' }}>
+              <CheckSquare size={18} style={{ color: 'var(--ancc-black)' }} />
+              <span style={{ fontSize: '14px', color: 'rgba(25, 25, 24, 0.7)' }}>
                 Phase 1: タスク機能を追加
               </span>
-              <ArrowRight size={14} style={{ color: 'var(--text-muted)', marginLeft: 'auto' }} />
+              <ArrowRight size={14} style={{ color: 'rgba(25, 25, 24, 0.3)', marginLeft: 'auto' }} />
             </li>
             <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <Settings size={18} style={{ color: 'var(--primary)' }} />
-              <span style={{ fontSize: '14px', color: 'var(--text-medium)' }}>
+              <Settings size={18} style={{ color: 'var(--ancc-black)' }} />
+              <span style={{ fontSize: '14px', color: 'rgba(25, 25, 24, 0.7)' }}>
                 Phase 2: 設定ページを追加
               </span>
-              <ArrowRight size={14} style={{ color: 'var(--text-muted)', marginLeft: 'auto' }} />
+              <ArrowRight size={14} style={{ color: 'rgba(25, 25, 24, 0.3)', marginLeft: 'auto' }} />
             </li>
             <li style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <Database size={18} style={{ color: 'var(--primary)' }} />
-              <span style={{ fontSize: '14px', color: 'var(--text-medium)' }}>
+              <Database size={18} style={{ color: 'var(--ancc-black)' }} />
+              <span style={{ fontSize: '14px', color: 'rgba(25, 25, 24, 0.7)' }}>
                 Phase 3: Supabase 統合
               </span>
-              <ArrowRight size={14} style={{ color: 'var(--text-muted)', marginLeft: 'auto' }} />
+              <ArrowRight size={14} style={{ color: 'rgba(25, 25, 24, 0.3)', marginLeft: 'auto' }} />
             </li>
           </ul>
         </div>
@@ -100,16 +93,16 @@ export default function DashboardPage() {
 
       {/* Coming Soon カード */}
       <div className="stats-grid" style={{ marginTop: '24px' }}>
-        <div className="stat-card" style={{ opacity: 0.6 }}>
-          <div className="stat-value">—</div>
+        <div className="stat-card" style={{ opacity: 0.5 }}>
+          <div className="stat-value">&mdash;</div>
           <div className="stat-label">タスク数（Phase 1）</div>
         </div>
-        <div className="stat-card" style={{ opacity: 0.6 }}>
-          <div className="stat-value">—</div>
+        <div className="stat-card" style={{ opacity: 0.5 }}>
+          <div className="stat-value">&mdash;</div>
           <div className="stat-label">完了数（Phase 1）</div>
         </div>
-        <div className="stat-card" style={{ opacity: 0.6 }}>
-          <div className="stat-value">—</div>
+        <div className="stat-card" style={{ opacity: 0.5 }}>
+          <div className="stat-value">&mdash;</div>
           <div className="stat-label">進捗率（Phase 1）</div>
         </div>
       </div>

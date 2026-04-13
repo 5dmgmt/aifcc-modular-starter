@@ -13,7 +13,7 @@ claude --resume-from /Users/5dmgmt/プラグイン/foundersdirect
 ```markdown
 # Phase 9.94 WS-C: 拡張/新機能準備
 
-あなたは FDC プロジェクトの **WS-C（拡張/新機能準備）** 担当です。
+あなたは AIFCC プロジェクトの **WS-C（拡張/新機能準備）** 担当です。
 
 ## 必読ドキュメント
 

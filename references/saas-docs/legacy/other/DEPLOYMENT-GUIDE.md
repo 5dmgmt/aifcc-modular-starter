@@ -1,6 +1,6 @@
-# FDC Phase 7 - Vercel デプロイメントガイド
+# AIFCC Phase 7 - Vercel デプロイメントガイド
 
-**対象:** Founders Direct Cockpit (FDC) - Phase 7 フルスタック実装
+**対象:** AIFCC Cockpit (AIFCC) - Phase 7 フルスタック実装
 **環境:** Vercel (GitHub連携) + Serverless Functions + Postgres
 **作成日:** 2025-11-11
 **作成者:** Claude Code (Sonnet 4.5)
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS users (
   email VARCHAR(255) UNIQUE NOT NULL,
   name VARCHAR(255),
   picture TEXT,
-  global_role VARCHAR(50) DEFAULT 'normal' CHECK (global_role IN ('fdc_admin', 'normal')),
+  global_role VARCHAR(50) DEFAULT 'normal' CHECK (global_role IN ('aifcc_admin', 'normal')),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

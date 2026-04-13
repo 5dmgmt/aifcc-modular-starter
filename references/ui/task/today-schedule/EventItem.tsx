@@ -32,7 +32,7 @@ export const EventItem = memo(function EventItem({ event, isNow, isPast, onCreat
   const suit = detectSuitFromTitle(event.summary) || detectSuitFromColorId(event.colorId);
   const suitConfig = suit ? SUIT_CONFIG[suit] : null;
 
-  // FDCタスクからスートマーク + 絵文字プレフィックスを削除した表示名
+  // AIFCCタスクからスートマーク + 絵文字プレフィックスを削除した表示名
   const displayTitle = event.summary
     .replace(/\[♠\]|\[♥\]|\[♦\]|\[♣\]\s*/g, '')
     .replace(/^[⬛️⬛🟥🟨🟦]\s*/g, '')
@@ -76,8 +76,8 @@ export const EventItem = memo(function EventItem({ event, isNow, isPast, onCreat
       {/* イベント情報 */}
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
-          {/* FDCタスクマーク */}
-          {event.isFdcTask && suitConfig && (
+          {/* AIFCCタスクマーク */}
+          {event.isAifccTask && suitConfig && (
             <span style={{ fontSize: '14px', color: suitConfig.color }} title={suitConfig.ja}>
               {suitConfig.symbol}
             </span>
@@ -116,7 +116,7 @@ export const EventItem = memo(function EventItem({ event, isNow, isPast, onCreat
           )}
 
           {/* タスク作成ボタン */}
-          {!event.isFdcTask && onCreateTask && !isUnclassified && (
+          {!event.isAifccTask && onCreateTask && !isUnclassified && (
             <div style={{ position: 'relative', marginLeft: event.htmlLink ? '4px' : 'auto' }}>
               {suit ? (
                 <button
@@ -180,11 +180,11 @@ export const EventItem = memo(function EventItem({ event, isNow, isPast, onCreat
           {isUnclassified && (
             <EventBadge label="未分類" bg={CATEGORY_CONFIG.unclassified.bg} color={CATEGORY_CONFIG.unclassified.color} />
           )}
-          {!event.isFdcTask && !isUnclassified && (
+          {!event.isAifccTask && !isUnclassified && (
             <EventBadge label="外部予定" bg="#e3f2fd" color="#1565c0" />
           )}
-          {event.isFdcTask && (
-            <EventBadge label="FDCタスク" bg="#e8f5e9" color="#2e7d32" />
+          {event.isAifccTask && (
+            <EventBadge label="AIFCCタスク" bg="#e8f5e9" color="#2e7d32" />
           )}
         </div>
       </div>

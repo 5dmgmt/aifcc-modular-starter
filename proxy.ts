@@ -16,7 +16,7 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Cookie からセッション情報を取得
-  const fdcSession = request.cookies.get('fdc_session');
+  const fdcSession = request.cookies.get('aifcc_session');
   const hasSession = !!fdcSession?.value;
 
   // ルートパス (/) へのアクセス

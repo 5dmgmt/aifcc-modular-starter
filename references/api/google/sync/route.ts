@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
 
     // 1. セッション確認
     const cookieStore = await cookies();
-    const sessionToken = cookieStore.get('fdc_session')?.value;
+    const sessionToken = cookieStore.get('aifcc_session')?.value;
 
     if (!sessionToken) {
       return ApiErrors.unauthorized(null, 'Google Sync POST');
@@ -303,7 +303,7 @@ export async function GET(request: NextRequest) {
 
     // 1. セッション確認
     const cookieStore = await cookies();
-    const sessionToken = cookieStore.get('fdc_session')?.value;
+    const sessionToken = cookieStore.get('aifcc_session')?.value;
 
     if (!sessionToken) {
       return ApiErrors.unauthorized(null, 'Google Sync GET');

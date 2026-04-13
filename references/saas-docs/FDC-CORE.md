@@ -1,8 +1,8 @@
-# FDC-CORE.md（v6.11 - 2025-12-05更新）
+# AIFCC-CORE.md（v6.11 - 2025-12-05更新）
 
 ## 0. 位置づけ
 
-本ドキュメントは Founders Direct Cockpit（以下、FDC）の
+本ドキュメントは AIFCC Cockpit（以下、AIFCC）の
 **開発・運用・拡張に関わるすべての人間開発者とAIエージェントの起点**となる規範書である。
 
 - すべての開発セッションは本ガイドを前提として開始する。
@@ -120,7 +120,7 @@ Task完了 → ActionItem進捗更新 → ActionMap進捗更新 → KR進捗更�
 | **バックエンド** | **Next.js Route Handlers** | - | `app/api/**/route.ts` 形式 |
 | **データベース** | **Supabase PostgreSQL** | **17.6** | SERVICE_ROLE_KEY使用（RLSバイパス） |
 | **認証** | **Supabase Auth** | - | Google OAuth Provider、PKCE フロー |
-| **セッション** | **Cookie ベース** | - | `fdc_session`（HttpOnly, Secure, SameSite=Lax） |
+| **セッション** | **Cookie ベース** | - | `aifcc_session`（HttpOnly, Secure, SameSite=Lax） |
 | **暗号化** | **AES-256-GCM** | - | 2層暗号化（マスター鍵＋Workspace鍵） |
 | **AI** | **Vercel AI SDK** | 5.0.100 | OpenAI GPT-4o-mini 統合 |
 | **バリデーション** | **Zod** | 4.1.12 | ランタイム型検証 |
@@ -192,10 +192,10 @@ Task完了 → ActionItem進捗更新 → ActionMap進捗更新 → KR進捗更�
 | ドキュメント | 内容 | 対象読者 |
 |-----------|------|---------|
 | **コア文書** |
-| `docs/FDC-CORE.md` | **開発全体の指針・AIチーム運用ガイド（本ファイル）** | **全員** |
+| `docs/AIFCC-CORE.md` | **開発全体の指針・AIチーム運用ガイド（本ファイル）** | **全員** |
 | **ガイド（guides/）** |
 | `guides/DEVELOPMENT.md` | 開発者・AI向け技術ガイド | 開発者・AI |
-| `guides/FDC-ARCHITECTURE-OVERVIEW.md` | アーキテクチャ概要 | 開発者・AI |
+| `guides/AIFCC-ARCHITECTURE-OVERVIEW.md` | アーキテクチャ概要 | 開発者・AI |
 | `guides/HOW-TO-USE.md` | ユーザー向け利用マニュアル | エンドユーザー |
 | `guides/Performance-Specification-v1.0.md` | パフォーマンス要件定義 | 開発者・AI・PM |
 | `guides/SECURITY.md` | セキュリティガイド | 開発者・セキュリティ担当 |
@@ -208,7 +208,7 @@ Task完了 → ActionItem進捗更新 → ActionMap進捗更新 → KR進捗更�
 | `runbooks/PHASE14-1-CSV-RUNBOOK.md` | Phase 14.1 CSV機能 | 開発者・AI |
 | `runbooks/PHASE14.2-SCALABILITY-RUNBOOK.md` | Phase 14.2 スケーラビリティ | 開発者・AI |
 | `runbooks/PHASE14.4-OPS-MONITORING-RUNBOOK.md` | Phase 14.4 運用監視 | 開発者・AI |
-| `runbooks/PHASE14.4-FDC-MULTITENANT-WORKSPACE-RUNBOOK.md` | **マルチテナント設計** | 開発者・AI |
+| `runbooks/PHASE14.4-AIFCC-MULTITENANT-WORKSPACE-RUNBOOK.md` | **マルチテナント設計** | 開発者・AI |
 | `runbooks/PHASE14.5-PERFORMANCE-RUNBOOK.md` | **パフォーマンス最適化計画** | 開発者・AI |
 | `runbooks/PHASE14.6-AI-READINESS-RUNBOOK.md` | **AI導入準備** | 開発者・AI |
 | `runbooks/PHASE14.6-I-SECURITY-HARDENING-RUNBOOK.md` | **セキュリティ・スケーラビリティ強化** | 開発者・AI |
@@ -229,7 +229,7 @@ Task完了 → ActionItem進捗更新 → ActionMap進捗更新 → KR進捗更�
 
 ## 7. 開発フロー
 
-1. **フェーズ計画**: `FDC-CORE.md` でフェーズ確認
+1. **フェーズ計画**: `AIFCC-CORE.md` でフェーズ確認
 2. **技術仕様確認**: `guides/DEVELOPMENT.md` で実装詳細確認
 3. **実装**: Claude Code / ChatGPT で実装
 4. **テスト**: E2E / ユニット / 型チェック実施
@@ -253,7 +253,7 @@ Task完了 → ActionItem進捗更新 → ActionMap進捗更新 → KR進捗更�
 
 | 用語 | 説明 |
 |-----|------|
-| FDC | Founders Direct Cockpit（本アプリケーション） |
+| AIFCC | AIFCC Cockpit（本アプリケーション） |
 | Tenant | テナント（1社・1クライアント単位。サブドメインで識別） |
 | WS | Workspace（ワークスペース。テナント内の部門/チーム単位） |
 | RBAC | Role-Based Access Control（ロールベースアクセス制御） |
@@ -270,7 +270,7 @@ Task完了 → ActionItem進捗更新 → ActionMap進捗更新 → KR進捗更�
 **Status**: Phase 14, 15 完了（AI基盤・セキュリティ強化）、Phase 19 AI実装予定
 **Product Version**: v2.9.2
 **Tech Debt**: 0件（Lint/ビルド警告・`as any` ゼロ）
-**Maintained by**: FDC Development Team (Human + AI Agents)
+**Maintained by**: AIFCC Development Team (Human + AI Agents)
 
 ---
 

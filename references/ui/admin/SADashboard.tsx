@@ -159,7 +159,7 @@ export function SADashboard() {
             スーパーアドミン
           </h2>
           <p style={{ color: 'var(--text-light)', marginTop: '8px' }}>
-            FDC 全体の管理機能
+            AIFCC 全体の管理機能
           </p>
         </div>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>

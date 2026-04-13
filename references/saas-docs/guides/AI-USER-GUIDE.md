@@ -24,7 +24,7 @@
 
 ### 1.1 AI機能でできること
 
-FDC（Founders Direct Cockpit）のAI機能は、営業活動を支援する以下の機能を提供します：
+AIFCC（AIFCC Cockpit）のAI機能は、営業活動を支援する以下の機能を提供します：
 
 | 機能 | 説明 |
 |------|------|
@@ -295,4 +295,4 @@ AI機能の利用に際しては、[AI利用規約](/ai-terms) に同意いた�
 ---
 
 **お問い合わせ**: support@foundersdirect.jp
-**ドキュメント管理者**: FDC Development Team
+**ドキュメント管理者**: AIFCC Development Team

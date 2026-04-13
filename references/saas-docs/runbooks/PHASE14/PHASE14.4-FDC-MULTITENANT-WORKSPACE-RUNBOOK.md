@@ -1,11 +1,11 @@
 > **事前必読**: 作業を開始する前に、以下のドキュメントを順番にお読みください。
 >
-> 1. **[FDC-CORE.md](../FDC-CORE.md)** - 開発全体の指針・技術スタック・AIチーム運用（起点）
+> 1. **[AIFCC-CORE.md](../AIFCC-CORE.md)** - 開発全体の指針・技術スタック・AIチーム運用（起点）
 > 2. **[guides/DEVELOPMENT.md](../guides/DEVELOPMENT.md)** - 開発者・AI向け技術詳細ガイド
 > 3. **[specs/DB-SECURITY.md](../specs/DB-SECURITY.md)** - DBセキュリティ設計（本ランブックでRLS不使用を採用する背景理解に必要）
 > 4. **[guides/SECURITY.md](../guides/SECURITY.md)** - セキュリティガイド（マルチテナント分離の設計根拠）
 
-# FDC マルチテナント＆ワークスペース ランブック v1.4
+# AIFCC マルチテナント＆ワークスペース ランブック v1.4
 
 | 項目 | 内容 |
 |------|------|
@@ -63,7 +63,7 @@ Phase 6: 検証
 
 ### 1.1 目的
 
-FoundersDirect(FDC) を以下の要件で運用可能にする。
+FoundersDirect(AIFCC) を以下の要件で運用可能にする。
 
 1. `app.foundersdirect.jp` を本体として、`tom.foundersdirect.jp` のようなサブドメイン単位で顧客別環境を提供
 2. 単一リポジトリ・単一 DB で SaaS としての開発速度を維持
@@ -149,7 +149,7 @@ Request → host header から subdomain 抽出
 |------|---------|------|
 | Next.js 15 / App Router 稼働 | `npm run dev` で起動確認 | [ ] |
 | DB 接続安定 | `npx prisma db pull` 成功 | [ ] |
-| GRAND-GUIDE 更新済み | `docs/FDC-GRAND-GUIDE.md` 確認 | [ ] |
+| GRAND-GUIDE 更新済み | `docs/AIFCC-GRAND-GUIDE.md` 確認 | [ ] |
 | RLS 無効 | Supabase Dashboard で確認 | [ ] |
 
 ---
@@ -857,7 +857,7 @@ describe("マルチテナント分離", () => {
 
 ### ドキュメント
 
-- [ ] `docs/FDC-GRAND-GUIDE.md` に本ランブックへのリンク追記
+- [ ] `docs/AIFCC-GRAND-GUIDE.md` に本ランブックへのリンク追記
 
 ---
 
@@ -909,6 +909,6 @@ grep "Unknown tenant" /var/log/app.log
 
 | ドキュメント | 内容 |
 |-------------|------|
-| `docs/FDC-GRAND-GUIDE.md` | FDC 全体設計ガイド |
+| `docs/AIFCC-GRAND-GUIDE.md` | AIFCC 全体設計ガイド |
 | `docs/database/SCHEMA.md` | DB スキーマ詳細 |
 | `docs/api/AUTHENTICATION.md` | 認証・認可設計 |
