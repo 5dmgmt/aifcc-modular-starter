@@ -3,7 +3,7 @@
 export default function ActionMapPage() {
   return (
     <div className="empty-state">
-      <p>Phase 2 で実装</p>
+      <p>Phase 3 で実装</p>
     </div>
   );
 }

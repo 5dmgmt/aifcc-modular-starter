@@ -82,7 +82,7 @@ export function CelebrationOverlay({ show, onComplete }: CelebrationOverlayProps
       >
         <div
           style={{
-            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            background: 'linear-gradient(135deg, #31A9B8 0%, #2a8f9c 100%)',
             color: 'white',
             padding: '24px 48px',
             borderRadius: '20px',

@@ -33,12 +33,12 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { href: '/dashboard', label: 'ダッシュボード', icon: LayoutDashboard },
   { href: '/tasks', label: 'タスク', icon: Calendar },
+  { href: '/settings', label: '設定', icon: Settings },
   { href: '/action-map', label: 'Action Map', icon: Map },
   { href: '/okr', label: 'OKR', icon: Target },
   { href: '/mvv', label: 'MVV', icon: Layers },
   { href: '/clients', label: '既存客', icon: Users },
   { href: '/leads', label: '見込み客', icon: UserPlus },
-  { href: '/settings', label: '設定', icon: Settings },
 ];
 
 export default function AppLayout({
