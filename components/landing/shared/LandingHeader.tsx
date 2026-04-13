@@ -34,13 +34,13 @@ export default function LandingHeader() {
         <Link href="/" className={styles.logo}>
           <Image
             src="/apple-touch-icon.png"
-            alt="FDC"
+            alt="AIFCC"
             width={32}
             height={32}
             priority
             className={styles.logoIcon}
           />
-          Founders Direct <span className={styles.logoAccent}>Cockpit</span>
+          AIFCC <span className={styles.logoAccent}>Cockpit</span>
         </Link>
         <nav className={styles.mainNav}>
           <a href="#features">機能</a>

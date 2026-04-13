@@ -36,7 +36,7 @@ export default function FAQSection() {
               </svg>
             </summary>
             <div className={styles.faqAnswer}>
-              <p>はい、多くのチームがスムーズに移行しています。FDCはCSVインポート/エクスポート機能を標準で備えており、既存のタスクデータを一括で取り込めます。まずは現在お使いのツールと併用しながら、徐々に移行することも可能です。</p>
+              <p>はい、多くのチームがスムーズに移行しています。AIFCCはCSVインポート/エクスポート機能を標準で備えており、既存のタスクデータを一括で取り込めます。まずは現在お使いのツールと併用しながら、徐々に移行することも可能です。</p>
             </div>
           </details>
           <details className={styles.faqItem}>
@@ -82,7 +82,7 @@ export default function FAQSection() {
             </summary>
             <div className={styles.faqAnswer}>
               <p><strong>はい。AI支援開発は「品質を下げる」のではなく「品質基準を厳格に適用する」ためのツールです。</strong></p>
-              <p>FDCの開発では以下のプラクティスを徹底しています：</p>
+              <p>AIFCCの開発では以下のプラクティスを徹底しています：</p>
               <ul className={styles.faqList}>
                 <li><strong>IPA非機能要求グレード2018準拠</strong>: 6大項目（可用性、性能、運用、移行、セキュリティ、環境）すべて100%対応</li>
                 <li><strong>コードレビュー</strong>: 人間のシニアエンジニアによる最終レビュー必須</li>

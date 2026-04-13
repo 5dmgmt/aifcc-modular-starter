@@ -15,7 +15,7 @@ export default function FeaturesSection() {
       <section id="features" className={styles.section}>
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
-            <div className={styles.sectionTag}>FDCの主な機能</div>
+            <div className={styles.sectionTag}>AIFCCの主な機能</div>
             <h2 className={styles.sectionTitle}>戦略と現場を、<br className={styles.mobileBreak} />一本の線で繋ぐ</h2>
             <p className={styles.sectionLead}>
               「今日、何に注力すべきか」が明確な組織は強い。戦略から日々のタスクまでが繋がれば、判断に迷う時間がなくなり、全員が本質的な仕事に集中できます。
@@ -81,7 +81,7 @@ export default function FeaturesSection() {
                 </svg>
               </div>
               <h3>Google ワークスペース連携</h3>
-              <p>GoogleカレンダーやGoogle Tasksと双方向で同期。普段使いのツールを変えることなく、シームレスにFDCを導入できます。</p>
+              <p>GoogleカレンダーやGoogle Tasksと双方向で同期。普段使いのツールを変えることなく、シームレスにAIFCCを導入できます。</p>
             </div>
 
             <div className={styles.featureCard}>
@@ -111,7 +111,7 @@ export default function FeaturesSection() {
                 そしてその要因を突き詰めると、「戦略と日々の業務が一貫している」という共通点に行き着きます。
               </p>
               <p className={styles.sectionLead}>
-                自分の仕事が会社の方向性とどう繋がっているかが明確であれば、迷いがなくなる。迷いがなくなれば、判断が速くなり、ストレスも減る。FDCは「三層構造アーキテクチャ」でこの状態を実現します。
+                自分の仕事が会社の方向性とどう繋がっているかが明確であれば、迷いがなくなる。迷いがなくなれば、判断が速くなり、ストレスも減る。AIFCCは「三層構造アーキテクチャ」でこの状態を実現します。
               </p>
               <ul className={styles.listDisc}>
                 <li><strong>一貫性の可視化:</strong> すべてのタスクが戦略と紐づいて表示されます。「この仕事は何のため？」という疑問が生まれません。</li>

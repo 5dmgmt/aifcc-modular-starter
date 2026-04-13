@@ -16,7 +16,7 @@ export default function HeroSection() {
         <h1 className={styles.heroTitle}>従業員満足度の高い会社は、<br />なぜ企業価値も高いのか。</h1>
         <p className={styles.heroLead}>
           PEファンドで100社以上の投資先を見てきた結論——それは「戦略と現場が繋がっている会社」でした。<br className={styles.pcBreak} />
-          FDCは戦略・戦術・実行を一気通貫で連携させ、組織全体の迷いと無駄を解消する、役職員をごきげんにするSaaSです。
+          AIFCCは戦略・戦術・実行を一気通貫で連携させ、組織全体の迷いと無駄を解消する、役職員をごきげんにするSaaSです。
         </p>
         <div className={styles.heroActions}>
           <a href="#cta" className={`${styles.btn} ${styles.btnPrimary}`}>14日間無料で試す</a>
@@ -25,8 +25,8 @@ export default function HeroSection() {
         <p className={styles.heroReassurance}>クレジットカード不要 · いつでも解約OK · 5分で開始</p>
         <div className={styles.heroImageContainer}>
           <Image
-            src="/images/fdc-dashboard.png"
-            alt="Founders Direct Cockpitのダッシュボード画面"
+            src="/images/aifcc-dashboard.png"
+            alt="AIFCC Cockpitのダッシュボード画面"
             className={styles.heroImage}
             width={1200}
             height={675}

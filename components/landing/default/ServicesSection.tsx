@@ -3,8 +3,8 @@
 /**
  * components/landing/default/ServicesSection.tsx
  *
- * Founders Direct の2つのサービスを横並びで紹介するセクション
- * - Founders Direct Cockpit (FDC): 目標達成プラットフォーム
+ * AIFCC の2つのサービスを横並びで紹介するセクション
+ * - AIFCC Cockpit (AIFCC): 目標達成プラットフォーム
  * - Claude Code Workshop: AI駆動開発ワークショップ
  */
 
@@ -24,11 +24,11 @@ export default function ServicesSection() {
         </div>
 
         <div className={styles.servicesGrid}>
-          {/* Founders Direct Cockpit */}
+          {/* AIFCC Cockpit */}
           <div className={styles.serviceCard}>
             <div className={styles.serviceHeader}>
               <div className={styles.serviceBadge}>SaaS</div>
-              <h3 className={styles.serviceName}>Founders Direct Cockpit</h3>
+              <h3 className={styles.serviceName}>AIFCC Cockpit</h3>
               <p className={styles.serviceTagline}>OKRから現場タスクまで一気通貫</p>
             </div>
 
@@ -154,7 +154,7 @@ export default function ServicesSection() {
                   <polyline points="22 4 12 14.01 9 11.01" />
                 </svg>
               </div>
-              <h4>FDCがおすすめの方</h4>
+              <h4>AIFCCがおすすめの方</h4>
               <ul>
                 <li>チームの目標管理を効率化したい</li>
                 <li>戦略から実行まで一貫した仕組みが欲しい</li>
