@@ -37,13 +37,13 @@ Next.js 15.5.7 から Next.js 16.0.10 への移行。Workshop 教材との整合
 
 ### 予定
 
-| Phase | 内容 |
-|-------|------|
-| Phase 1 | タスクページ追加（フィルター機能付き） |
-| Phase 2 | 設定ページ追加（データエクスポート/リセット） |
-| Phase 3 | リード管理機能（CRUD + ステータス管理） |
-| Phase 4 | 顧客管理機能 |
-| Phase 5 | Supabase 統合 |
+| PART | 内容 |
+|------|------|
+| PART 301 | タスク CRUD + 設定ページ |
+| PART 302 | Supabase + Auth + Workspace 基盤 |
+| PART 303 | 見込み客 / 既存客（CRM） |
+| PART 304 | Action Map + OKR |
+| PART 305 | Admin + セキュリティ |
 
 ---
 
@@ -51,7 +51,7 @@ Next.js 15.5.7 から Next.js 16.0.10 への移行。Workshop 教材との整合
 
 ### 概要
 
-foundersdirect をベースにしたミニマルスターターの初期リリース。
+AIFCC Cockpit のミニマルスターターの初期リリース。
 Next.js 16 + React 19 + TypeScript 構成で、SaaS版と同じアーキテクチャパターンを使用。
 
 ### Added
@@ -77,9 +77,11 @@ Next.js 16 + React 19 + TypeScript 構成で、SaaS版と同じアーキテク�
 | `docs/CHANGELOG.md` | 本ファイル |
 | `docs/guides/DEVELOPMENT.md` | 開発者・AI向け技術ガイド |
 | `docs/runbooks/README.md` | ランブック一覧 |
-| `docs/runbooks/PHASE1-TASKS-PAGE.md` | Phase 1 ランブック |
-| `docs/runbooks/PHASE2-SETTINGS-PAGE.md` | Phase 2 ランブック |
-| `docs/runbooks/PHASE3-LEADS.md` | Phase 3 ランブック |
+| `docs/runbooks/PART-301-FOUNDATION.md` | PART 301 ランブック |
+| `docs/runbooks/PART-302-DATABASE.md` | PART 302 ランブック |
+| `docs/runbooks/PART-303-CRM.md` | PART 303 ランブック |
+| `docs/runbooks/PART-304-THREE-LAYER.md` | PART 304 ランブック |
+| `docs/runbooks/PART-305-ADMIN.md` | PART 305 ランブック |
 
 ### 技術スタック
 

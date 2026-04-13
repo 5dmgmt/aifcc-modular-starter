@@ -11,8 +11,14 @@
 
 - **名称**: AIFCC Modular Starter（学習用スターター）
 - **技術スタック**: Next.js 16 / React 19 / TypeScript 5.x
-- **Node.js**: 22.x 以上
+- **Node.js**: 24.x 以上
 - **コミット前必須**: `npm run type-check && npm run lint && npm run build`
+
+## セキュリティ
+
+- シークレット（API キー等）は **1Password CLI**（`op inject`）で管理する。`.env.local` は使わない
+- `process.env` の値を出力・ログ・ファイルに書き込まない
+- `SUPABASE_SERVICE_ROLE_KEY` はサーバーサイド限定。フロントエンドに露出させない
 
 ## 禁止事項
 
@@ -20,16 +26,16 @@
 2. **`any` 型の使用禁止** — 具体的な型を定義
 3. **ブランドカラー以外の色追加禁止**
 
-## カラーパレット（aifcc.jp 準拠）
+## カラーパレット（globals.css 準拠）
 
 | 用途 | CSS変数 | 値 |
 |------|---------|------|
-| テキスト | `--ancc-text` | #191918 |
-| 背景 | `--ancc-bg` | #faf9f6 |
-| 背景(alt) | `--ancc-bg-alt` | #f0eeeb |
-| ボーダー | `--ancc-border` | #e5e3df |
-| アクセント | `--ancc-accent` | #d4a27f（テラコッタ） |
-| ボタン | `--ancc-btn-bg` | #000000 |
+| プライマリ | `--primary` | #31A9B8 |
+| テキスト | `--text-dark` | #191918 |
+| 背景 | `--bg-base` | #faf9f6 |
+| 背景(alt) | `--bg-gray` | #f0eeeb |
+| ボーダー | `--border` | #e5e3df |
+| アクセント | `--accent` | #d4a27f（テラコッタ） |
 
 ## Next.js 16 の注意点
 

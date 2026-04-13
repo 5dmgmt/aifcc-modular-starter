@@ -51,9 +51,9 @@ export default function WelcomePage() {
             maxWidth: '640px',
             margin: '0 auto 48px',
           }}>
-            Next.js 16 + TypeScript で、Phase ごとに機能を積み上げていく
+            Next.js 16 + TypeScript で、PART ごとに機能を積み上げていく
             ワークショップ用スターターキットです。
-            ログインして、最初の Phase を始めましょう。
+            ログインして、最初の PART を始めましょう。
           </p>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
@@ -107,7 +107,7 @@ export default function WelcomePage() {
             paddingBottom: 0,
             border: 'none',
           }}>
-            Phase ごとに機能を追加していきます
+            PART ごとに機能を追加していきます
           </h2>
 
           <div style={{
@@ -117,35 +117,35 @@ export default function WelcomePage() {
           }}>
             {[
               {
-                phase: 'Phase 0',
-                title: 'Starter Setup',
-                desc: 'プロジェクト構成・認証・ダッシュボードの土台',
-                icon: Code2,
+                phase: 'PART 301',
+                title: 'Foundation',
+                desc: 'タスク CRUD + 設定ページ（localStorage）',
+                icon: BookOpen,
                 active: true,
               },
               {
-                phase: 'Phase 1',
-                title: 'Tasks Page',
-                desc: 'タスク CRUD・フィルタ・ソート・優先度管理',
-                icon: BookOpen,
-              },
-              {
-                phase: 'Phase 2',
-                title: 'Settings Page',
-                desc: 'ユーザー設定・テーマ切替・データ管理',
-                icon: Settings,
-              },
-              {
-                phase: 'Phase 3',
-                title: 'Supabase',
-                desc: 'データベース統合・リアルタイム同期',
+                phase: 'PART 302',
+                title: 'Database',
+                desc: 'Supabase + Auth + Workspace 基盤',
                 icon: Database,
               },
               {
-                phase: 'Phase 4+',
-                title: 'Advanced',
-                desc: 'AI 統合・マルチテナント・本番デプロイ',
+                phase: 'PART 303',
+                title: 'CRM',
+                desc: '見込み客・既存客の管理',
+                icon: Code2,
+              },
+              {
+                phase: 'PART 304',
+                title: 'Three-Layer',
+                desc: 'Action Map + OKR + タスク連携',
                 icon: Layers,
+              },
+              {
+                phase: 'PART 305',
+                title: 'Admin',
+                desc: '権限管理・セキュリティ・監査ログ',
+                icon: Settings,
               },
             ].map((item) => {
               const Icon = item.icon;
@@ -236,7 +236,7 @@ export default function WelcomePage() {
               { name: 'React 19', detail: 'Server Components' },
               { name: 'TypeScript', detail: 'Strict Mode' },
               { name: 'Lucide Icons', detail: 'SVG Icons' },
-              { name: 'Supabase', detail: 'Phase 3+' },
+              { name: 'Supabase', detail: 'PART 302+' },
               { name: 'Vercel', detail: 'Hosting' },
             ].map((tech) => (
               <div

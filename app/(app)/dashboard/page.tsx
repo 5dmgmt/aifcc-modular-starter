@@ -17,7 +17,7 @@ export default function DashboardPage() {
           fontSize: '24px',
           fontWeight: 700,
           marginBottom: '16px',
-          color: 'var(--ancc-black)',
+          color: 'var(--text-dark)',
           border: 'none',
           padding: 0,
         }}>
@@ -38,7 +38,7 @@ export default function DashboardPage() {
 
         {/* 次のステップ */}
         <div style={{
-          background: 'var(--ancc-bg-alt)',
+          background: 'var(--bg-gray)',
           borderRadius: '4px',
           padding: '24px',
           textAlign: 'left',
@@ -48,7 +48,7 @@ export default function DashboardPage() {
           <h3 style={{
             fontSize: '14px',
             fontWeight: 600,
-            color: 'var(--ancc-black)',
+            color: 'var(--text-dark)',
             marginBottom: '16px',
             display: 'flex',
             alignItems: 'center',

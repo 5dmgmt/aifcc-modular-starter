@@ -3,7 +3,7 @@
 export default function SettingsPage() {
   return (
     <div className="empty-state">
-      <p>PART 301 で実装</p>
+      <p>PART 301 で実装 → docs/runbooks/PART-301-FOUNDATION.md</p>
     </div>
   );
 }

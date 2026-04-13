@@ -14,14 +14,15 @@ Claude Code を使用する場合は、必ず本ドキュメントを読み込�
 
 ### 0.2 現在の開発状況
 
-**学習用スターター v1.0.0（2025-12-06）**
+**学習用スターター v2.4.0（2026-04-13）**
 
-| フェーズ | 状態 | 概要 |
-|---------|------|------|
-| Phase 0 | ✅ 完了 | スターター構築 |
-| Phase 1 | 🔜 予定 | タスクページ追加 |
-| Phase 2 | 🔜 予定 | 設定ページ追加 |
-| Phase 3 | 🔜 予定 | リード管理機能 |
+| PART | 状態 | 概要 |
+|------|------|------|
+| 301 | 次に実行 | タスク CRUD + 設定 |
+| 302 | 予定 | Supabase + Auth + Workspace |
+| 303 | 予定 | 見込み客 / 既存客（CRM） |
+| 304 | 予定 | Action Map + OKR |
+| 305 | 予定 | Admin + セキュリティ |
 
 ---
 
@@ -34,30 +35,33 @@ Claude Code を使用する場合は、必ず本ドキュメントを読み込�
 | フロントエンド | Next.js | 16.0.10 |
 | UIライブラリ | React | 19.2.1 |
 | 言語 | TypeScript | 5.7.2 |
-| Node.js | - | 22.x |
+| Node.js | - | 24.x |
 
 ### 1.2 ディレクトリ構成
 
 ```
-founders-direct-modular/
+aifcc-modular-starter/
 ├── app/                    # Next.js App Router
-│   ├── (app)/              # 認証済みルート（Route Group）
+│   ├── (app)/              # 認証済みルート（7 タブ）
 │   │   ├── dashboard/      # ダッシュボード
-│   │   │   └── page.tsx    # Client Component
+│   │   ├── tasks/          # タスク（PART 301）
+│   │   ├── settings/       # 設定（PART 301）
+│   │   ├── action-map/     # Action Map（PART 304）
+│   │   ├── okr/            # OKR（PART 304）
+│   │   ├── clients/        # 既存客（PART 303）
+│   │   ├── leads/          # 見込み客（PART 303）
 │   │   └── layout.tsx      # 認証レイアウト
+│   ├── api/contact/        # お問い合わせ API
 │   ├── login/              # ログインページ
-│   │   └── page.tsx        # Client Component
-│   ├── globals.css         # グローバルCSS
+│   ├── globals.css         # グローバル CSS
 │   ├── layout.tsx          # ルートレイアウト
-│   └── page.tsx            # リダイレクト
+│   └── page.tsx            # エントリー
 │
 ├── lib/                    # 共通ライブラリ
 │   ├── contexts/           # React Context
-│   │   ├── AuthContext.tsx # 認証コンテキスト
-│   │   └── DataContext.tsx # データコンテキスト
-│   ├── hooks/              # カスタムフック（将来追加）
 │   └── types/              # 型定義
-│       └── index.ts        # 全型定義
+│
+├── references/             # 実装サンプル（import しない）
 │
 ├── docs/                   # ドキュメント
 │   ├── AIFCC-MODULAR-GUIDE.md
@@ -67,11 +71,13 @@ founders-direct-modular/
 │   │   └── DEVELOPMENT.md  # 本ファイル
 │   └── runbooks/
 │       ├── README.md
-│       ├── PHASE1-TASKS-PAGE.md
-│       ├── PHASE2-SETTINGS-PAGE.md
-│       └── PHASE3-LEADS.md
+│       ├── PART-301-FOUNDATION.md
+│       ├── PART-302-DATABASE.md
+│       ├── PART-303-CRM.md
+│       ├── PART-304-THREE-LAYER.md
+│       └── PART-305-ADMIN.md
 │
-├── .github/workflows/      # CI/CD
+├── proxy.ts                # 認証プロキシ（Next.js 16）
 ├── package.json
 ├── tsconfig.json
 └── next.config.ts
@@ -108,11 +114,11 @@ export default function MyComponent() {
 ### 2.3 Context 使用
 
 ```typescript
-// ✅ 正しい: useData フックを使用
-import { useData } from '@/lib/contexts/DataContext';
+// ✅ 正しい: AuthContext を使用
+import { useAuth } from '@/lib/contexts/AuthContext';
 
 export default function MyComponent() {
-  const { data, dispatch } = useData();
+  const { user, loading } = useAuth();
   // ...
 }
 ```
@@ -121,25 +127,18 @@ export default function MyComponent() {
 
 ## 3. 状態管理パターン
 
-### 3.1 DataContext
+### 3.1 現在の構成
 
-アプリケーションデータは `DataContext` で管理します。
+- **認証状態**: `AuthContext`（`lib/contexts/AuthContext.tsx`）
+- **タスクデータ**: localStorage（`aifcc-tasks`）— PART 301 で実装
+- **設定データ**: localStorage（`aifcc-settings`）— PART 301 で実装
+- **DB 移行**: PART 302 で Supabase に移行予定
 
-```typescript
-// データ取得
-const { data, dispatch } = useData();
-
-// データ更新（Action を dispatch）
-dispatch({ type: 'ADD_TASK', payload: newTask });
-dispatch({ type: 'TOGGLE_TASK', payload: taskId });
-dispatch({ type: 'DELETE_TASK', payload: taskId });
-```
-
-### 3.2 新しい Action の追加手順
+### 3.2 新しいデータの追加手順
 
 1. `lib/types/index.ts` に型を追加
-2. `lib/contexts/DataContext.tsx` に Action を追加
-3. reducer に case を追加
+2. localStorage のキーを決める（PART 301）または Supabase テーブルを作成（PART 302+）
+3. カスタムフック（`useTaskReducer` 等）で CRUD を管理
 
 ---
 
@@ -180,21 +179,21 @@ const NAV_ITEMS = [
 ### 5.2 CHANGELOG 形式
 
 ```markdown
-## [1.1.0] - 2025-12-XX - Phase 1
+## [2.5.0] - YYYY-MM-DD - PART 301
 
 ### Added
-- タスクページ追加（`app/(app)/tasks/page.tsx`）
-- フィルター機能（all/active/completed）
+- タスク CRUD（`app/(app)/tasks/page.tsx`）
+- 設定ページ（`app/(app)/settings/page.tsx`）
 
 ### Changed
-- ナビゲーションにタスクリンク追加
+- ナビゲーション更新
 ```
 
 ### 5.3 AIFCC-CORE.md 更新
 
-フェーズ完了時に以下を更新:
+PART 完了時に以下を更新:
 1. 「現在の開発状況」セクション
-2. 「フェーズ完了状況」テーブル
+2. AIFCC-CORE.md の「PART 完了状況」テーブル
 
 ---
 
@@ -209,19 +208,19 @@ const NAV_ITEMS = [
 - docs/AIFCC-CORE.md
 - docs/guides/DEVELOPMENT.md
 
-プロジェクトパス: /Users/5dmgmt/プラグイン/founders-direct-modular
+プロジェクトパス: ~/projects/aifcc-modular-starter
 ```
 
 ### 6.2 機能追加プロンプト
 
 ```
-Phase N を実行してください。
+PART 30X を実行してください。
 
-ランブック: docs/runbooks/PHASEN-XXX.md
+ランブック: docs/runbooks/PART-30X-XXX.md
 
 実行後、以下を更新してください:
 1. docs/CHANGELOG.md に変更内容を追記
-2. docs/AIFCC-CORE.md のフェーズ状況を更新
+2. docs/AIFCC-CORE.md の PART 状況を更新
 3. package.json のバージョンを更新（minor バージョンアップ）
 ```
 
@@ -317,11 +316,11 @@ npm run build
 |------------|---------|---------|
 | localStorage | Supabase | データ永続化層 |
 | 簡易認証 | Supabase Auth | Google OAuth |
-| DataContext | WorkspaceDataContext | マルチテナント対応 |
+| AuthContext + localStorage | WorkspaceDataContext | マルチテナント対応 |
 | 単一テナント | マルチテナント | tenants テーブル追加 |
 
 ---
 
-**Last Updated**: 2026-02-22
-**Version**: v2.0.0
+**Last Updated**: 2026-04-13
+**Version**: v2.4.0
 **Maintained by**: AIFCC Development Team

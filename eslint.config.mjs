@@ -15,6 +15,7 @@ const eslintConfig = [...nextCoreWebVitals, ...nextTypescript, {
     ".next/**",
     "out/**",
     "references/**",
+    ".archive/**",
   ]
 }];
 

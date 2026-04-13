@@ -1,4 +1,4 @@
-# AIFCC-CORE.md（v1.1 - 2025-12-08）
+# AIFCC-CORE.md（v2.4 - 2026-04-13）
 
 ## 0. 位置づけ
 
@@ -9,15 +9,15 @@
 - 技術詳細は `docs/guides/DEVELOPMENT.md` を正とし、本ガイドはその上位コンパスとする。
 - 矛盾が生じた場合は、本ガイド → DEVELOPMENT の順で整合を取る。
 
-**📊 現在の開発状況（2025-12-08）**:
-- **バージョン**: v1.1.0
-- **フロントエンド構成**: Next.js 16.0.10 + App Router + React 19.2.1
-- **TypeScript**: 5.7.2（strict mode）
-- **Node.js**: 22.x
-- **データ永続化**: localStorage（学習用）
-- **現在のPhase**: Phase 0 完了（スターター構築）+ LP追加
-- **次フェーズ**: Phase 1（タスクページ追加）
-- **LP**: ランディングページテンプレート同梱（Phase 24対応）
+**現在の開発状況（2026-04-13）**:
+- **バージョン**: v2.4.0
+- **フロントエンド構成**: Next.js 16 + App Router + React 19
+- **TypeScript**: 5.x（strict mode）
+- **Node.js**: 24.x
+- **データ永続化**: localStorage（学習用。PART 302 で Supabase に移行）
+- **現在のステータス**: スターター構築完了、7 タブ構成確定
+- **次のステップ**: PART 301（タスク CRUD + 設定）
+- **ランブック体系**: PART 301-305（`docs/runbooks/`）
 
 ---
 
@@ -26,43 +26,32 @@
 ### 1.1 ディレクトリ構成
 
 ```
-founders-direct-modular/
+aifcc-modular-starter/
 ├── app/                    # Next.js App Router
-│   ├── (app)/              # 認証済みユーザー用ルート
+│   ├── (app)/              # 認証済みユーザー用ルート（7 タブ）
 │   │   ├── dashboard/      # ダッシュボード
-│   │   └── layout.tsx      # 認証レイアウト（未ログイン時LP表示）
+│   │   ├── tasks/          # タスク（PART 301）
+│   │   ├── settings/       # 設定（PART 301）
+│   │   ├── action-map/     # Action Map（PART 304）
+│   │   ├── okr/            # OKR（PART 304）
+│   │   ├── clients/        # 既存客（PART 303）
+│   │   ├── leads/          # 見込み客（PART 303）
+│   │   └── layout.tsx      # 認証レイアウト（7 タブナビ）
+│   ├── api/contact/        # お問い合わせ API
 │   ├── login/              # ログインページ
 │   ├── globals.css         # グローバルスタイル
 │   ├── layout.tsx          # ルートレイアウト
-│   └── page.tsx            # エントリー（LP表示）
-├── components/             # UIコンポーネント
-│   └── landing/            # ランディングページ ⭐NEW
-│       ├── default/        # デフォルトLP（AIFCCデザイン）
-│       │   ├── LandingPage.tsx
-│       │   ├── LandingPage.module.css
-│       │   ├── HeroSection.tsx
-│       │   ├── FeaturesSection.tsx
-│       │   ├── PricingSection.tsx
-│       │   └── FAQSection.tsx
-│       └── shared/         # 共通コンポーネント
-│           ├── LandingHeader.tsx
-│           ├── LandingFooter.tsx
-│           └── ContactForm.tsx
+│   └── page.tsx            # エントリー（LP 表示）
+├── components/             # UI コンポーネント
+│   └── landing/            # ランディングページ
 ├── lib/                    # 共通ライブラリ
 │   ├── contexts/           # React Context
-│   │   ├── AuthContext.tsx # 認証コンテキスト
-│   │   └── DataContext.tsx # データコンテキスト
-│   ├── hooks/              # カスタムフック
 │   └── types/              # 型定義
-│       └── index.ts
-├── public/                 # 静的ファイル
-│   └── images/             # LP用画像
+├── references/             # 実装サンプル（import しない）
 ├── docs/                   # ドキュメント
-│   ├── AIFCC-MODULAR-GUIDE.md # インデックス
-│   ├── AIFCC-CORE.md         # 本ファイル
-│   ├── CHANGELOG.md        # 変更履歴
-│   ├── guides/             # ガイド
-│   └── runbooks/           # ランブック
+│   ├── runbooks/           # PART 301-305 ランブック
+│   └── guides/             # 開発ガイド
+├── proxy.ts                # 認証プロキシ（Next.js 16）
 ├── package.json
 ├── tsconfig.json
 └── next.config.ts
@@ -76,17 +65,18 @@ founders-direct-modular/
 │  └─ app/(app)/ 配下のページコンポーネント │
 ├─────────────────────────────────────────┤
 │ State Layer: React Context              │
-│  ├─ AuthContext（認証状態）              │
-│  └─ DataContext（アプリデータ）          │
+│  └─ AuthContext（認証状態）              │
 ├─────────────────────────────────────────┤
 │ Storage Layer: localStorage             │
-│  └─ aifcc_app_data（JSON形式で永続化）     │
+│  ├─ aifcc-tasks（タスクデータ）          │
+│  └─ aifcc-settings（設定データ）        │
+│  ※ PART 302 で Supabase に移行          │
 └─────────────────────────────────────────┘
 ```
 
 ---
 
-## 2. 開発理念とAIチーム体制
+## 2. 開発理念と AI チーム体制
 
 本プロジェクトでは、Claude Code を**開発パートナー**として扱い、
 ランブック単位のタスク実行 + ドキュメント更新を必須プロセスとする。
@@ -94,7 +84,7 @@ founders-direct-modular/
 ### 2.1 運用原則
 
 - すべての開発セッションは `docs/AIFCC-CORE.md` の読み込みから開始
-- 機能追加はランブック（`docs/runbooks/`）に従って実行
+- 機能追加は PART ランブック（`docs/runbooks/PART-30X-*.md`）に従って実行
 - 作業完了後は必ずドキュメントを更新
 
 ### 2.2 ドキュメント更新ルール
@@ -111,44 +101,36 @@ founders-direct-modular/
 
 | レイヤー | 技術 | バージョン |
 |---------|------|-----------|
-| フロントエンド | Next.js | 16.0.10 |
-| UIライブラリ | React | 19.2.1 |
-| 言語 | TypeScript | 5.7.2 |
-| データ永続化 | localStorage | - |
+| フロントエンド | Next.js | 16.x |
+| UI ライブラリ | React | 19.x |
+| 言語 | TypeScript | 5.x |
+| Node.js | - | 24.x |
+| データ永続化 | localStorage | PART 302 で Supabase へ |
 
 ---
 
-## 4. フェーズ完了状況
+## 4. PART 完了状況
 
-| フェーズ | 状態 | 概要 |
-|---------|------|------|
-| Phase 0 | ✅ 完了 | スターター構築（ログイン、ダッシュボード） |
-| Phase 1 | 🔜 予定 | タスクページ追加 |
-| Phase 2 | 🔜 予定 | 設定ページ追加 |
-| Phase 3 | 🔜 予定 | Supabase セットアップ |
-| Phase 4 | 🔜 予定 | Supabase Auth（認証フロー） |
-| Phase 5 | 🔜 予定 | ワークスペース + ロール |
-| Phase 6 | 🔜 予定 | リード管理（CRM） |
-| Phase 7 | 🔜 予定 | クライアント管理 |
-| Phase 8 | 🔜 予定 | アプローチ履歴 |
-| Phase 9 | 🔜 予定 | Task 4象限（3-Layer） |
-| Phase 10 | 🔜 予定 | Action Map |
-| Phase 11 | 🔜 予定 | OKR |
-| Phase 12 | 🔜 予定 | Google Calendar/Tasks 連携 |
-| Phase 13 | 🔜 予定 | Calendar 同期 |
+| PART | 状態 | 概要 | ランブック |
+|------|------|------|----------|
+| 301 | 次に実行 | タスク CRUD + 設定 | `PART-301-FOUNDATION.md` |
+| 302 | 予定 | Supabase + Auth + Workspace | `PART-302-DATABASE.md` |
+| 303 | 予定 | 見込み客 / 既存客（CRM） | `PART-303-CRM.md` |
+| 304 | 予定 | Action Map + OKR | `PART-304-THREE-LAYER.md` |
+| 305 | 予定 | Admin + セキュリティ | `PART-305-ADMIN.md` |
 
 ---
 
 ## 5. 開発フロー
 
 ```
-1. ランブック確認: docs/runbooks/PHASEX-XXX.md を読む
-2. 実装: ランブックに従ってコード実装
-3. ビルド確認: npm run build が成功することを確認
+1. ランブック確認: docs/runbooks/PART-30X-*.md を読む
+2. 実装: ランブックの prompt を Claude Code に渡して実装
+3. ビルド確認: npm run build && npm run type-check && npm run lint
 4. ドキュメント更新:
    - CHANGELOG.md に変更内容を追記
-   - AIFCC-CORE.md のフェーズ状況を更新
-5. コミット: git add . && git commit
+   - AIFCC-CORE.md の PART 状況を更新
+5. コミット
 ```
 
 ---
@@ -157,14 +139,13 @@ founders-direct-modular/
 
 | 用語 | 説明 |
 |-----|------|
-| AIFCC | AIFCC Cockpit |
-| Phase | 開発フェーズ（機能追加の単位） |
-| Runbook | 実装手順書（コード付き） |
+| AIFCC Cockpit | このコースで作る経営コックピット SaaS |
+| PART | 開発パート（機能追加の単位、301-305） |
+| Runbook | 実装手順書（learns / prompt / checks / DoD） |
 | Context | React Context（状態管理） |
 
 ---
 
-**Last Updated**: 2026-02-22
-**Version**: v2.0
-**Status**: Phase 0 完了 + LP追加
+**Last Updated**: 2026-04-13
+**Version**: v2.4
 **Maintained by**: AIFCC Development Team

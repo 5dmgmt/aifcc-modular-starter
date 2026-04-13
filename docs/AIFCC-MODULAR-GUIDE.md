@@ -8,16 +8,16 @@
 
 ## 概要
 
-AIFCC Modular Starter は、SaaS版 AIFCC Cockpit（foundersdirect）の
+AIFCC Modular Starter は、AIFCC Cockpit の
 学習用ミニマル版です。同じアーキテクチャ・パターンを使用しているため、
-学習後にスムーズにSaaS版の開発に移行できます。
+学習後にスムーズに本番版の開発に移行できます。
 
 ### プロジェクト情報
 
 | 項目 | 値 |
 |------|-----|
 | **バージョン** | v1.0.0 |
-| **対応Node.js** | 22.x |
+| **対応Node.js** | 24.x |
 | **フレームワーク** | Next.js 16 + React 19 |
 | **言語** | TypeScript 5.x (strict mode) |
 
@@ -33,7 +33,7 @@ AIFCC Modular Starter は、SaaS版 AIFCC Cockpit（foundersdirect）の
                   │ 学習後に拡張
                   ▼
 ┌─────────────────────────────────────────┐
-│  AIFCC SaaS (/foundersdirect)             │
+│  AIFCC SaaS (本番版)                       │
 │  - フル機能（OKR / ActionMap / Task）    │
 │  - Supabase PostgreSQL                  │
 │  - マルチテナント対応                    │
@@ -53,13 +53,13 @@ docs/
 ├── guides/ ...................... ガイドドキュメント
 │   └── DEVELOPMENT.md ........... 開発者・AI向け技術ガイド
 │
-└── runbooks/ .................... Phase別ランブック
+└── runbooks/ .................... PART別ランブック
     ├── README.md ................ ランブック一覧
-    ├── PHASE0-STARTER-SETUP.md .. プロジェクト新規作成
-    ├── PHASE1-TASKS-PAGE.md ..... タスクページ追加
-    ├── PHASE2-SETTINGS-PAGE.md .. 設定ページ追加
-    ├── PHASE3-LEADS.md .......... リード管理機能
-    └── ...
+    ├── PART-301-FOUNDATION.md ... タスク CRUD + 設定
+    ├── PART-302-DATABASE.md ..... Supabase + Auth
+    ├── PART-303-CRM.md .......... 見込み客 / 既存客
+    ├── PART-304-THREE-LAYER.md .. Action Map + OKR
+    └── PART-305-ADMIN.md ........ Admin + セキュリティ
 ```
 
 ---
@@ -69,7 +69,7 @@ docs/
 ### 1. プロジェクトを開始
 
 ```bash
-cd /Users/5dmgmt/プラグイン/founders-direct-modular
+cd ~/projects/aifcc-modular-starter
 npm install
 npm run dev
 # http://localhost:3000 → パスワード: aifcc
@@ -88,21 +88,21 @@ cat docs/guides/DEVELOPMENT.md
 ### 3. ランブックで機能追加
 
 ```bash
-# Phase 1: タスクページ追加
-cat docs/runbooks/PHASE1-TASKS-PAGE.md
+# PART 301: タスク CRUD + 設定
+cat docs/runbooks/PART-301-FOUNDATION.md
 ```
 
 ---
 
 ## 学習の進め方
 
-1. **Phase 0**（新規の場合）→ プロジェクト構築
-2. **スターター起動** → ログイン → ダッシュボード確認
-3. **AIFCC-CORE.md** を読んで全体像を理解
-4. **Phase 1** → タスクページ追加
-5. **Phase 2** → 設定ページ追加
-6. **Phase 3** → リード管理追加
-7. **以降** → SaaS版と同じ機能を段階的に追加
+1. **スターター起動** → ログイン → ダッシュボード確認
+2. **AIFCC-CORE.md** を読んで全体像を理解
+3. **PART 301** → タスク CRUD + 設定ページ
+4. **PART 302** → Supabase + Auth + Workspace
+5. **PART 303** → 見込み客 / 既存客（CRM）
+6. **PART 304** → Action Map + OKR
+7. **PART 305** → Admin + セキュリティ
 
 ---
 
@@ -117,14 +117,14 @@ cat docs/runbooks/PHASE1-TASKS-PAGE.md
 - docs/AIFCC-CORE.md（開発コアガイド）
 - docs/guides/DEVELOPMENT.md（技術詳細）
 
-プロジェクトパス: /Users/5dmgmt/プラグイン/founders-direct-modular
+プロジェクトパス: ~/projects/aifcc-modular-starter
 ```
 
 ### 機能追加時
 
 ```
-Phase N を実行してください。
-ランブック: docs/runbooks/PHASEN-XXX.md
+PART 30X を実行してください。
+ランブック: docs/runbooks/PART-30X-XXX.md
 
 完了後、以下を更新してください:
 1. docs/CHANGELOG.md に変更内容を追記
@@ -152,14 +152,14 @@ Phase N を実行してください。
 
 ---
 
-## 現在の状態（2025-12-06）
+## 現在の状態（2026-04-13）
 
-- **バージョン**: v1.0.0
-- **Phase 0 完了**: スターター構築済み
-- **次のステップ**: Phase 1（タスクページ追加）
+- **バージョン**: v2.4.0
+- **7タブ構成確定**: ダッシュボード / タスク / 設定 / Action Map / OKR / 既存客 / 見込み客
+- **次のステップ**: PART 301（タスク CRUD + 設定）
 
 ---
 
-**Last Updated**: 2025-12-06
-**Version**: v1.0
+**Last Updated**: 2026-04-13
+**Version**: v2.4
 **Maintained by**: AIFCC Development Team (Human + Claude Code)

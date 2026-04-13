@@ -161,7 +161,7 @@ npm run dev -- --webpack
 
 | 要件 | 最小バージョン |
 |------|----------------|
-| Node.js | 22.x 以上 |
+| Node.js | 24.x 以上 |
 | TypeScript | 5.1.0+ |
 
 ---

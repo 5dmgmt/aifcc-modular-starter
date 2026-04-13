@@ -4,7 +4,7 @@
  * app/(app)/layout.tsx
  *
  * 認証済みユーザー用レイアウト
- * タブナビゲーション: 8タブ構成（UIシェル）
+ * タブナビゲーション: 7タブ構成（UIシェル）
  */
 
 import { useEffect, useState, useCallback } from 'react';
@@ -16,7 +16,6 @@ import {
   Calendar,
   Map,
   Target,
-  Layers,
   Users,
   UserPlus,
   Settings,
@@ -36,7 +35,6 @@ const NAV_ITEMS: NavItem[] = [
   { href: '/settings', label: '設定', icon: Settings },
   { href: '/action-map', label: 'Action Map', icon: Map },
   { href: '/okr', label: 'OKR', icon: Target },
-  { href: '/mvv', label: 'MVV', icon: Layers },
   { href: '/clients', label: '既存客', icon: Users },
   { href: '/leads', label: '見込み客', icon: UserPlus },
 ];
