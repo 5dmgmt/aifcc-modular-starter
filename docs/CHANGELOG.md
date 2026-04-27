@@ -35,6 +35,14 @@ Next.js 15.5.7 から Next.js 16.0.10 への移行。Workshop 教材との整合
 
 ## [Unreleased]
 
+### Changed
+
+| 変更 | 内容 |
+|------|------|
+| Node.js engines | `>=22.0.0` → `>=24.0.0`（package.json） |
+| 依存パッケージ | next ^16.1.7, react ^19.2.4, typescript ^5.9.3, eslint ^9.27.0 にバンプ |
+| ドキュメント | DEVELOPMENT.md の技術スタック表を package.json と同期 |
+
 ### 予定
 
 | PART | 内容 |
