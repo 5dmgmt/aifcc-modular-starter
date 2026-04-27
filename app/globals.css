@@ -2,7 +2,8 @@
  * app/globals.css
  *
  * AIFCC Modular Starter - グローバルスタイル
- * AIFCC Workshop のデザインシステムを踏襲（ティール基本色）
+ * 学習用スターターの初期配色（ティール基本 + テラコッタアクセント）。
+ * 受講者は自社ブランドに合わせて以下の CSS 変数を書き換えてください。
  */
 
 /* Global Reset */
