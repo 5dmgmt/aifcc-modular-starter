@@ -1,15 +1,11 @@
-import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
-import nextTypescript from "eslint-config-next/typescript";
+/**
+ * eslint.config.mjs — AIFCC Modular Starter
+ * 共通ルールは eslint.shared.mjs(正本: aifcc-shared、同期コピー)。
+ * ここにはリポジトリ固有の ignores のみを書く。
+ */
+import { sharedConfig } from "./eslint.shared.mjs";
 
-const eslintConfig = [...nextCoreWebVitals, ...nextTypescript, {
-  rules: {
-    "@typescript-eslint/no-unused-vars": ["warn", {
-      argsIgnorePattern: "^_",
-      varsIgnorePattern: "^_",
-      caughtErrorsIgnorePattern: "^_"
-    }],
-  },
-}, {
+const eslintConfig = [...sharedConfig, {
   ignores: [
     "node_modules/**",
     ".next/**",
