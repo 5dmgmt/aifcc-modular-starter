@@ -1,4 +1,4 @@
-# 1Password を使う人向け。op inject -i .env.tpl -o .env.local で生成する
-# item 名と field は自分の vault（workshop）に合わせる
-RESEND_API_KEY=op://workshop/resend/api-key
+# 1Password（必須）。op inject -i .env.tpl -o .env.local で .env.local を生成する
+# item 名と field は 00202 で作る item に合わせる（vault は workshop）
+RESEND_API_KEY=op://workshop/resend/credential
 RESEND_FROM_EMAIL=op://workshop/resend/from-email
