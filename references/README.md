@@ -11,3 +11,5 @@ aifcc-workshop の `.archive/fdc/` と**内容完全一致**だったファイ�
 - ここに残っているファイルは workshop 側と内容が異なる(独自に手が入っている)もののみです
 - そのため一部ディレクトリはセットとして不完全です(例: `ui/lean-canvas` は全件削除)。
   フルセットが必要な場合は workshop 側の正本を参照してください
+
+2026-11-06: `saas-docs/`（旧製品の文書）は外した。必要なら aifcc-workshop の `docs/legacy/` を参照

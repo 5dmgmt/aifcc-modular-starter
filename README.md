@@ -15,7 +15,7 @@ AIフルーエントCEOクラブ（AIFCC）ワークショップのCC基礎コ�
 
 ```bash
 # クローン
-gh repo clone 5dmgmt/aifcc-modular-starter
+git clone https://github.com/5dmgmt/aifcc-modular-starter.git
 cd aifcc-modular-starter
 
 # 依存関係インストール
@@ -59,6 +59,18 @@ aifcc-modular-starter/
 └── proxy.ts ............... 認証プロキシ（Next.js 16）
 ```
 
+## 環境変数
+
+- 1Password を使う人: `.env.tpl` から `.env.local` を生成します。
+
+  ```bash
+  op inject -i .env.tpl -o .env.local
+  ```
+
+- 1Password を使わない人: `.env.example` を `.env.local` に写して、値を入れます。
+
+どちらも `.env.local` は git に入りません。値を Claude に見せないでください。
+
 ## コマンド
 
 ```bash
@@ -71,4 +83,4 @@ npm run lint       # Lint実行（eslint .）
 
 ## ライセンス
 
-Private - AIFCC Workshop 受講者向け
+公開リポジトリ（AIFCC Workshop 受講者向け）。内容の転載・再配布はご遠慮ください

@@ -14,6 +14,9 @@
 
 ---
 
+新しいアプリ・機能のランブックは `TEMPLATE-ARTIFACT-RUNBOOK.md` の形で。
+型: [TEMPLATE-ARTIFACT-RUNBOOK.md](TEMPLATE-ARTIFACT-RUNBOOK.md)
+
 ## PART 一覧
 
 | PART | ファイル | 内容 | 対応タブ |
@@ -58,5 +61,5 @@ PART 30X を実行してください。
 
 ---
 
-**Last Updated**: 2026-04-13
+**Last Updated**: 2026-11-06
 **Maintained by**: AIFCC Development Team

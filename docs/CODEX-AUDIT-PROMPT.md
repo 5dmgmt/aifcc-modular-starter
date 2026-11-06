@@ -21,7 +21,6 @@
 以下を **除外** する:
 - `node_modules/`、`.next/`、`.git/`
 - `.archive/`（退避済みファイル）
-- `references/saas-docs/`（旧 SaaS ドキュメント）
 - `package-lock.json`
 - `docs/CODEX-AUDIT-PROMPT.md`（本ファイル自体。検索キーワードを含むため偽陽性になる）
 
@@ -31,7 +30,7 @@
 - `lib/`
 - `proxy.ts`
 - `docs/`（runbooks, guides, CHANGELOG 等）
-- `references/`（saas-docs 以外）
+- `references/`
 - `CLAUDE.md`、`README.md`
 - `eslint.config.mjs`、`next.config.ts`、`tsconfig.json`、`package.json`
 
@@ -55,7 +54,7 @@
    ```bash
    rg -n 'fdc|FDC|Founders Direct|foundersdirect|founders-direct-modular|#667eea|#764ba2|fdc_session|fdc_admin|fdc_app_data|fdc-tasks|fdc-settings|--ancc-' \
      --glob '!node_modules/**' --glob '!.next/**' --glob '!.git/**' \
-     --glob '!.archive/**' --glob '!references/saas-docs/**' --glob '!package-lock.json' \
+     --glob '!.archive/**' --glob '!package-lock.json' \
      --glob '!docs/CODEX-AUDIT-PROMPT.md'
    ```
 

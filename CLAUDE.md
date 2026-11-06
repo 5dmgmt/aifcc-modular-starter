@@ -16,9 +16,15 @@
 
 ## セキュリティ
 
-- シークレット（API キー等）は **1Password CLI**（`op inject`）で管理する。`.env.local` は使わない
+- シークレット（API キー等）は 1Password CLI（op inject）で .env.tpl から .env.local を生成する。1Password を使わない場合は .env.example を .env.local に写し、値は人が自分のエディタで入れる。Claude は .env.local を編集しない・commit しない・中身を表示しない
 - `process.env` の値を出力・ログ・ファイルに書き込まない
 - `SUPABASE_SERVICE_ROLE_KEY` はサーバーサイド限定。フロントエンドに露出させない
+
+## 分業（モデル）
+
+- ランブック（設計・仕様・文言）＝Fable。実装＝Sonnet。確認・洗い出し・操作＝Opus（Fable が選べないプランではランブックも Opus）
+- 画像＝ChatGPT の画像生成（codex exec）。OpenAI の API は叩かない。生成 PNG は検寸→縮小→WebP にして public/ へ。原本はリポに入れない
+- 新しい機能は、ランブック → 裁定（Artifact の裁定ページ）→ 実装 の順。型は docs/runbooks/TEMPLATE-ARTIFACT-RUNBOOK.md
 
 ## 禁止事項
 
