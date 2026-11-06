@@ -16,7 +16,7 @@
 
 ## セキュリティ
 
-- シークレット（API キー等）は 1Password CLI（op inject）で .env.tpl から .env.local を生成する。1Password を使わない場合は .env.example を .env.local に写し、値は人が自分のエディタで入れる。Claude は .env.local を編集しない・commit しない・中身を表示しない
+- シークレットは 1Password CLI（op inject）で .env.tpl から .env.local を生成する（必須）。値は 1Password の vault `workshop` に置く。Claude は .env.local を編集しない・commit しない・中身を表示しない
 - `process.env` の値を出力・ログ・ファイルに書き込まない
 - `SUPABASE_SERVICE_ROLE_KEY` はサーバーサイド限定。フロントエンドに露出させない
 

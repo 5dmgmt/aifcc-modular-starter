@@ -61,15 +61,15 @@ aifcc-modular-starter/
 
 ## 環境変数
 
-- 1Password を使う人: `.env.tpl` から `.env.local` を生成します。
+1Password は必須です。秘密の値（API キーなど）は、1Password の vault `workshop` に置きます。`.env.tpl` には値ではなく、置き場所（`op://` の参照）だけが書いてあり、そこから `.env.local` を生成します。
 
-  ```bash
-  op inject -i .env.tpl -o .env.local
-  ```
+```bash
+op inject -i .env.tpl -o .env.local
+```
 
-- 1Password を使わない人: `.env.example` を `.env.local` に写して、値を入れます。
-
-どちらも `.env.local` は git に入りません。値を Claude に見せないでください。
+- `.env.tpl` の item 名と field は、はじめの一歩（00202）で作る item に合わせます。
+- `.env.local` は git に入りません。
+- `.env.local` の中身を Claude に見せないでください。
 
 ## コマンド
 

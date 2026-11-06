@@ -11,7 +11,7 @@
 
 ## 3. 技術スタック（正本: aifcc-modular-starter）
 Next.js 16（App Router）／React 19／TypeScript（strict）／proxy.ts／Lucide／コミット前 `npm run type-check && npm run lint && npm run build`。
-環境変数: `.env.tpl`（1Password）または `.env.example` → `.env.local`。
+環境変数: 1Password が必須。`.env.tpl` から `op inject -i .env.tpl -o .env.local` で `.env.local` を生成する。
 画像: ChatGPT の画像生成（codex exec）→ 検寸 → 縮小 → WebP → `public/`。原本 PNG はリポに入れない。
 
 ## 4. 画面と機能の一覧
