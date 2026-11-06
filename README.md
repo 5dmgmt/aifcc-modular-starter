@@ -11,6 +11,8 @@ AIフルーエントCEOクラブ（AIFCC）ワークショップのCC基礎コ�
 | 言語 | TypeScript 5.x (strict mode) |
 | Node.js | 24.x 以上 |
 
+認証はデモ（`aifcc_session`）。Phase 30202 で Supabase SSR の `getClaims()` に置き換える。スターターに Supabase は入っていない。
+
 ## クイックスタート
 
 ```bash

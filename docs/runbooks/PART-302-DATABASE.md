@@ -130,7 +130,7 @@ app/api/auth/ ディレクトリに以下を作成:
 ## 3. proxy.ts を更新
 
 - Supabase Auth Cookie を優先チェック
-- aifcc_session はフォールバック（移行期間）
+- aifcc_session は PART 301 までのデモ用のログイン。Phase 30202 で Supabase SSR（createServerClient → getClaims）に置き換える
 
 ## 4. ログインページを更新
 

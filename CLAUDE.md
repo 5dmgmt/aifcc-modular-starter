@@ -13,6 +13,7 @@
 - **技術スタック**: Next.js 16 / React 19 / TypeScript 5.x
 - **Node.js**: 24.x 以上
 - **コミット前必須**: `npm run type-check && npm run lint && npm run build`
+- **認証**: デモ（`aifcc_session`）。Phase 30202 で Supabase SSR の `getClaims()` に置き換える。スターターに Supabase は入っていない。
 
 ## セキュリティ
 

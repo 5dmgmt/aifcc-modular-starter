@@ -107,6 +107,8 @@ aifcc-modular-starter/
 | Node.js | - | 24.x |
 | データ永続化 | localStorage | PART 302 で Supabase へ |
 
+認証はデモ（`aifcc_session`）。Phase 30202 で Supabase SSR の `getClaims()` に置き換える。スターターに Supabase は入っていない。
+
 ---
 
 ## 4. PART 完了状況

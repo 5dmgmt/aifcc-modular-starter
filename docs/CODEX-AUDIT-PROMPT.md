@@ -138,7 +138,7 @@
 
 2. **proxy.ts**: Next.js 16 の Proxy 規約に準拠していること（`middleware.ts` ではない）
 
-3. **認証フロー**: proxy.ts が `aifcc_session` Cookie をチェックしていること。変数名に `fdc` が残っていないこと
+3. **認証フロー**: proxy.ts が `aifcc_session` のデモ判定（PART 301 まで）か、Phase 30202 以降は `getClaims()` の判定であること。変数名に `fdc` が残っていないこと
 
 4. **型安全性**: `lib/types/` の型定義が `any` を使っていないこと
 

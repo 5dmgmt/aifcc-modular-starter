@@ -26,6 +26,7 @@ export default function LoginPage() {
         user: { id: '1', email: 'demo@example.com', name: 'Demo User' },
         loggedInAt: new Date().toISOString(),
       });
+      // デモ用・Phase 30202 で Supabase SSR（getClaims）に置き換える
       // Cookie にセッションを保存（proxy.ts と整合）
       document.cookie = `aifcc_session=${encodeURIComponent(session)}; path=/; max-age=${60 * 60 * 24 * 7}`;
       // localStorage にも保存（クライアント側の認証チェック用）
