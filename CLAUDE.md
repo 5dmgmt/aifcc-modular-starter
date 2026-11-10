@@ -23,7 +23,7 @@
 
 ## 分業（モデル）
 
-- ランブック（設計・仕様・文言）＝Fable。実装＝Sonnet。確認・洗い出し・操作＝Opus（Fable が選べないプランではランブックも Opus）
+- ランブック（設計・仕様・文言）＝Fable。実装＝Sonnet。確認・洗い出し・操作＝Opus（Pro（Fable を使わない）では、ランブックも Opus）
 - 画像＝ChatGPT の画像生成（codex exec）。OpenAI の API は叩かない。生成 PNG は検寸→縮小→WebP にして public/ へ。原本はリポに入れない
 - 新しい機能は、ランブック → 裁定（Artifact の裁定ページ）→ 実装 の順。型は docs/runbooks/TEMPLATE-ARTIFACT-RUNBOOK.md
 

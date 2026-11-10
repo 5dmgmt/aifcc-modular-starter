@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.1] - 2026-11-10 - 公開ページを /login に回さない
+
+- `proxy.ts`: 守る経路（`app/(app)/` の 7 画面とその下）だけ `/login` へ回し、それ以外は通す。`/` はログイン済みでも転送しない
+- `.env.example` を削除（`.env.tpl` から `op inject` で `.env.local` を作る道に一本化）。`.gitignore` に `private/`・`knowledge-vault/private/`・`CLAUDE.local.md` を追加
+- `package.json` の `description` と `CLAUDE.md` の分業の文言を Claude Code 基礎コース・Pro の呼び方に合わせた
+
+---
+
 ## [2.3.0] - 2026-02-22 - Next.js 16 Migration
 
 ### 概要

@@ -1,8 +1,8 @@
 {
   "name": "aifcc-modular-starter",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "private": true,
-  "description": "AIFCC Workshop - CC基礎コース用スターター (Next.js 16 + React 19)",
+  "description": "AIFCC Workshop - Claude Code 基礎コース用スターター (Next.js 16 + React 19)",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

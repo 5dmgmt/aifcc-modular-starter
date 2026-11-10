@@ -25,3 +25,8 @@ dist/
 # IDE
 .vscode/
 .idea/
+
+# 公開しないメモの置き場（Course 2・3 と RUN 50204 で使う）
+private/
+knowledge-vault/private/
+CLAUDE.local.md

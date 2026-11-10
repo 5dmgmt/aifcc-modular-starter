@@ -4,13 +4,34 @@
  * Next.js 16 Proxy - 認証チェックとリダイレクト
  *
  * 【責務】
- * - Cookie ベースのセッション検証
- * - 未認証ユーザーを /login へリダイレクト
- * - 認証済みユーザーの / へのアクセスを /dashboard へリダイレクト
+ * - 守る経路（app/(app)/ の 7 画面と、その下の経路）だけ、Cookie のセッションを検証する
+ * - 未認証ユーザーが守る経路に来たら /login へリダイレクト
+ * - 認証済みユーザーの /login へのアクセスを /dashboard へリダイレクト
+ * - それ以外の経路（/・/services・/contact・/blog・sitemap.xml・robots.txt など）は、
+ *   ログインの有無にかかわらず通す（自分の HP を訪問者と検索エンジンに見せるため）
+ *
+ * 守る画面を増やすときは、PROTECTED_PATHS に足す。
  */
 
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+
+// 守る経路（app/(app)/ の 7 画面）。その下の経路（例: /tasks/123）も守る
+const PROTECTED_PATHS = [
+  '/dashboard',
+  '/leads',
+  '/clients',
+  '/tasks',
+  '/okr',
+  '/action-map',
+  '/settings',
+];
+
+function isProtectedPath(pathname: string): boolean {
+  return PROTECTED_PATHS.some(
+    (path) => pathname === path || pathname.startsWith(`${path}/`)
+  );
+}
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -18,16 +39,6 @@ export function proxy(request: NextRequest) {
   // Cookie からセッション情報を取得
   const aifccSession = request.cookies.get('aifcc_session');
   const hasSession = !!aifccSession?.value;
-
-  // ルートパス (/) へのアクセス
-  if (pathname === '/') {
-    if (hasSession) {
-      // 認証済み → /dashboard へリダイレクト
-      return NextResponse.redirect(new URL('/dashboard', request.url));
-    }
-    // 未認証 → ランディングページを表示
-    return NextResponse.next();
-  }
 
   // ログインページへのアクセス
   if (pathname === '/login') {
@@ -38,19 +49,13 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // 公開ページ（認証不要）
-  const publicPaths = ['/terms', '/privacy', '/legal', '/about'];
-  if (publicPaths.includes(pathname)) {
-    return NextResponse.next();
-  }
-
-  // 保護されたパス（/dashboard, /leads, /clients など）
-  if (!hasSession) {
+  // 守る経路（/dashboard, /leads, /clients など）
+  if (isProtectedPath(pathname) && !hasSession) {
     // 未認証 → /login へリダイレクト
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
-  // 認証済み → そのまま通過
+  // それ以外（/ を含む）と、認証済みの守る経路 → そのまま通過
   return NextResponse.next();
 }
 
