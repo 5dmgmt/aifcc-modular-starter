@@ -10,6 +10,11 @@
  *    - RESEND_API_KEY: ResendのAPIキー
  *    - CONTACT_NOTIFY_EMAIL: 通知先メールアドレス
  *    - RESEND_FROM_EMAIL: 送信元メールアドレス（Resendで認証済みドメイン）
+ *
+ * 公開前の注意:
+ * - このままでは、誰でもこの入口に送れる（通知先のメールが迷惑メールで埋まる・Resend の送信枠を使われる）
+ * - 公開する前に、Workshop の Phase 20404 で honeypot と IP の回数制限を足す
+ * - 送る先は CONTACT_NOTIFY_EMAIL（自分）だけ。送り主のアドレスへは送らない作りを保つ
  */
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -50,19 +55,20 @@ export async function POST(request: NextRequest) {
     const notifyEmail = process.env.CONTACT_NOTIFY_EMAIL;
     const fromEmail = process.env.RESEND_FROM_EMAIL || 'noreply@example.com';
 
+    // 設定の名前は応答に出さない（サーバーのログにだけ残す）
     if (!apiKey) {
       console.error('[contact API] RESEND_API_KEY is not set');
       return NextResponse.json(
-        { error: 'メール設定が不正です（RESEND_API_KEY未設定）' },
-        { status: 500 }
+        { error: 'お問い合わせの送信の設定が終わっていません' },
+        { status: 503 }
       );
     }
 
     if (!notifyEmail) {
       console.error('[contact API] CONTACT_NOTIFY_EMAIL is not set');
       return NextResponse.json(
-        { error: 'メール設定が不正です（CONTACT_NOTIFY_EMAIL未設定）' },
-        { status: 500 }
+        { error: 'お問い合わせの送信の設定が終わっていません' },
+        { status: 503 }
       );
     }
 
@@ -71,6 +77,7 @@ export async function POST(request: NextRequest) {
     // HTML エスケープ（XSS 防止）
     const esc = (s: string) =>
       s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    const oneLine = (s: string) => s.replace(/[\r\n]+/g, ' ').trim().slice(0, 200);
 
     const safeName = esc(body.name);
     const safeEmail = esc(body.email);
@@ -82,9 +89,10 @@ export async function POST(request: NextRequest) {
     const { error } = await resend.emails.send({
       from: `お問い合わせ <${fromEmail}>`,
       to: notifyEmail,
+      // 件名は 1 行にする（改行を入れさせない）
       subject: safeSubject
-        ? `【お問い合わせ】${body.subject}`
-        : `【お問い合わせ】${body.name}様より`,
+        ? `【お問い合わせ】${oneLine(body.subject ?? '')}`
+        : `【お問い合わせ】${oneLine(body.name)}様より`,
       html: `
         <h2>お問い合わせがありました</h2>
 
