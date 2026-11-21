@@ -10,7 +10,7 @@
 - 矛盾が生じた場合は、本ガイド → DEVELOPMENT の順で整合を取る。
 
 **現在の開発状況（2026-04-13）**:
-- **バージョン**: v2.4.0
+- **バージョン**: package.json の version を正とする（2026-11-21 時点 2.3.2）
 - **フロントエンド構成**: Next.js 16 + App Router + React 19
 - **TypeScript**: 5.x（strict mode）
 - **Node.js**: 24.x

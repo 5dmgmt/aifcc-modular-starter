@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.3.2] - 2026-11-21 - 実情合わせと片付け
+
+- `app/api/contact`: 設定が無いときの応答から設定の名前を外す（503）・件名の改行を空白に・公開前の注意をファイルの先頭に
+- README「公開する前に知っておくこと」: ログインはデモ（実データは Phase 30202 のあと）・問い合わせの入口は Phase 20404 で守りを足す・セキュリティヘッダは 20404 で自分で入れる
+- CI（Quality Gate）の Node を 22 → 24（`engines` の `>=24` に合わせる）
+- 使っていない `.archive/`（旧ランブック・旧参照・旧 LP）を削除。過去の版は git の履歴に残っている
+- `docs/AIFCC-CORE.md`・`docs/AIFCC-MODULAR-GUIDE.md` の版の表記（v2.4.0）を、package.json を正とする書き方に
+
+---
+
 ## [2.3.1] - 2026-11-10 - 公開ページを /login に回さない
 
 - `proxy.ts`: 守る経路（`app/(app)/` の 7 画面とその下）だけ `/login` へ回し、それ以外は通す。`/` はログイン済みでも転送しない
